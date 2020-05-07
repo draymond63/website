@@ -6,6 +6,11 @@ node_modules
 .env.local
 .env.*.local
 
+# My files
+deploy.sh
+vue.config.js
+*.json
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
