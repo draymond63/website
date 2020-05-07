@@ -75,14 +75,12 @@ export default {
 
 <style scoped>
 h1 {
-  font-size: 4em;
   padding-right: 5% !important;
 }
 #main {
   display: grid;
   grid-template-columns: 50% 50%;
   grid-column-gap: 1vw;
-  padding: 5%;
 }
 .main-mobile {
   grid-template-columns: 100% !important;
@@ -92,6 +90,6 @@ h1 {
 #header {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 </style>

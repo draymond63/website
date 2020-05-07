@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="main">
     <h1>Hello 👋</h1>
     <p>
       I'm Daniel - a data scientist 📈 and current undergraduate student 🧑‍💻 
@@ -17,8 +17,5 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  padding: 5%;
-  padding-top: 10%;
-}
+
 </style>

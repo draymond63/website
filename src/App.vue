@@ -70,7 +70,6 @@ html {
   background: #101010;
 }
 ::-webkit-scrollbar {
-  outline: 1px solid #654321;
   background: #1A1A1A;
 }
 ::-webkit-scrollbar-thumb {
@@ -82,7 +81,7 @@ html {
   background: #101010; /* Default color */
   background-image: url('./assets/background.gif');
   background-position: center;
-  background-size: cover;
+  /* background-size: cover; */
   grid-column: 2;
 }
 .page-mobile {
@@ -98,6 +97,9 @@ html {
   font-size: 0.9em;
   color: #FFFFFF;
 }
+#main {
+  padding: 5%;
+}
 
 #dot {
   color: #F19E44;
@@ -110,6 +112,7 @@ body {
 h1 {
   font-family: 'Bebas Neue', cursive;
   font-weight: 100;
+  font-size: 4em;
 }
 h2 {
   font-family: Avenir, sans-serif;
