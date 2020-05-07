@@ -9,7 +9,9 @@ node_modules
 # My files
 deploy.sh
 vue.config.js
-*.json
+package-lock.json
+package.json
+babel.config.js
 
 # Log files
 npm-debug.log*
