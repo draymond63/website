@@ -31,7 +31,7 @@
           with an acryllic cover.
           <br><br>
       </a>
-      <embed src="DER.pdf" type="application/pdf"/>
+      <object data="DER.pdf" type="application/pdf"/>
   </span>
 </template>
 
@@ -47,7 +47,7 @@ h1 {
   font-size: 4em;
 }
 
-embed {
+object {
   width: 100%;
   height: 80vh;
 }

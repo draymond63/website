@@ -4,7 +4,7 @@
     
     <SideBarMobile 
       v-on:link-pressed="toggleMenu" 
-      v-if="this.mobile_menu_pressed"
+      v-if="this.mobile_menu_pressed && this.is_mobile"
     />
     <TopBar 
       v-on:menu-pressed="toggleMenu" 
