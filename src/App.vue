@@ -32,7 +32,9 @@ export default {
     TopBar,
     SideBarMobile
   },
-  
+  mounted: function() {
+    this.onResize()
+  },
   data() {
     return {
       is_mobile: false,
