@@ -3,7 +3,7 @@
     <!-- First Column -->
     <div>
         <span id="header">
-            <h1>CHUMP</h1>
+            <h1 style="margin-right: 5%">CHUMP</h1>
             <h2>A programmable 4-bit computer, my largest project to date.</h2>
         </span>
         <h3>How It Works</h3>
@@ -75,12 +75,9 @@ export default {
 </script>
 
 <style scoped>
-h1 {
+/* h1 {
   padding-right: 5% !important;
-}
-a {
-  color: #F19E44;
-}
+} */
 #main {
   display: grid;
   grid-template-columns: 50% 50%;

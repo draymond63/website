@@ -48,7 +48,4 @@ object {
   width: 100%;
   height: 80vh;
 }
-a {
-  color: #F19E44;
-}
 </style>

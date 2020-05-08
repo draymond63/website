@@ -1,6 +1,6 @@
 <template>
   <div class="programmer">
-    <a style="margin: 10%;">
+    <p style="margin: 10%;">
       <b>Load</b><br>
       Load value into reg<br>
       <b>Add</b><br>
@@ -15,13 +15,13 @@
       Jump PC to constant<br>
       <b>IfZero</b><br>
       Jump PC to constant if reg is 0<br><br>
-      <div style="height: 8vh">
-        <i v-if="this.err == 1">Error: opcode at line  {{ this.err_line }} is uncompilable</i>
-        <i v-else-if="this.err == 2">Error: operand at line {{ this.err_line }} is not binary</i>
-        <i v-else-if="this.err == 3">Error: missing operand at line {{ this.err_line }}</i>
-        <i v-else-if="this.err == 4">Error: operand exceeds 4-bit max at line {{ this.err_line }}</i>
-      </div>
-    </a>
+    </p>
+    <div style="height: 8vh">
+      <i v-if="this.err == 1">Error: opcode at line  {{ this.err_line }} is uncompilable</i>
+      <i v-else-if="this.err == 2">Error: operand at line {{ this.err_line }} is not binary</i>
+      <i v-else-if="this.err == 3">Error: missing operand at line {{ this.err_line }}</i>
+      <i v-else-if="this.err == 4">Error: operand exceeds 4-bit max at line {{ this.err_line }}</i>
+    </div>
     <textarea
     @input="$emit('update-code', compile())"
     class="prog-input" 

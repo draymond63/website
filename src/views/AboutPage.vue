@@ -43,10 +43,7 @@ export default {
 
 <style scoped>
 img {
-  width: 80%;
-}
-a {
-  color: #F19E44;
+  width: 100%;
 }
 
 #main {

@@ -15,9 +15,3 @@ export default {
   components: {}
 }
 </script>
-
-<style scoped>
-a {
-  color: #F19E44;
-}
-</style>

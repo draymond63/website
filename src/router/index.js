@@ -2,10 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import HomePage from '../views/HomePage.vue'
-import AboutPage from '../views/AboutPage.vue'
-import ProjectsPage from '../views/ProjectsPage.vue'
-import ChumpPage from '../views/ChumpPage.vue'
-import AndroPage from '../views/AndroPage.vue'
 
 Vue.use(VueRouter)
 
@@ -31,22 +27,28 @@ const routes = [
   {
     path: '/about',
     name: 'About Me',
-    component: AboutPage
+    // Lazy importing
+    component: () => import('../views/AboutPage.vue')
   },
   {
     path: '/projects',
     name: 'Overview',
-    component: ProjectsPage
+    component: () => import('../views/ProjectsPage.vue')
   },
   {
     path: '/chump',
     name: 'CHUMP',
-    component: ChumpPage
+    component: () => import('../views/ChumpPage.vue')
   },
   {
     path: '/bnn',
     name: 'BNN Processor',
-    component: AndroPage
+    component: () => import('../views/AndroPage.vue')
+  },
+  {
+    path: '/blimpadventuresyaaay',
+    name: 'Blimp Adventures',
+    component: () => import('../views/BlimpPage.vue')
   }
 ]
 

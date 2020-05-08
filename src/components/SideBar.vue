@@ -1,8 +1,8 @@
 <template>
   <div class="main">
     <router-link to="/" style="text-decoration: none; align-self: end">
-      <h1>
-        Daniel Raymond<span id="dot">.</span>
+      <h1 style="margin-right: -4px;">
+        Daniel Raymond<router-link id="dot" to="/blimpadventuresyaaay" style="text-decoration: none">.</router-link>
       </h1>
     </router-link>
     <router-link to="/projects">Overview</router-link>
@@ -42,6 +42,7 @@ a.router-link-exact-active {
   display: grid;
   height: 100vh;
   width: 27%;
+  z-index: 1;
   padding-left: 3%;
 
   grid-template-rows: 50%;

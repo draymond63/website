@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    <router-link to="/" style="text-decoration: none">
+    <router-link 
+      @click.native="$emit('link-pressed')" 
+      to="/" style="text-decoration: none">
       <h1>
         Daniel Raymond<span id="dot">.</span>
       </h1>
@@ -28,10 +30,9 @@ img {
 }
 
 .main {
-  position: fixed;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
-  height: 8vh;
+  height: 100%;
 
   background: #1A1A1A;
   border-bottom: 2px solid white;

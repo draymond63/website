@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div class="main">
     <span />
 
     <router-link 
@@ -33,9 +33,9 @@ export default {
 </script>
 
 <style scoped>
-#main {
+.main {
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   bottom: 0%;
 
   display: grid;
@@ -50,15 +50,22 @@ export default {
 }
 
 a {
-  padding-right: 5%;
   font-size: min(10vw, 60px);
   font-family: 'Bebas Neue', cursive;
   text-decoration: none;
   color: #B5B5B5;
+  padding-right: 5% !important;
 }
 a.router-link-exact-active {
   text-decoration: underline;
   text-decoration-color: #F19E44;
   color: #FFFFFF;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
