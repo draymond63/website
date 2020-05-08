@@ -39,4 +39,7 @@ export default {
   display: grid;
   grid-template-columns: 20% 70%;
 }
+a {
+  color: #F19E44;
+}
 </style>

@@ -12,7 +12,7 @@
         matrix with an ATmega328p as the microcontroller. The PCB is made to be 
         flexible so it can be laminated into a page in the report along with 
         a flexible solar panel for power. Finally, the game is reprogrammed in 
-        assembly for practice.
+        <a>Assembly</a> for practice.
       </p>
       <h3>Bluetooth Photoframe (p. 103)</h3>
       <p>

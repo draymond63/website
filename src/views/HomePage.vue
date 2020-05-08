@@ -2,7 +2,7 @@
   <div id="main">
     <h1>Hello 👋</h1>
     <p>
-      I'm Daniel - a data scientist 📈 and current undergraduate student 🧑‍💻 
+      I'm Daniel - an <a>AI</a> enthuisast 📈 and current <a>engineering</a> undergraduate student 🧑‍💻 
       at the University of Waterloo 🏫🏯<br><br> This is a new version of my portfolio, 
       so be sure to check back for more posts on my work!
     </p>
@@ -17,5 +17,7 @@ export default {
 </script>
 
 <style scoped>
-
+a {
+  color: #F19E44;
+}
 </style>

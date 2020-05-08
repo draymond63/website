@@ -18,8 +18,8 @@
       </p>
       <h3>Acting </h3>
       <p>
-        I recently organized and hosted a student-run <a>threatre</a> festival with plays, 
-        a magician, musical acts, and improv. I have also wrote a play and directed, 
+        I recently organized and hosted a student-run threatre festival with plays, 
+        a magician, musical acts, and improv. I have also wrote a play and <a>directed</a>, 
         acted, and ran audio for the entire show. I intend to audition for theatres 
         in Kitchener Waterloo once this whole pandemic blows over.
       </p>

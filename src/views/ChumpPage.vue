@@ -8,9 +8,10 @@
         </span>
         <h3>How It Works</h3>
         <p>
-            The control ROM receives the opcode, the instruction for the entire computer, 
-            from the program ROM. Using this information and its eight output pins, the 
-            control ROM distributes the proper ALU instruction, which function the RAM 
+            The control ROM receives the opcod ⁠— the instruction for the entire computer ⁠— 
+            from the program ROM. This ROM is programmed by the user with a <a>machine code</a> 
+            language I devised from scratch. Using this information and its eight output pins, 
+            the control ROM distributes the proper ALU instruction, which function the RAM 
             should be performing (read or write), and the inhibiting pin of the accumulator 
             chip (Accum). It knows this based on the previously agreed upon interpretation 
             and language inside the registers of the ROMs. For example, the current opcode 
@@ -33,7 +34,7 @@
           outputs. When an input is given power, even for an instant, its respective output 
           is set to high. In this way, it acts as a single register that holds the address for 
           the RAM. Once its clock pin completes one full cycle all its outputs are set low.
-          The Accum is the exact same chip, but it is an octal flip-flop with an inhibitor.
+          The Accum is the exact same chip, but it is an octal flip-flop with an optional inhibitor.
         </p>
         <h3>The Multiplexer</h3>
         <p>
@@ -76,6 +77,9 @@ export default {
 <style scoped>
 h1 {
   padding-right: 5% !important;
+}
+a {
+  color: #F19E44;
 }
 #main {
   display: grid;
