@@ -49,6 +49,10 @@ const routes = [
     path: '/blimpadventuresyaaay',
     name: 'Blimp Adventures',
     component: () => import('../views/BlimpPage.vue')
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 
