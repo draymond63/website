@@ -29,10 +29,8 @@
       </p>
     </div>
     <!-- Second Column -->
-    <div>
-      <img src="../assets/Andro.svg" alt="Block Diagram didn't load">
+    <img src="../assets/Andro.svg" alt="Block Diagram didn't load">
     </div>
-  </div>
 </template>
 
 <script>
@@ -56,8 +54,8 @@ export default {
   grid-template-rows: repeat(auto-fit, 1fr);
 }
 img {
-  border: 1px solid black;
-  background: rgba(150, 150, 150, 0.75);
+  background: #000000;
+  border: 1px solid rgba(181, 181, 181, 0.7);
   padding: 5px;
   width: 100%;
 }
