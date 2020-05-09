@@ -5,10 +5,10 @@
       I have spent the past few years learning about circuitry and 
       hardware from the ground up.
     </h2>
+
     <carousel 
-      id="carousel"
-      :perPage=1 
-      :autoplay=true 
+      :perPage=1
+      :autoplay=true
       :autoplayTimeout=5000 
       :autoplayHoverPause=true
       :minSwipeDistance=6
@@ -19,6 +19,7 @@
         <project-slide v-bind:select="sel"/>
       </slide>
     </carousel>
+
     <object data="DER.pdf" type="application/pdf"/>
   </span>
 </template>
@@ -44,11 +45,9 @@ export default {
         "fan",
         "pbar",
         "bcd",
-      ]
+      ],
+      renderComponent: true
     }
-  },
-  mounted() {
-    document.getElementById("carousel").click()
   }
 }
 </script>
@@ -57,8 +56,5 @@ export default {
 object {
   width: 100%;
   height: 80vh;
-}
-img {
-
 }
 </style>

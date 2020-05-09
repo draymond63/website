@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <img v-bind:src="this.image" alt="">
+    <img v-bind:src="this.image" alt="Loading...">
     <span>
       <h3>{{this.title}}</h3>
       <p v-if="this.blurb!=''">{{this.blurb}}</p>
