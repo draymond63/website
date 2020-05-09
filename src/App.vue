@@ -2,7 +2,7 @@
   <div id="app" v-bind:class="{'app-mobile':this.is_mobile}">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     
-    <transition name="fade">
+    <transition name="side-bar-fade">
     <SideBarMobile 
       v-on:link-pressed="closeMenu" 
       v-show="this.mobile_menu_pressed && this.is_mobile"
@@ -17,7 +17,7 @@
 
     <span v-if="!this.is_mobile"/>
 
-    <transition name="fade">
+    <transition name="page-fade">
     <router-view 
       :is_mobile="this.is_mobile"
       class="page"
@@ -87,17 +87,13 @@ body {
 } */
 
 /* Transitions */
-@media (min-width: 960) {
-  .fade-leave-active {
-    transition: opacity .5s;
-  }
-}
-.fade-enter-active {
-  transition: opacity 1s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+.page-fade-leave-active {transition: opacity .1s;}
+.page-fade-enter-active {transition: opacity 1s;}
+.page-fade-enter, .page-fade-leave-to {opacity: 0;}
+
+.side-bar-fade-leave-active {transition: opacity .7s;}
+.side-bar-fade-enter-active {transition: opacity .2s;}
+.side-bar-fade-enter, .side-bar-fade-leave-to {opacity: 0;}
 
 /* Formatting */
 .page {

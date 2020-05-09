@@ -150,7 +150,7 @@ export default {
 
 <style scoped>
   .programmer {
-    background: #000000;
+    background: black;
     border: 1px solid #B5B5B5;
 
     display: grid;

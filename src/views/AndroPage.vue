@@ -4,12 +4,12 @@
     <div>
       <span id="header">
         <h1 style="margin-right: 5%">Andro</h1>
-        <h2>A programmable 4-bit computer, my largest project to date.</h2>
+        <h2>A binarized neural network breadboard processor</h2>
       </span>
       <h3>The Goal</h3>
       <p>
         The final product will be a breadboard prototype of a circuit that could store the 
-        weights of a fully binarized dense layer sequential neural network and apply 
+        weights of a fully <a>binarized dense layer sequential neural network</a> and apply 
         the matrix multiplication correctly to produce a set of logits that could determine 
         the final result. An addition circuit is attached to cycle through the logits 
         to find the index of the EEPROM with the highest logits.
@@ -30,7 +30,7 @@
     </div>
     <!-- Second Column -->
     <img src="../assets/Andro.svg" alt="Block Diagram didn't load">
-    </div>
+  </div>
 </template>
 
 <script>
