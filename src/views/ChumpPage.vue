@@ -3,22 +3,22 @@
     <!-- First Column -->
     <div>
         <span id="header">
-            <h1 style="margin-right: 5%">CHUMP</h1>
-            <h2>A programmable 4-bit computer, my largest project to date.</h2>
+          <h1 style="margin-right: 5%">CHUMP</h1>
+          <h2>A programmable 4-bit computer, my largest project to date.</h2>
         </span>
         <h3>How It Works</h3>
         <p>
-            The control ROM receives the opcod ⁠— the instruction for the entire computer ⁠— 
-            from the program ROM. This ROM is programmed by the user with a <a>machine code</a> 
-            language I devised from scratch. Using this information and its eight output pins, 
-            the control ROM distributes the proper ALU instruction, which function the RAM 
-            should be performing (read or write), and the inhibiting pin of the accumulator 
-            chip (Accum). It knows this based on the previously agreed upon interpretation 
-            and language inside the registers of the ROMs. For example, the current opcode 
-            for an addition operation is 0010. This number becomes the address for the control 
-            ROM. It looks inside that specific register and outputs whatever it sees. In 
-            this case, it would set the ALU to addition and enable the Accum. Since we 
-            aren’t using the RAM, it is set to read as a precaution.
+          The control ROM receives the opcod ⁠— the instruction for the entire computer ⁠— 
+          from the program ROM. This ROM is programmed by the user with a <a>machine code</a> 
+          language I devised from scratch. Using this information and its eight output pins, 
+          the control ROM distributes the proper ALU instruction, which function the RAM 
+          should be performing (read or write), and the inhibiting pin of the accumulator 
+          chip (Accum). It knows this based on the previously agreed upon interpretation 
+          and language inside the registers of the ROMs. For example, the current opcode 
+          for an addition operation is 0010. This number becomes the address for the control 
+          ROM. It looks inside that specific register and outputs whatever it sees. In 
+          this case, it would set the ALU to addition and enable the Accum. Since we 
+          aren’t using the RAM, it is set to read as a precaution.
         </p>
         <h3>The RAM</h3>
         <p>
@@ -75,9 +75,6 @@ export default {
 </script>
 
 <style scoped>
-/* h1 {
-  padding-right: 5% !important;
-} */
 #main {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -86,11 +83,5 @@ export default {
 .main-mobile {
   grid-template-columns: 100% !important;
   grid-template-rows: repeat(auto-fit, 1fr);
-}
-
-#header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 </style>

@@ -1,10 +1,12 @@
 <template>
   <div id="main" v-bind:class="{'main-mobile':this.is_mobile}">
-    <h1>Howdy<span id="dot">!</span> 🤠</h1>
-    <h2>
-      I’m Daniel Raymond, thanks for checking out my portfolio!
-    </h2>
-    <span>
+    <!-- First Column -->
+    <div>
+      <span id="header">
+        <h1 style="margin-right: 5%">Howdy<span id="dot">!</span></h1>
+        <h2>I’m Daniel Raymond, thanks for checking out my portfolio!</h2>
+      </span>
+      <p style="font-size:0.8em; margin: 1">Special thanks to Jayden for the design!</p>
       <h3>Philosophy</h3>
       <p>
         The overarching mentallity I've adopted has been to understand the root of 
@@ -26,13 +28,18 @@
       <h3>Frisbee</h3>
       <p>
         This past year I played Ultimate Frisbee on the <a>varsity</a> team for UW.
+        <br><br>
       </p>
-    </span>
-    <img src="../assets/venn.png" alt="It didn't load &#128531;">
+    </div>
+    <!-- Second Column -->
+    <div>
+      <img src="../assets/venn.png" alt="Venn Diagram didn't load">
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'AboutPage',
   props: {
@@ -42,16 +49,16 @@ export default {
 </script>
 
 <style scoped>
-img {
-  width: 100%;
-}
-
 #main {
   display: grid;
   grid-template-columns: 50% 50%;
+  grid-column-gap: 1vw;
 }
 .main-mobile {
   grid-template-columns: 100% !important;
   grid-template-rows: repeat(auto-fit, 1fr);
+}
+img {
+  width: 100%;
 }
 </style>

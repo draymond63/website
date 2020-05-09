@@ -1,5 +1,7 @@
 <template>
   <div class="programmer">
+
+    <div>
     <p style="margin: 10%;">
       <b>Load</b><br>
       Load value into reg<br>
@@ -22,6 +24,8 @@
       <i v-else-if="this.err == 3">Error: missing operand at line {{ this.err_line }}</i>
       <i v-else-if="this.err == 4">Error: operand exceeds 4-bit max at line {{ this.err_line }}</i>
     </div>
+    </div>
+
     <textarea
     @input="$emit('update-code', compile())"
     class="prog-input" 

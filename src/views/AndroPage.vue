@@ -1,8 +1,11 @@
 <template>
   <div id="main" v-bind:class="{'main-mobile':this.is_mobile}">
-    <h1>Andro</h1>
-    <h2>A fully independent breadboard processor for Binarized Neural Networks</h2>
-    <span v-bind:class="{'content-desktop':!this.is_mobile}">
+    <!-- First Column -->
+    <div>
+      <span id="header">
+        <h1 style="margin-right: 5%">Andro</h1>
+        <h2>A programmable 4-bit computer, my largest project to date.</h2>
+      </span>
       <h3>The Goal</h3>
       <p>
         The final product will be a breadboard prototype of a circuit that could store the 
@@ -24,11 +27,16 @@
         have just recently ordered parts. In the end the circuit will be able to take most 
         shapes of neural network, including multiple hidden layers!
       </p>
-    </span>
+    </div>
+    <!-- Second Column -->
+    <div>
+      <img src="../assets/Andro.svg" alt="Block Diagram didn't load">
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'AndroPage',
   props: {
@@ -40,12 +48,17 @@ export default {
 <style scoped>
 #main {
   display: grid;
-  grid-template-columns: 20% 70%;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 1vw;
 }
 .main-mobile {
   grid-template-columns: 100% !important;
+  grid-template-rows: repeat(auto-fit, 1fr);
 }
-.content-desktop {
-  grid-column: span 2;
+img {
+  border: 1px solid black;
+  background: rgba(150, 150, 150, 0.75);
+  padding: 5px;
+  width: 100%;
 }
 </style>

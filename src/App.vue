@@ -17,10 +17,12 @@
 
     <span v-if="!this.is_mobile"/>
 
+    <transition name="fade">
     <router-view 
       :is_mobile="this.is_mobile"
       class="page"
     />
+    </transition>
   </div>
 </template>
 
@@ -68,19 +70,33 @@ export default {
 
 <style>
 html {
-  overflow-y:scroll;
+  /* overflow-y:scroll; */
   background: #101010;
 }
 body { 
   margin: 0;
   height: 100vh;
 }
-/* Scroll Bar */
+/* Hide Scroll Bar */
 ::-webkit-scrollbar {
-  background: #1A1A1A;
+  width: 0;
+  /* background: #1A1A1A; */
 }
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: #F19E44;
+} */
+
+/* Transitions */
+@media (min-width: 960) {
+  .fade-leave-active {
+    transition: opacity .5s;
+  }
+}
+.fade-enter-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 /* Formatting */
@@ -93,7 +109,7 @@ body {
 #app {
   display: grid;
   height: 100%;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 20% auto;
   grid-template-rows: unset;
 
   font-family: Avenir, sans-serif;
@@ -109,6 +125,11 @@ body {
 /* DEFAULTS */
 #main {
   padding: 5%;
+}
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 #dot {
   color: #F19E44;
@@ -128,5 +149,8 @@ h2 {
 h3 {
   color: #FFD9AB;
   margin: 0;
+}
+p {
+  margin-top: 0;
 }
 </style>

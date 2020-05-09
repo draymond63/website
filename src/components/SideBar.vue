@@ -20,13 +20,13 @@ export default {
 
 <style scoped>
 h1 {
-  font-size: min(8vw, 100px);
+  font-size: min(5vw, 100px);
   line-height: 1em;
   color: #FFFFFF;
 }
 
 a {
-  font-size: min(5vw, 60px);
+  font-size: min(3vw, 40px);
   font-family: 'Bebas Neue', cursive;
   text-decoration: none;
   color: #B5B5B5;
@@ -41,11 +41,11 @@ a.router-link-exact-active {
   position: fixed;
   display: grid;
   height: 100vh;
-  width: 27%;
+  width: 18%;
   z-index: 1;
-  padding-left: 3%;
+  padding-left: 2%;
 
-  grid-template-rows: 50%;
+  grid-template-rows: 40%;
   grid-auto-rows: min(8vw, 10%); /* The rest of the rows are 10% */
 
   font-size: 1rem;

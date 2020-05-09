@@ -38,8 +38,7 @@
 
 <script scoped>
 export default {
-name: 'ProjectsPage',
-components: {}
+  name: 'ProjectsPage',
 }
 </script>
 
