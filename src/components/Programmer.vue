@@ -2,22 +2,22 @@
   <div class="programmer">
 
     <div>
-    <p style="margin: 10%;">
-      <b>Load</b><br>
-      Load value into reg<br>
-      <b>Add</b><br>
-      Add constant to reg<br>
-      <b>Subtract</b><br>
-      Subtract constant from reg<br>
-      <b>StoreTo</b><br>
-      Store reg in address given<br>
-      <b>Read</b><br>
-      Read RAM from address given<br>
-      <b>GoTo</b><br>
-      Jump PC to constant<br>
-      <b>IfZero</b><br>
-      Jump PC to constant if reg is 0<br><br>
-    </p>
+    <div style="margin: 10%;">
+      <b>Load</b>
+      <p>Load value into reg</p>
+      <b>Add</b>
+      <p>Add constant to reg</p>
+      <b>Subtract</b>
+      <p>Subtract constant from reg</p>
+      <b>StoreTo</b>
+      <p>Store reg in address given</p>
+      <b>Read</b>
+      <p>Read RAM from address given</p>
+      <b>GoTo</b>
+      <p>Jump PC to constant</p>
+      <b>IfZero</b>
+      <p>Jump PC to constant if reg is 0</p><br>
+    </div>
     <div style="height: 8vh">
       <i v-if="this.err == 1">Error: opcode at line  {{ this.err_line }} is uncompilable</i>
       <i v-else-if="this.err == 2">Error: operand at line {{ this.err_line }} is not binary</i>

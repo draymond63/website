@@ -7,13 +7,15 @@
     </h2>
 
     <carousel 
-      :perPage=1
+      ref="carousel"
+      :perPageCustom="[[0, 1], [960, 2]]"
       :autoplay=true
-      :autoplayTimeout=5000 
+      :autoplayTimeout=7000 
       :autoplayHoverPause=true
       :minSwipeDistance=6
       :paginationPadding=4
       paginationActiveColor="#404040"
+      style="max-width: 100vw"
     >
       <slide v-for="sel in selection" :key="sel">
         <project-slide v-bind:select="sel"/>
@@ -48,7 +50,14 @@ export default {
       ],
       renderComponent: true
     }
-  }
+  },
+  // Fixes carousel issue
+  mounted() {
+		setTimeout(() => {
+			this.$refs['carousel'].onResize();
+			this.$refs['carousel'].goToPage(0);
+		}, 500);
+	}
 }
 </script>
 

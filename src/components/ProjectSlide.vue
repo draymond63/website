@@ -34,14 +34,12 @@ export default {
 
 <style scoped>
 #main {
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  align-items: center;
 
-  width: 1;
-  height: 50vh;
+  /* width: 100%; */
+  height: 37vh;
   padding: 2%;
+  margin: 2%;
 
   background: black;
   border: 1px solid #B5B5B5;
@@ -49,7 +47,7 @@ export default {
 img {
   border: 1px solid white;
   max-width: 100%;
-  max-height: 45vh;
+  max-height: 30vh;
   margin-bottom: 1vh;
 }
 </style>

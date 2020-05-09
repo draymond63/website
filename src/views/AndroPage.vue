@@ -18,8 +18,8 @@
       <p>
         An example model was made with Keras and Larq to use the mnist dataset with 1-bit 
         weights. There are multiple iterations of this NN, slowly deconstructing it from 
-        Keras to <a>Numpy</a> to using bitwise operators. The final iteration is a custom hardware 
-        <a>simulation</a> to emulate the design of the real circuit.
+        Keras to <a>Numpy</a> to using bitwise operators. The final iteration is a custom 
+        <a>hardware simulation</a> to emulate the design of the real circuit.
       </p>
       <h3>The Hardware</h3>
       <p>
