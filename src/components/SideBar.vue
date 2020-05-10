@@ -7,22 +7,22 @@
     </router-link>
 
     <router-link 
-      @mouseover.native="load(['carousel/chump.jpg', 'carousel/vibe.jpg'])"
+      @mouseover.native="load(['chump.959b7a93.jpg', 'vibe.0393c222.jpg'])"
       to="/projects">
       Overview
     </router-link>
     <router-link 
-      @mouseover.native="load(['chumpRender.svg'])"
+      @mouseover.native="load(['chumpRender.b291b093.svg'])"
       to="/chump">
       4-Bit Computer
     </router-link>
     <router-link 
-      @mouseover.native="load(['Andro.svg'])"
+      @mouseover.native="load(['Andro.fcb3acf3.svg'])"
       to="/bnn">
       BNN Processor
     </router-link>
     <router-link 
-      @mouseover.native="load(['venn.png'])"
+      @mouseover.native="load(['venn.3e1ff0aa.png'])"
       to="/about">
       About
     </router-link> 
@@ -38,8 +38,7 @@ export default {
     load(img_list) {
       for (let i in img_list) {
         var img = new Image();
-        img.src=`../assets/${img_list[i]}`;
-        console.log(img.src)
+        img.src=`/img/${img_list[i]}`;
 
         img.onload = function() {console.log("yup")};
         img.onerror = function() {console.log("nope")};
