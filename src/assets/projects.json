@@ -2,36 +2,43 @@
     "chump":[{  
         "title": "Programmable Computer",
         "image": "chump.jpg",
-        "blurb": "Cheap Homebrew Understandable Machine Processor"
+        "blurb": "Cheap Homebrew Understandable Machine Processor",
+        "url": ""
     }],
     "vibe":[{  
         "title": "Vibeify",
         "image": "vibe.jpg",
-        "blurb": "An Artificially Intelligent Personal DJ"
+        "blurb": "An Artificially Intelligent Personal DJ",
+        "url": "https://devpost.com/software/vibeify"
     }],
     "chump-pcb":[{  
         "title": "Programmable Computer - PCB",
         "image": "chump_pcb.jpg",
-        "blurb": "The ultimate extension to my biggest project yet"
+        "blurb": "The ultimate extension to my biggest project yet",
+        "url": "https://youtu.be/vZ13xud0qBc"
     }],
     "flex":[{  
         "title": "Flexible PCB",
         "image": "flex_pcb.png",
-        "blurb": "A flexible pcb programmed in Assembly to play snake"
+        "blurb": "A flexible pcb programmed in Assembly to play snake",
+        "url": "https://youtu.be/lHQrBdLFWxc"
     }],
     "fan":[{  
         "title": "Timer Interrupt 3-Wire Fan",
         "image": "fan.jpg",
-        "blurb": "A dive into Assembly interrupts to maximize power efficiency"
+        "blurb": "A dive into Assembly interrupts to maximize power efficiency",
+        "url": "https://youtu.be/ec6GigbML2w"
     }],
     "pbar":[{  
         "title": "Remote Controlled Power Bar",
         "image": "remote_power_bar.jpg",
-        "blurb": "NRF communication to control any device"
+        "blurb": "NRF communication to control any device",
+        "url": ""
     }],
     "bcd":[{  
         "title": "Assembly BCD Display",
         "image": "bcd_asm.jpg",
-        "blurb": "A first look at the Atmel Studio 7 Assembly debugger"
+        "blurb": "A first look at the Atmel Studio 7 Assembly debugger",
+        "url": ""
     }]
  }

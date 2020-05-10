@@ -1,8 +1,8 @@
 <template>
-  <div id="main">
-    <img v-bind:src="this.image" alt="Loading...">
+  <div id="main" href="">
+    <img ref="image" v-bind:src="this.image" alt="Loading...">
     <span>
-      <h3>{{this.title}}</h3>
+      <a v-bind:href="this.url" target="_blank">{{this.title}}</a>
       <p v-if="this.blurb!=''">{{this.blurb}}</p>
     </span>
   </div>
@@ -20,7 +20,8 @@ export default {
     return {
       image: "",
       title: "",
-      blurb: ""
+      blurb: "",
+      url: undefined
   }
   },
   created() {
@@ -28,12 +29,23 @@ export default {
     this.title = proj.title
     this.image = require(`../assets/carousel/${proj.image}`)
     this.blurb = proj.blurb
+    if (proj.url) {
+      this.url = proj.url
+    }
+  },
+  // Send and event when the image has loaded succesfully
+  mounted() {
+    this.$refs['image'].onload = () => {
+      this.$emit('img-loaded', this.select)
+    }
   }
 }
 </script>
 
 <style scoped>
 #main {
+  display: flex;
+  flex-direction: column;
   text-align: center;
 
   /* width: 100%; */
@@ -49,5 +61,10 @@ img {
   max-width: 100%;
   max-height: 30vh;
   margin-bottom: 1vh;
+}
+a {
+  font-size: 1.2em;
+  color: #FFD9AB;
+  margin: 0;
 }
 </style>

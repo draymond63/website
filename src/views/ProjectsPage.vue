@@ -18,11 +18,11 @@
       style="max-width: 100vw"
     >
       <slide v-for="sel in selection" :key="sel">
-        <project-slide v-bind:select="sel"/>
+        <project-slide v-on:img-loaded="loadPDF" v-bind:select="sel"/>
       </slide>
     </carousel>
 
-    <object data="DER.pdf" type="application/pdf"/>
+    <object ref="pdf" data="" type="application/pdf"/>
   </span>
 </template>
 
@@ -48,6 +48,8 @@ export default {
         "pbar",
         "bcd",
       ],
+      first_loaded: false,
+      second_loaded: false
     }
   },
   // Fixes carousel issue
@@ -56,7 +58,15 @@ export default {
 			this.$refs['carousel'].onResize();
 			this.$refs['carousel'].goToPage(0);
 		}, 500);
-	}
+  },
+  // Load the pdf only once the CHUMP image has loaded
+  methods: {
+    loadPDF(name) {
+      if (name === this.selection[0]) {this.first_loaded = true}
+      if (name === this.selection[1]) {this.second_loaded = true}
+      if (this.first_loaded && this.second_loaded) {this.$refs['pdf'].data="DER.pdf"}
+    }
+  }
 }
 </script>
 
