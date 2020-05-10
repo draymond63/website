@@ -45,10 +45,16 @@ const routes = [
     name: 'BNN Processor',
     component: () => import('../views/AndroPage.vue')
   },
+
   {
     path: '/blimpadventuresyaaay',
     name: 'Blimp Adventures',
     component: () => import('../views/BlimpPage.vue')
+  },
+  {
+    path: '/happybdaymom',
+    name: 'Moms Instruction',
+    component: () => import('../views/MomPage.vue')
   },
   {
     path: '*',
