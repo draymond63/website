@@ -22,7 +22,7 @@
       </slide>
     </carousel>
 
-    <object data="DER.pdf" type="application/pdf"/>
+    <object id="DER" data="" type="application/pdf"/>
   </span>
 </template>
 
@@ -48,7 +48,6 @@ export default {
         "pbar",
         "bcd",
       ],
-      renderComponent: true
     }
   },
   // Fixes carousel issue

@@ -1,36 +1,36 @@
 <template>
   <div class="computer">
-    <img src="../assets/chumpRender.svg">
+    <img id="chumpRender" src="../assets/chumpRender.svg">
     <!-- LEDs -->
-    <div id="r" style="left: 5%;"  class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 5%;"  class="c-led r-0"></div>
 
-    <div id="g" style="left: 10%;" class="c-led g-0"></div>
-    <div id="g" style="left: 13%;" class="c-led g-0"></div>
-    <div id="g" style="left: 16%;" class="c-led g-0"></div>
-    <div id="g" style="left: 19%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 10%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 13%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 16%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 19%;" class="c-led g-0"></div>
 
-    <div id="y" style="left: 23%;" class="c-led y-0"></div>
-    <div id="y" style="left: 26%;" class="c-led y-0"></div>
-    <div id="y" style="left: 29%;" class="c-led y-0"></div>
-    <div id="y" style="left: 32%;" class="c-led y-0"></div>
-    <div id="y" style="left: 35%;" class="c-led y-0"></div>
-    <div id="y" style="left: 38%;" class="c-led y-0"></div>
-    <div id="y" style="left: 41%;" class="c-led y-0"></div>
-    <div id="y" style="left: 44%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 23%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 26%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 29%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 32%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 35%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 38%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 41%;" class="c-led y-0"></div>
+    <div v-show="this.showLEDs" id="y" style="left: 44%;" class="c-led y-0"></div>
     
-    <div id="r" style="left: 50%;" class="c-led r-0"></div>
-    <div id="r" style="left: 53%;" class="c-led r-0"></div>
-    <div id="r" style="left: 56%;" class="c-led r-0"></div>
-    <div id="r" style="left: 59%;" class="c-led r-0"></div>
-    <div id="r" style="left: 62%;" class="c-led r-0"></div>
-    <div id="r" style="left: 65%;" class="c-led r-0"></div>
-    <div id="r" style="left: 68%;" class="c-led r-0"></div>
-    <div id="r" style="left: 71%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 50%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 53%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 56%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 59%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 62%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 65%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 68%;" class="c-led r-0"></div>
+    <div v-show="this.showLEDs" id="r" style="left: 71%;" class="c-led r-0"></div>
 
-    <div id="g" style="left: 82%;" class="c-led g-0"></div>
-    <div id="g" style="left: 85%;" class="c-led g-0"></div>
-    <div id="g" style="left: 88%;" class="c-led g-0"></div>
-    <div id="g" style="left: 91%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 82%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 85%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 88%;" class="c-led g-0"></div>
+    <div v-show="this.showLEDs" id="g" style="left: 91%;" class="c-led g-0"></div>
   </div>
 </template>
 
@@ -47,11 +47,19 @@ export default {
       RAM: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       pl: 0xFF,
       acc: 0,
+
+      showLEDs: false
     }
   },
   // INIT
-  mounted: function() {
-    setInterval(this.update.bind(this), 500) // Update every n milliseconds
+  mounted() {
+    // Only show leds once svg has loaded in
+    let svg = document.getElementById("chumpRender")
+    svg.onload = () => { // Arrow function maintains correct 'this
+      this.showLEDs = true
+      setInterval(this.update.bind(this), 500) // Update every n milliseconds
+    }
+  
     this.LEDs = Array.from(document.getElementsByClassName("c-led"))
     // Split LEDs into relevant sections
     this.clkLED = this.LEDs[0]
