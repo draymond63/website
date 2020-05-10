@@ -22,7 +22,7 @@
       </slide>
     </carousel>
 
-    <object id="DER" data="" type="application/pdf"/>
+    <object data="DER.pdf" type="application/pdf"/>
   </span>
 </template>
 
