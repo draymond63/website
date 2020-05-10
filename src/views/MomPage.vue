@@ -4,8 +4,8 @@
     <h2>
       Alright mom, lets see how well you really know us.
     </h2>
-    <p>1. Got to <a href="https://BuzzIn.live" target="_blank">BuzzIn.live</a></p>
-    <p>2. Enter Code <input type="text"> and write your name</p>
+    <p>1. Got to <a href="https://playfactile.com/join" target="_blank">playfactile.com/join</a></p>
+    <p>2. Enter Code <input type="text"> and select your avatar</p>
     <h2><a>The Rules<span style="color:white">.</span></a></h2>
     <p><a>a.</a> There is board of questions separated into five categories and ranked by value</p>
     <p><a>b.</a> The current winner will choose a tile</p>
