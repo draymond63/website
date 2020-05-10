@@ -27,8 +27,7 @@
 
 <script>
 export default {
-  name: 'HomePage',
-  components: {}
+  name: 'SideBarMobile',
 }
 </script>
 

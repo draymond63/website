@@ -5,16 +5,47 @@
         Daniel Raymond<router-link id="dot" to="/blimpadventuresyaaay" style="text-decoration: none">.</router-link>
       </h1>
     </router-link>
-    <router-link to="/projects">Overview</router-link>
-    <router-link to="/chump">4-Bit Computer</router-link>
-    <router-link to="/bnn">BNN Processor</router-link>
-    <router-link to="/about">About</router-link> 
+
+    <router-link 
+      @mouseover.native="load(['carousel/chump.jpg', 'carousel/vibe.jpg'])"
+      to="/projects">
+      Overview
+    </router-link>
+    <router-link 
+      @mouseover.native="load(['chumpRender.svg'])"
+      to="/chump">
+      4-Bit Computer
+    </router-link>
+    <router-link 
+      @mouseover.native="load(['Andro.svg'])"
+      to="/bnn">
+      BNN Processor
+    </router-link>
+    <router-link 
+      @mouseover.native="load(['venn.png'])"
+      to="/about">
+      About
+    </router-link> 
+    
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SideBar'
+  name: 'SideBar',
+  methods: {
+    // Preload on hover
+    load(img_list) {
+      for (let i in img_list) {
+        var img = new Image();
+        img.src=`../assets/${img_list[i]}`;
+        console.log(img.src)
+
+        img.onload = function() {console.log("yup")};
+        img.onerror = function() {console.log("nope")};
+      }
+    }
+  }
 }
 </script>
 
