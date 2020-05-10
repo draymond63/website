@@ -9,7 +9,7 @@
     <carousel 
       ref="carousel"
       :perPageCustom="[[0, 1], [960, 2]]"
-      :autoplay=true
+      :autoplay=!this.is_mobile
       :autoplayTimeout=7000 
       :autoplayHoverPause=true
       :minSwipeDistance=6
@@ -36,6 +36,9 @@ export default {
     Carousel,
     Slide,
     ProjectSlide
+  },
+  props: {
+    is_mobile: Boolean
   },
   data() {
     return {
