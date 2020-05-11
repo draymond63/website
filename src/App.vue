@@ -20,6 +20,7 @@
     <transition name="page-fade">
     <router-view 
       :is_mobile="this.is_mobile"
+      v-on:ga-event="sendGa"
       class="page"
     />
     </transition>
@@ -56,7 +57,14 @@ export default {
       }
     },
     toggleMenu() {this.mobile_menu_pressed = !this.mobile_menu_pressed},
-    closeMenu() {this.mobile_menu_pressed = false}
+    closeMenu() {this.mobile_menu_pressed = false},
+    sendGa(category, action, label) {
+      this.$ga.event({
+        eventCategory: category,
+        eventAction: action,
+        eventLabel: label
+      })
+    }
   },
   // Determining is-mobile
   created() {
@@ -64,7 +72,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
-  },
+  }
 }
 </script>
 

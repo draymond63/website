@@ -31,7 +31,10 @@
         This past year I played Ultimate Frisbee on the <a>varsity</a> team for UW.
         <br><br>
       </p>
-      <p>If you'd like to see my resume, you can download it <a href="../assets/resume.pdf" download>here.</a></p>
+      <p>
+        If you'd like to see my resume, you can download it 
+        <a @click="$emit('ga-event', 'Resume', 'Downloaded')" href="../assets/resume.pdf" download>here.</a>
+      </p>
     </div>
     <!-- Second Column -->
     <div>
