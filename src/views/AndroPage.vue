@@ -28,7 +28,9 @@
         shapes of neural network, including multiple hidden layers!
       </p>
       <br>
-      <p>Github Repo: <a href="https://github.com/draymond63/Andro">github.com/draymond63/Andro</a></p>
+      <p>Github Repo: 
+        <a href="https://github.com/draymond63/Andro" target="_blank">github.com/draymond63/Andro</a>
+      </p>
     </div>
     <!-- Second Column -->
     <img src="../assets/Andro.svg" alt="Block Diagram didn't load">

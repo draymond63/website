@@ -17,7 +17,7 @@
         I am a Systems Design Engineering student at the <a>University of Waterloo!</a> 
         Although it is a very broad program, I would say I specialize in hardware 
         and software. I am proficient in Python, C, and System Verilog. My most recent
-        position was a <a>Untether AI</a> as a <a>AI Acceleration Hardware Engineer</a>.
+        position was a <a>Untether AI</a> as an <a>AI Acceleration Hardware Engineer</a>.
       </p>
       <h3>Acting </h3>
       <p>
@@ -31,6 +31,7 @@
         This past year I played Ultimate Frisbee on the <a>varsity</a> team for UW.
         <br><br>
       </p>
+      <p>If you'd like to see my resume, you can download it <a href="../assets/resume.pdf" download>here.</a></p>
     </div>
     <!-- Second Column -->
     <div>
