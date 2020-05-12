@@ -17,7 +17,7 @@
         I am a Systems Design Engineering student at the <a>University of Waterloo!</a> 
         Although it is a very broad program, I would say I specialize in hardware 
         and software. I am proficient in Python, C, and System Verilog. My most recent
-        position was a <a>Untether AI</a> as an <a>AI Acceleration Hardware Engineer</a>.
+        position was at <a>Untether AI</a> as an <a>AI Acceleration Hardware Engineer</a>.
       </p>
       <h3>Acting </h3>
       <p>
