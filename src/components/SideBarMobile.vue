@@ -14,7 +14,7 @@
     
     <router-link 
       @click.native="$emit('link-pressed')" 
-      to="/bnn">BNN Processor
+      to="/bnn">AI Processor
     </router-link>
     
     <router-link 

@@ -29,7 +29,7 @@
       </p>
       <br>
       <p>Github Repo: 
-        <a  @click="$emit('ga-event', 'Github', 'Sent', 'Andro')" href="https://github.com/draymond63/Andro" target="_blank">github.com/draymond63/Andro</a>
+        <a @click="$emit('ga-event', 'Github', 'Sent', 'Andro')" href="https://github.com/draymond63/Andro" target="_blank">github.com/draymond63/Andro</a>
       </p>
     </div>
     <!-- Second Column -->

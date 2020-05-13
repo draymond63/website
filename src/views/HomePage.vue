@@ -10,7 +10,13 @@
     <p id="mini">
       Reach out to me <a href="mailto:dan@raymond.ch">here</a>
       <br><br>
-      Vue the source code <a target="_blank" href="https://github.com/draymond63/website">here</a>
+      Vue the source code 
+      <a 
+        target="_blank" 
+        href="https://github.com/draymond63/website" 
+        @click="$emit('ga-event', 'Github', 'Sent', 'Source')"
+        >here
+      </a>
     </p>
   </div>
 </template>

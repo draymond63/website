@@ -4,30 +4,75 @@
     <div>
       <span id="header">
         <h1 style="margin-right: 5%">CHUMP</h1>
-        <h2>A programmable 4-bit computer, my largest project to date.</h2>
+        <h2>Computers can often be a black box.</h2>
       </span>
-      <h3>How It Works</h3>
+      <h3>The Why</h3>
       <p>
-        The control ROM receives the opcode ⁠— the instruction for the entire computer ⁠— 
-        from the program ROM. This ROM is programmed by the user with a <a>machine code</a> 
-        language I devised from scratch. Using this information and its eight output pins, 
-        the control ROM distributes the proper ALU instruction, which function the RAM 
-        should be performing (read or write), and the inhibiting pin of the accumulator 
-        chip (Accum). It knows this based on the previously agreed upon interpretation 
-        and language inside the registers of the ROMs. For example, the current opcode 
-        for an addition operation is 0010. This number becomes the address for the control 
-        ROM. It looks inside that specific register and outputs whatever it sees. In 
-        this case, it would set the ALU to addition and enable the Accum. Since we 
-        aren’t using the RAM, it is set to read as a precaution.
+        There are so many systems working to make the picture you see on your screen, 
+        it's seems impossible to figure out all that's going on. 
       </p>
+
+      <h3>The What</h3>
+      <p>
+        This project attempts to strip down a computer to what it was originally: a device
+        capable of executing a program in order to fulfill a given purpose. For the most
+        basic tasks, a computer needs 5 things:
+        <ul>
+          <i>
+            <li>a <a>program</a> to run</li>
+            <li>a <a>counter</a> to keep track of the program line</li>
+            <li>a method of <a>decoding</a> the current the operation</li>
+            <li>a chip to carry out the <a>logic</a> operation</li>
+            <li> <a>memory</a> to store and read data</li>
+          </i>
+        </ul>
+      </p>
+
+      <h3>Let's use this Sim!</h3>
+      <p>
+        I've made a little simulation of my project for you to play with right here 
+        on this page!<br>
+        <br>
+        If you've programmed in <a>Assembly</a>, this is like my own personal version.<br>
+        If not, this will be a new thing to learn :).<br>
+        <br>
+        With these simple concepts the computer can perform these operations:
+        <ul>
+          <i>
+            <li>Load</li>
+            <li>Addition & subtraction</li>
+            <li>Bitwise ANDing</li>
+            <li>Storing and reading to memory</li>
+            <li>Conditional & non-conditional jumping</li>
+          </i>
+        </ul>
+        Each operation is made up of an operation and a constant. The constant will be 
+        used in conjuction with the result from the previous operation, shown by the 
+        LEDs from the output of the ALU (Arithmetic and logic unit). For memory 
+        instructions, the constant is treated as an address, and for the goto or the 
+        if-zero conditional, the constant is treated as the line number to jump to.
+        <br><br>
+        The program currently running reads address 2 from memory and adds 1 to the value
+        (shown in the <a>accumulator</a>). It then stores that value back and restarts 
+        the program by jumping to the first line (0).<br>
+        As you can see the accumulator is incrementing by one, showing the output of the 
+        program!
+      </p>
+      <p>
+        If you'd like a technical, in-depth report of this project click 
+        <a href="DER.pdf#page=61" @click="$emit('ga-event', 'CHUMP', 'Viewed')">here!</a>
+      </p>
+      <!-- <img src="../assets/chumpBlock.svg" v-bind:class="{'img-desktop':!this.is_mobile}"> -->
       <br>
-      <p>I've made a little simulation of it for you to play with right here on this page!</p>
-      <img src="../assets/chumpBlock.svg" alt="">
     </div>
+
     <!-- Second Column -->
     <div>
       <CHUMP ref="CHUMP"/>
-      <Programmer v-on:update-code="compile"/>
+      <Programmer 
+        v-on:update-code="compile"
+        v-on:speed-change="changeSpeed"
+      />
     </div>
   </div>
 </template>
@@ -45,6 +90,9 @@ export default {
   methods: {
     compile(prog) {
       this.$refs.CHUMP.compile(prog);
+    },
+    changeSpeed(speed) {
+      this.$refs.CHUMP.changeSpeed(speed);
     }
   },
   props: {
@@ -63,10 +111,7 @@ export default {
   grid-template-columns: 100% !important;
   grid-template-rows: repeat(auto-fit, 1fr);
 }
-img {
-  width: 85%;
-  padding: 5%;
-  background: #404040;
-  border: 1px solid #B5B5B5;
+ul {
+  margin-top: 0.3em;
 }
 </style>

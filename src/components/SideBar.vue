@@ -16,7 +16,7 @@
     </router-link>
     <router-link 
       to="/bnn">
-      BNN Processor
+      AI Processor
     </router-link>
     <router-link 
       to="/about">

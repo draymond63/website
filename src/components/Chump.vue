@@ -39,7 +39,6 @@ export default {
   name: 'CHUMP',
   data() {
     return {
-      run: true,    // Runs only if the code was compiled successfully
       clk: 1,       // Toggles clock
       program: [],  // Array of functions and their constants
       pc: 0,        // Index of the Program Counter
@@ -48,18 +47,21 @@ export default {
       pl: 0xFF,
       acc: 0,
 
-      showLEDs: false
+      run: true,    // Runs only if the code was compiled successfully
+      nextCycleOp: null, // Stuff to do after the LEDs update
+      showLEDs: false,
+      interval: null
     }
   },
   // INIT
   mounted() {
     // Only show leds once svg has loaded in
-    let svg = document.getElementById("chumpRender")
+    const svg = document.getElementById("chumpRender")
     svg.onload = () => { // Arrow function maintains correct 'this
       this.showLEDs = true
-      setInterval(this.update.bind(this), 500) // Update every n milliseconds
+      this.interval = setInterval(this.update.bind(this), 25000/50) // Update every n milliseconds
     }
-  
+
     this.LEDs = Array.from(document.getElementsByClassName("c-led"))
     // Split LEDs into relevant sections
     this.clkLED = this.LEDs[0]
@@ -70,29 +72,44 @@ export default {
   },
   // Methods
   methods: {
+    changeSpeed(speed) {
+      console.log(speed)
+      clearInterval(this.interval)
+      if (speed != 0) { // 0 freezes it
+        console.log("running")
+        this.interval = setInterval(this.update.bind(this), 25000/speed)
+      } else {
+        this.interval = null
+      }
+    },
     /***************************************************** VISUALIZATION */
     update() {
       if (this.run) {
         // Toggle clock
         this.clk ^= 1
-        // Change CHUMP variables if applicable
-        if (this.program[this.pc] != null && this.program[this.pc][0] != null && this.program[this.pc][1] != null)
-          this.executeLine()
-        else if (this.clk) // Set default state of program line to all on
-          this.pl = 0xFF
-        // Increment the PC
         if (this.clk) {
+
+          // Change CHUMP variables if applicable
+          if (this.program[this.pc] != null && this.program[this.pc][0] != null && this.program[this.pc][1] != null)
+            this.executeLine()
+          else if (this.clk) // Set default state of program line to all on
+            this.pl = 0xFF
+          
+          // Increment the PC
           this.pc %= 256
           this.pc++
+          // Update LEDs to match
+          this.updateLEDs()
+
+          if (this.nextCycleOp) {
+            this.nextCycleOp()
+          }
         }
-        // Update LEDs to match
-        this.updateLEDs()
+        // CLOCK
+        this.toggle(this.clkLED, this.clk)
       }
     },
     updateLEDs() {
-      // CLOCK
-        this.toggle(this.clkLED, this.clk)
-
         // ALU
         for (let i in this.aluLEDs) {
             let state = this.alu & (0x8 >> i)
@@ -179,10 +196,10 @@ export default {
           case this.add:
             this.pl = (0b0010 << 4) | constant
             break
-          case this.subtract:
+          case this.sub:
             this.pl = (0b0100 << 4) | constant
             break
-          case this.storeTo:
+          case this.str:
             this.pl = (0b0110 << 4) | constant
             break
           case this.read:
@@ -191,10 +208,10 @@ export default {
           case this.and:
             this.pl = (0b1010 << 4) | constant
             break
-          case this.goTo:
+          case this.goto:
             this.pl = (0b1100 << 4) | constant
             break
-          case this.ifZero:
+          case this.ifZ:
             this.pl = (0b1110 << 4) | constant
             break
           default:
@@ -212,31 +229,42 @@ export default {
     add(c) {
       this.alu += c
       this.alu %= 16
-      this.acc = this.alu
+      this.nextCycleOp = () => {
+        this.acc = this.alu;
+        this.nextCycleOp = null;
+      }
     },
     sub(c) {
       this.alu -= c
       this.alu %= 16
-      this.acc = this.alu
+      this.nextCycleOp = () => {
+        this.acc = this.alu;
+        this.nextCycleOp = null;
+      }
     },
     str(c) {
       this.RAM[c] = this.acc
     },
     read(c) {
       this.alu = this.RAM[c]
-      this.acc = this.alu
     },
     and(c) {
       this.alu = this.acc & c
     },
     goto(c) {
-      this.pc = c - 1
-      this.pc %= 256
+      this.nextCycleOp = () => {
+        this.pc = c - 1
+        this.pc %= 256
+        this.nextCycleOp = null;
+      }
     },
     ifZ(c) {
       if (this.acc == 0) {
-        this.pc = c - 1
-        this.pc %= 256
+        this.nextCycleOp = () => {
+          this.pc = c - 1
+          this.pc %= 256
+          this.nextCycleOp = null;
+        }
       }
     },
 
