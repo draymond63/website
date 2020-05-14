@@ -31,8 +31,9 @@
       v-bind:class="{'img-mobile':this.is_mobile}"
     >
     <timeline 
-      :items="require('../assets/andro.json')"
+      class="tl-mobile"
       v-on:ga-event="(x, y, z) => $emit(x, y, z)"
+      :items="require('../assets/andro.json')"
       :class="{'tl-desktop':!this.is_mobile}"
       :is_mobile="this.is_mobile"
     />
@@ -74,7 +75,11 @@ img {
   grid-row: 5;
 }
 
+.tl-mobile {
+  width: 90vw;
+}
 .tl-desktop {
   grid-column: span 2;
+  width: 100%;
 }
 </style>
