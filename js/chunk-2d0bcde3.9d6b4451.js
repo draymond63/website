@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0bcde3"],{"2a20":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},c=[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"main"},[t("h1",[e._v(";)")])])}],s={name:"BlimpPage"},i=s,r=t("2877"),l=Object(r["a"])(i,a,c,!1,null,"422f17dd",null);n["default"]=l.exports}}]);
+//# sourceMappingURL=chunk-2d0bcde3.9d6b4451.js.map
