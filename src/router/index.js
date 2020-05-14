@@ -52,11 +52,6 @@ const routes = [
     component: () => import('../views/BlimpPage.vue')
   },
   {
-    path: '/happybdaymom',
-    name: 'Moms Instruction',
-    component: () => import('../views/MomPage.vue')
-  },
-  {
     path: '*',
     redirect: '/'
   }

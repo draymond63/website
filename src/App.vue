@@ -127,7 +127,7 @@ body {
 }
 
 /* DEFAULTS */
-#main {
+#def-main {
   padding: 5%;
 }
 #header {

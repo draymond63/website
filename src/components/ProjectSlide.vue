@@ -1,5 +1,5 @@
 <template>
-  <div id="main" href="">
+  <div class="ps-main" href="">
     <img ref="image" v-bind:src="this.image" alt="Loading...">
     <span>
       <a v-bind:href="this.url" target="_blank">{{this.title}}</a>
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-#main {
+.ps-main {
   display: flex;
   flex-direction: column;
   text-align: center;

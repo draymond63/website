@@ -1,0 +1,50 @@
+{
+    "stamps":[{  
+        "key": 1,
+        "gtag": "D0",
+        "title": "Keras & Model Creation",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD0.py",
+        "blurb": "The model is built using Keras, Tensorflow, & Larq (quantizing library)",
+        "code": "# 81 kB required minimum\nmodel = tf.keras.models.Sequential([\n    tf.keras.layers.Flatten(),\n    lq.layers.QuantDense(512,\n        input_shape=(784,),\n        input_quantizer='ste_sign',\n        kernel_quantizer='ste_sign',\n        kernel_constraint='weight_clip'\n    ),\n    lq.layers.QuantDense(10,\n        input_quantizer='ste_sign',\n        kernel_quantizer='ste_sign',\n        kernel_constraint='weight_clip',\n        activation='softmax'\n    ),\n])"
+
+        },{  
+        "key": 2,
+        "gtag": "D1",
+        "title": "Proof of Reloading",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD1.py",
+        "blurb": "This model reads in saved model and binarizes weights to test accuracy",
+        "code": "for i, layer in enumerate(model.layers):\n    temp_weights = np.asarray(weights[i], dtype=np.float32)\n    temp_biases = np.asarray(biases[i], dtype=np.float32)\n    # Polarize every weight\n    for x, node in enumerate(temp_weights):\n        for y, weight in enumerate(node):\n            if weight > 0:\n                temp_weights[x][y] = 1\n            else:\n                temp_weights[x][y] = -1"
+    
+        },{  
+        "key": 3,
+        "gtag": "D2",
+        "title": "Numpy Matrix Multiplication",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD2.py",
+        "blurb": "Treats each layer as a matrix that it multiplied by the previous until the result it a 1x10 vector of answers, completely removing all AI frameworks from the process",
+        "code": "def model(image, use_biases=True):\n    layer = quantize(image)\n    for layer_weights, layer_biases in zip(weights, biases):\n        layer_weights = np.array(layer_weights, dtype=np.float32)\n        # Stil 78.72% accuracy without biases? (Same as with)\n        if use_biases: \n            layer_biases = np.array(layer_biases, dtype=np.float32)\n        else:\n            layer_biases = 0\n        layer = np.matmul(layer, layer_weights) + layer_biases\n        # Quantize all but the last layer\n        if len(layer[0]) != 10:\n            layer = quantize(layer)"
+
+        },{  
+        "key": 4,
+        "gtag": "D3",
+        "title": "Layer Driven Multiplication",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD3.py",
+        "blurb": "Re-organize loop methods to iterate through each layer, node, then weight - no libraries involved",
+        "code": "# Iterate through layers, moving linearized image to 10 node output\nfor layer_weights, layer_biases in zip(weights, biases):\n    output_layer = []\n    # Iterate through each of the nodes in the current layer\n    for node_weights, node_bias in zip(layer_weights, layer_biases):\n        node_val = 0\n        # Iterate through previous layer, multiplying previous nodes \n        # by the weights and putting it into the new node\n        for data, weight in zip(input_layer, node_weights):\n            # Take the MSB of the val if required\n            if quanitizing:\n                node_val += quantize(weight) * quantize(data)\n            else:\n                node_val += weight * data"
+
+        },{  
+        "key": 5,
+        "gtag": "D4",
+        "title": "Bitpacked Proof of Concept",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD4.py",
+        "blurb": "Using bitwise operators, bit unpacking and repacking to show how software would do the hardware's job",
+        "code": "# Calculation of one node\nfor w_index in range(prev_size):\n    EEPROM_addr = w_index >> 3  # 3 LSBs are for bit selection\n    bit_index = w_index & 0b111 # Mask away all but lowest three bits\n    # Select bit weight and input data\n    # print(bin(weights[l_index][node][EEPROM_addr]))\n    weight = weights[l_index][node][EEPROM_addr] & ( 1 << bit_index )\n    data = input_layer[EEPROM_addr]              & ( 1 << bit_index )\n    # Multiply and add\n    mult = XNOR(weight, data)\n    accum = UpDown(accum, mult) # * Breakpoint here to match D5"
+
+        },{  
+        "key": 6,
+        "gtag": "D5",
+        "title": "Fully Fledged hardware sim",
+        "url": "https://github.com/draymond63/Andro/blob/master/models/AndroD5/LogitCalculator.py",
+        "blurb": "Using a personally-built hardware simulation library to replicate the hardware circuit before purchasing parts",
+        "code": "def _initSrRestore(self):\n    # SRs\n    self.I1_SR = IC.ShiftRegister(name='I1-SR')\n    self.I2_SR = IC.ShiftRegister(name='I2-SR')\n    # AND write and clk to know when to shift in\n    I1_SR_CLK = asyncIC.AND(1)\n    I2_SR_CLK = asyncIC.AND(1)\n    # Active when EEPROM is being written to (OTHER EEPROM IS BEING READ FROM)\n    I1_SR_CLK.wire(self.node_done.output, self.I2_RD)\n    I2_SR_CLK.wire(self.node_done.output, self.I1_RD)\n    # Wire input of SRs to LSB of accum\n    i = self.accum.width\n    MSB = self.accum.output[i-1:i] # Take the MSB\n    quantI = asyncIC.NOT(name='Accum-Quantized')\n    quantI.wire(MSB)"
+    }]
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="tb-main">
     <router-link 
       @click.native="$emit('link-pressed')" 
       to="/" style="text-decoration: none">
@@ -29,7 +29,7 @@ img {
   height: 65%;
 }
 
-.main {
+.tb-main {
   z-index: 2;
   width: 100%;
   height: 100%;

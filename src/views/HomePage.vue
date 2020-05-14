@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="def-main">
     <h1>Hello 👋</h1>
     <p>
       I'm Daniel - an <a>AI</a> enthuisast &#129504; and current <a>engineering</a> undergraduate student 🧑‍💻 
@@ -7,7 +7,7 @@
       so be sure to check back for more posts on my work!
     </p>
     <br><br><br>
-    <p id="mini">
+    <p class="mini">
       Reach out to me <a href="mailto:dan@raymond.ch">here</a>
       <br><br>
       Vue the source code 
@@ -32,7 +32,7 @@ export default {
 p {
   font-size: 1.5em;
 }
-#mini {
+.mini {
   font-size: 1em;
 }
 </style>

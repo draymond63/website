@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="sbm-main">
     <span />
 
     <router-link 
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
+.sbm-main {
   position: fixed;
   z-index: 2;
   bottom: 0%;

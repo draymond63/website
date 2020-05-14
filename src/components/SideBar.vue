@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="sb-main">
     <router-link to="/" style="text-decoration: none; align-self: end">
       <h1 style="margin-right: -4px;">
         Daniel Raymond<router-link id="dot" to="/blimpadventuresyaaay" style="text-decoration: none">.</router-link>
@@ -51,7 +51,7 @@ a.router-link-exact-active {
   color: #FFFFFF;
 }
 
-.main {
+.sb-main {
   position: fixed;
   display: grid;
   height: 100vh;

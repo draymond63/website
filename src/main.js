@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import VueAnalytics from 'vue-analytics'
 
+// Tell Vue.js to use vue-highlightjs
+import VueHighlightJS from 'vue-highlightjs'
+Vue.use(VueHighlightJS)
+
 Vue.config.productionTip = false
 
 // Configuration VueAnalytics

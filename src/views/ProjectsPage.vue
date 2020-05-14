@@ -1,5 +1,5 @@
 <template>
-  <span id="main">
+  <span id="def-main">
     <h1>Welcome to my portfolio<span id="dot">.</span></h1>
     <h2>
       I have spent the past few years learning about circuitry and 
@@ -67,7 +67,7 @@ export default {
     loadPDF(name) {
       if (name === this.selection[0]) {this.first_loaded = true}
       if (name === this.selection[1]) {this.second_loaded = true}
-      if (this.first_loaded && this.second_loaded) {this.$refs['pdf'].data="DER.pdf"}
+      if (this.first_loaded && this.second_loaded) {this.$refs.pdf.data="DER.pdf"}
     }
   }
 }

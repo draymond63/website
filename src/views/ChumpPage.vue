@@ -1,5 +1,5 @@
 <template>
-  <div id="main" v-bind:class="{'main-mobile':this.is_mobile}">
+  <div class="cp-main" v-bind:class="{'main-mobile':this.is_mobile}">
     <!-- First Column -->
     <div>
       <span id="header">
@@ -58,7 +58,10 @@
         As you can see the accumulator is incrementing by one, showing the output of the 
         program!
       </p>
+      <h3>My Project</h3>
       <p>
+        For this project I spend 2 months build a breadboard prototype and 3 months
+        designing and manufacturing a custom <a>PCB</a> and 3D printed case.<br>
         If you'd like a technical, in-depth report of this project click 
         <a href="DER.pdf#page=61" @click="$emit('ga-event', 'CHUMP', 'Viewed')">here!</a>
       </p>
@@ -102,7 +105,8 @@ export default {
 </script>
 
 <style scoped>
-#main {
+.cp-main {
+  padding: 5%;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-column-gap: 1vw;

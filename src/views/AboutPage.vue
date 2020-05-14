@@ -1,5 +1,5 @@
 <template>
-  <div id="main" v-bind:class="{'main-mobile':this.is_mobile}">
+  <div class="ap-main" v-bind:class="{'main-mobile':this.is_mobile}">
     <!-- First Column -->
     <div>
       <span id="header">
@@ -32,7 +32,7 @@
         <br><br>
       </p>
       <p>
-        If you'd like to see my resume, you can download it 
+        If you'd like to see my <a style="font-size: 1.2em">resume</a>, you can download it 
         <a @click="$emit('ga-event', 'Resume', 'Downloaded')" href="../assets/resume.pdf" download>here.</a>
       </p>
     </div>
@@ -54,7 +54,8 @@ export default {
 </script>
 
 <style scoped>
-#main {
+.ap-main {
+  padding: 5%;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-column-gap: 1vw;
