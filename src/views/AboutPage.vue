@@ -33,7 +33,7 @@
       </p>
       <p>
         If you'd like to see my <a style="font-size: 1.2em">resume</a>, you can download it 
-        <a @click="$emit('ga-event', 'Resume', 'Downloaded')" href="../assets/resume.pdf" download>here.</a>
+        <a @click="$emit('ga-event', 'Resume', 'Downloaded')" href="../assets/resume.pdf" type="application/pdf" download>here.</a>
       </p>
     </div>
     <!-- Second Column -->

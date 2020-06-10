@@ -1,6 +1,6 @@
 <template>
   <div class="ba-main">
-      <h1>Hey Sheertex!</h1>
+      <h1>Woah!</h1>
       <h2>Glad you could finally make it.</h2>
       <p>
         I'm surprised you actually went to blimpadventures.xyz with a cover letter like that.
