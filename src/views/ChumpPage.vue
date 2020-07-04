@@ -63,7 +63,7 @@
         For this project I spend 2 months build a breadboard prototype and 3 months
         designing and manufacturing a custom <a>PCB</a> and 3D printed case.<br>
         If you'd like a technical, in-depth report of this project click 
-        <a href="DER.pdf#page=61" @click="$emit('ga-event', 'CHUMP', 'Viewed')">here!</a>
+        <a href="DER.pdf#page=33" @click="$emit('ga-event', 'CHUMP', 'Viewed')">here!</a>
       </p>
       <!-- <img src="../assets/chumpBlock.svg" v-bind:class="{'img-desktop':!this.is_mobile}"> -->
       <br>
