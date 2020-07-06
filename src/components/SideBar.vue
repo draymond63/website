@@ -8,7 +8,7 @@
 
     <router-link 
       to="/projects">
-      Overview
+      Projects
     </router-link>
     <router-link 
       to="/chump">

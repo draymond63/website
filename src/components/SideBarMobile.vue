@@ -4,7 +4,7 @@
 
     <router-link 
       @click.native="$emit('link-pressed')" 
-      to="/projects">Overview
+      to="/projects">Projects
     </router-link>
     
     <router-link 
