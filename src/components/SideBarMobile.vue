@@ -19,7 +19,7 @@
 
     <router-link 
       @click.native="$emit('link-pressed')" 
-      to="/bnn">Career Mapping
+      to="/careers">Career Mapping
     </router-link>
     
     <router-link 
