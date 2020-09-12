@@ -10,7 +10,7 @@ friendly, and horribly designed (due to my previous hatred for scrolling).
 
 ### The second one
 This was built in March of 2020 using pure HTML CSS and Javascript. 
-I had the idea of having a 2D physics environment with screens following down
+I had the idea of having a 2D physics environment with screens falling down
 into view, and users being able to swipe them away. Cannon JS was the best
 library I could find, but it was always paired with ThreeJS. So, I decided
 to make my own 2D render engine that took in the coordinates of Cannon physics
