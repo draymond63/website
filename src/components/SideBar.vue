@@ -19,6 +19,10 @@
       AI Processor
     </router-link>
     <router-link 
+      to="/careers">
+      Career Mapping
+    </router-link> 
+    <router-link 
       to="/about">
       About
     </router-link> 

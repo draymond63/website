@@ -3,7 +3,7 @@
     <!-- First Column -->
     <div>
       <span id="header">
-        <h1 style="margin-right: 5%">Andro</h1>
+        <h1>Andro</h1>
         <h2>A binarized neural network breadboard processor</h2>
       </span>
       <h3>The Why</h3>

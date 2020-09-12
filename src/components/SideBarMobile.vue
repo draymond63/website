@@ -16,6 +16,11 @@
       @click.native="$emit('link-pressed')" 
       to="/bnn">AI Processor
     </router-link>
+
+    <router-link 
+      @click.native="$emit('link-pressed')" 
+      to="/bnn">Career Mapping
+    </router-link>
     
     <router-link 
       @click.native="$emit('link-pressed')" 
@@ -41,7 +46,7 @@ export default {
   height: 92vh;
   width: 100%;
   
-  grid-template-rows: 40%;
+  grid-template-rows: 30%;
   grid-auto-rows: min(10vh, 20%); /* The rest of the rows are 10% */
 
   text-align: right;

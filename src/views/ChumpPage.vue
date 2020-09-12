@@ -3,7 +3,7 @@
     <!-- First Column -->
     <div>
       <span id="header">
-        <h1 style="margin-right: 5%">CHUMP</h1>
+        <h1>CHUMP</h1>
         <h2>Computers can often be a black box.</h2>
       </span>
       <h3>The Why</h3>

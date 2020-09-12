@@ -47,6 +47,11 @@ const routes = [
   },
 
   {
+    path: '/careers',
+    name: 'Career Mapping',
+    component: () => import('../views/CareerPage.vue')
+  },
+  {
     path: '/blimpadventuresyaaay',
     name: 'Blimp Adventures',
     component: () => import('../views/BlimpPage.vue')

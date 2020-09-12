@@ -133,7 +133,7 @@ body {
 #header {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 #dot {
   color: #F19E44;
@@ -149,6 +149,7 @@ h1 {
 h2 {
   font-family: Avenir, sans-serif;
   font-weight: 200;
+  margin-left: 5%;
 }
 h3 {
   color: #FFD9AB;

@@ -3,7 +3,7 @@
     <!-- First Column -->
     <div>
       <span id="header">
-        <h1 style="margin-right: 5%">Howdy<span id="dot">!</span></h1>
+        <h1>Howdy<span id="dot">!</span></h1>
         <h2>I’m Daniel Raymond, thanks for checking out my portfolio!</h2>
       </span>
       <p style="font-size:0.8em; margin: 1">Special thanks to <a href="https://jaydenhsiao.me/">Jayden</a> for the design!</p>
