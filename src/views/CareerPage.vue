@@ -28,6 +28,7 @@
         of mappings while trying to retain as much information as possible. This is how we are visualizing the data on a 2D screen! Although, it has the
         consequence of making the new axes meaningless. But don't worry, we don't care for what the coordinates of something are, but how close they are in 
         relation to others. The groups are made by clustering together close points in the higher dimensional space and then displaying them on the graph.
+        The final mapping is compressed into 50 dimensions to remove redundant dimensions.
       </p>
 
       <!-- DUPLICATION FOR MOBILE -->
