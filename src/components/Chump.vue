@@ -59,7 +59,7 @@ export default {
     const svg = document.getElementById("chumpRender")
     svg.onload = () => { // Arrow function maintains correct 'this
       this.showLEDs = true
-      this.interval = setInterval(this.update.bind(this), 25000/50) // Update every n milliseconds
+      this.interval = setInterval(this.update.bind(this), 25000/50) // Update every n milliseconds (50 == default speed)
     }
 
     this.LEDs = Array.from(document.getElementsByClassName("c-led"))
@@ -73,10 +73,8 @@ export default {
   // Methods
   methods: {
     changeSpeed(speed) {
-      console.log(speed)
       clearInterval(this.interval)
       if (speed != 0) { // 0 freezes it
-        console.log("running")
         this.interval = setInterval(this.update.bind(this), 25000/speed)
       } else {
         this.interval = null

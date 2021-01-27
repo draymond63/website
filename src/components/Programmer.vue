@@ -3,12 +3,11 @@
     <span class="speed-header">
       <h4>Speed Control</h4>
       <input 
-        ref="SPEED"
         type="range" 
         min="0" max="500" 
-        value="50" 
+        value="174"
         class="slider"
-        @click="() => $emit('speed-change', getSpeed())">
+        @click="updateSpeed">
       <h4>Programmer</h4>
     </span>
     <div class="placement">
@@ -72,8 +71,19 @@ export default {
   },
 
   methods: {
-    getSpeed() {
-      return this.$refs.SPEED.value
+    updateSpeed(e) {
+      const speed = Number(e.target.value)
+      console.log(speed)
+      // Altered so increase isn't linear
+      this.$emit('speed-change', this.speedFunction(speed));
+    },
+    // * The initial value of the input should be set so that desireSpeed starts at 50 (predefined in Chump.vue)
+    speedFunction(x, beginSpeed=10, endSpeed=1000) {
+      // a = inputScaleSize/ln(f/i)
+      const a = 500/Math.log(endSpeed/beginSpeed)/Math.log(Math.exp(1))
+      // s = a * ln(i)
+      const s = a * Math.log(beginSpeed)/Math.log(Math.exp(1))
+      return Math.exp((x+s)/a)
     },
 
     compile() {
