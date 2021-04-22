@@ -3,3 +3,7 @@
 	--main-color-1: hsl(16, 95%, 65%);
 	--background-color-1: hsl(26, 37%, 96%);
 }
+
+h1 {
+	color: var(--main-color-1);
+}
