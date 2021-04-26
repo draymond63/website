@@ -1,8 +1,10 @@
 <template>
 	<div class="container">
-		<!-- INTRO -->
-		<hero/>
-		<line-curve/>
+		<div class="position"><LineCurve/></div>
+		<div class="content position">
+			<!-- INTRO -->
+			<hero/>
+		</div>
 	</div>
 </template>
 
@@ -24,8 +26,18 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.content {
 	display: flex;
 	flex-direction: column;	
+}
+
+.position {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.container {
+	position: relative;
 }
 </style>

@@ -1,19 +1,34 @@
 <template>
 	<div class="line-wrapper">
-		<svg viewBox="0 0 660 550" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M115 0V23.5C115 51 137 74 165 73.5H604.5C632 73 655 96 655 123.5V418C654 445 632 468 605 468H54C26 468 4 490 4 518V548"/>
-		</svg>
+		<canvas ref="canvas"></canvas>
 	</div>
 </template>
 
-<style scoped>
-svg {
-	width: calc(100% - var(--about-offset));
-	margin-left: var(--about-offset);
+<script>
+export default {
+	name: "Line",
+	methods: {
+		heroLine(ctx) {
+			ctx.moveTo(200, 0);
+			ctx.lineTo(200, 700);
+			ctx.stroke();
+		},
+		heroAboutLine(ctx) {
+			
+		}
+	},
+	mounted() {
+		const c = this.$refs.canvas;
+		const ctx = c.getContext("2d");
+		ctx.strokeStyle = 'hsl(16, 95%, 65%)';
+		ctx.lineWidth = 8;
+		this.heroLine(ctx);
+	}
 }
+</script>
 
-path {
-	stroke: var(--main-color-1);
-	stroke-width: 8px
-}
+<style scoped>
+/* .line-wrapper {
+	background: grey;
+} */
 </style>

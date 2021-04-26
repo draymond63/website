@@ -24,7 +24,6 @@
 	max-width: 100rem;
 	padding: 5rem;
 	margin-left: var(--hero-offset);
-	border-left: var(--line-border);
 }
 
 img {
