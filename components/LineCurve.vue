@@ -8,6 +8,14 @@
 import Vue from 'vue'
 export default Vue.extend({
 	name: "LineCurve",
+	data() {
+		return {
+			pointer: {
+				x: 0,
+				y: 0
+			}
+		}
+	},
 	methods: {
 		heroLine(ctx: CanvasRenderingContext2D) {
 			ctx.moveTo(200, 0);
@@ -15,7 +23,9 @@ export default Vue.extend({
 			ctx.stroke();
 		},
 		heroAboutLine(ctx: CanvasRenderingContext2D) {
-
+			ctx.beginPath();
+			ctx.arc(95, 50, 50, Math.PI / 2, Math.PI);
+			ctx.stroke();
 		}
 	},
 	mounted() {
