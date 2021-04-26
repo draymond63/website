@@ -40,7 +40,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .desktop {
 	display: flex;
 	background: var(--main-color-1);

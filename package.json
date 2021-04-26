@@ -11,10 +11,16 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12"
+    "nuxt": "^2.14.12",
+    "postcss-preset-env": "^6.7.0",
+    "rucksack-css": "^1.0.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.13.2",
     "@nuxt/typescript-build": "^2.0.4"
-  }
+  },
+  "browserslist": [
+    ">5%",
+    "not ie <= 8"
+  ]
 }

@@ -2,7 +2,7 @@
 	<div class="parent">
 		<LineCurve class="position"/>
 		<!-- CONTENT -->
-		<div class="position content">
+		<div class="content" ref="content">
 			<hero/>
 		</div>
 	</div>
@@ -26,7 +26,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .parent {
 	position: relative;
 }

@@ -13,7 +13,7 @@
 		</div>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .hero {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(20rem, max-content));
