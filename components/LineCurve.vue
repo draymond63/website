@@ -4,8 +4,10 @@
 	</div>
 </template>
 
-<script>
-export default {
+
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
 	name: "Line",
 	methods: {
 		heroLine(ctx) {
@@ -14,7 +16,7 @@ export default {
 			ctx.stroke();
 		},
 		heroAboutLine(ctx) {
-			
+
 		}
 	},
 	mounted() {
@@ -24,7 +26,7 @@ export default {
 		ctx.lineWidth = 8;
 		this.heroLine(ctx);
 	}
-}
+})
 </script>
 
 <style scoped>

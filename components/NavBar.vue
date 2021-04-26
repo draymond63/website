@@ -18,8 +18,9 @@
 	</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
 	name: 'NavBar',
 	data() {
 		return{
@@ -30,14 +31,13 @@ export default {
 	methods: {
 		handleResize() {
 			this.isMobile = screen.width < 550;
-			console.log('hi');
 		}
 	},
 	beforeMount() {
 		this.handleResize();
 		window.addEventListener('resize', () => this.handleResize());
 	}
-}
+})
 </script>
 
 <style scoped>

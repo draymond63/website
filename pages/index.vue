@@ -8,11 +8,12 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
 import Hero from '@/components/Hero.vue';
 import LineCurve from '@/components/LineCurve.vue';
 
-export default {
+import Vue from 'vue'
+export default Vue.extend({
 	components: {
 		Hero,
 		LineCurve
@@ -22,7 +23,7 @@ export default {
 			title: 'Daniel <3',
 		}
 	}
-};
+})
 </script>
 
 <style scoped>
