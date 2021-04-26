@@ -45,6 +45,7 @@ export default {
   build: {
     postcss: [
       require('autoprefixer')()
+      // https://www.npmjs.com/package/postcss-responsive-type
     ]
   }
 }

@@ -11,7 +11,7 @@ export default Vue.extend({
 	methods: {
 		heroLine(ctx: CanvasRenderingContext2D) {
 			ctx.moveTo(200, 0);
-			ctx.lineTo(200, 700);
+			ctx.lineTo(200, 400); // ! Fit hero height
 			ctx.stroke();
 		},
 		heroAboutLine(ctx: CanvasRenderingContext2D) {
@@ -20,13 +20,12 @@ export default Vue.extend({
 	},
 	mounted() {
 		const c = this.$refs.canvas as HTMLCanvasElement;
+		// Resize to match content
 		if (c.parentElement) {
 			c.height = c.parentElement.offsetHeight;
 			c.width = c.parentElement.offsetWidth;
 		}
-		console.log(c.height);
-		console.log(c.parentElement);
-
+		// Drawing
 		const ctx = c.getContext("2d");
 		if (ctx) {
 			ctx.strokeStyle = 'hsl(16, 95%, 65%)';
