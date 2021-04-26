@@ -1,5 +1,5 @@
 <template>
-	<div class="line-wrapper">
+	<div>
 		<canvas ref="canvas"></canvas>
 	</div>
 </template>
@@ -20,6 +20,13 @@ export default Vue.extend({
 	},
 	mounted() {
 		const c = this.$refs.canvas as HTMLCanvasElement;
+		if (c.parentElement) {
+			c.height = c.parentElement.offsetHeight;
+			c.width = c.parentElement.offsetWidth;
+		}
+		console.log(c.height);
+		console.log(c.parentElement);
+
 		const ctx = c.getContext("2d");
 		if (ctx) {
 			ctx.strokeStyle = 'hsl(16, 95%, 65%)';

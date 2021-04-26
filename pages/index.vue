@@ -1,8 +1,8 @@
 <template>
-	<div class="container">
-		<div class="position"><LineCurve/></div>
-		<div class="content position">
-			<!-- INTRO -->
+	<div class="parent">
+		<LineCurve class="position"/>
+		<!-- CONTENT -->
+		<div class="position content">
 			<hero/>
 		</div>
 	</div>
@@ -27,18 +27,19 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.content {
-	display: flex;
-	flex-direction: column;	
+.parent {
+	position: relative;
 }
 
 .position {
 	position: absolute;
 	top: 0;
 	left: 0;
+	width: 100%;
 }
 
-.container {
-	position: relative;
+.content {
+	display: flex;
+	flex-direction: column;	
 }
 </style>
