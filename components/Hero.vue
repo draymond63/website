@@ -1,5 +1,5 @@
 <template>
-	<div class="hero">
+	<div id="hero">
 			<img src="@/assets/profile.jpg" alt="Profile Photo">
 			<div>
 				<h1>Hi!</h1>
@@ -14,7 +14,7 @@
 </template>
 
 <style lang="postcss" scoped>
-.hero {
+#hero {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(20rem, max-content));
 	place-items: center;

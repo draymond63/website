@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<canvas ref="canvas"></canvas>
+		<svg ref="line">
+			<circle cx="50" cy="50" r="40" stroke="green" stroke-width="8" fill="yellow" />
+		</svg>
 	</div>
 </template>
 
@@ -10,39 +12,31 @@ export default Vue.extend({
 	name: "LineCurve",
 	data() {
 		return {
-			pointer: {
-				x: 0,
-				y: 0
+			points: {
+				
 			}
 		}
 	},
 	methods: {
-		heroLine(ctx: CanvasRenderingContext2D) {
-			ctx.moveTo(200, 0);
-			ctx.lineTo(200, 400); // ! Fit hero height
-			ctx.stroke();
-		},
-		heroAboutLine(ctx: CanvasRenderingContext2D) {
-			ctx.beginPath();
-			ctx.arc(95, 50, 50, Math.PI / 2, Math.PI);
-			ctx.stroke();
+		setBoundaries() {
+			// Size svg to fit content
+			const svg = this.$refs.line as SVGSVGElement;
+			if (svg.parentElement) {
+				const width = svg.parentElement.offsetWidth;
+				const height = svg.parentElement.offsetHeight;
+				// Set svg attributes
+				const vb = [0, 0, width,height];
+				svg.setAttribute("viewBox", vb.join(" ") );
+				svg.setAttribute("width", width.toString() );
+				svg.setAttribute("height", height.toString() );
+			}
 		}
 	},
 	mounted() {
-		const c = this.$refs.canvas as HTMLCanvasElement;
-		// Resize to match content
-		if (c.parentElement) {
-			c.height = c.parentElement.offsetHeight;
-			c.width = c.parentElement.offsetWidth;
-		}
-		// Drawing
-		const ctx = c.getContext("2d");
-		if (ctx) {
-			ctx.strokeStyle = 'hsl(16, 95%, 65%)';
-			ctx.lineWidth = 8;
-			this.heroLine(ctx);
-			this.heroAboutLine(ctx);
-		}
+		this.setBoundaries();
+		// Resize bounding box
+		// ! Necessary only if dimensions are dependent on width of svg, not on imported content widths
+		window.addEventListener('resize', () => this.setBoundaries());
 	}
 })
 </script>
