@@ -13,12 +13,6 @@
 		</div>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
 .hero {
 	display: grid;
@@ -29,8 +23,8 @@ export default {
 	width: 80%;
 	max-width: 100rem;
 	padding: 5rem;
-	margin-left: 5%;
-	border-left: .5rem solid var(--main-color-1);
+	margin-left: var(--hero-offset);
+	border-left: var(--line-border);
 }
 
 img {

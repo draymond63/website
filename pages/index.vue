@@ -2,17 +2,18 @@
 	<div class="container">
 		<!-- INTRO -->
 		<hero/>
-		<!-- SOMETHING -->
-		<div class="something"></div>
+		<line-curve/>
 	</div>
 </template>
 
 <script>
 import Hero from '@/components/Hero.vue';
+import LineCurve from '@/components/LineCurve.vue';
 
 export default {
 	components: {
-		Hero
+		Hero,
+		LineCurve
 	},
 	head() {
 		return {
@@ -26,10 +27,5 @@ export default {
 .container {
 	display: flex;
 	flex-direction: column;	
-}
-
-.something {
-	width: 80%;
-	border: 1px solid var(--main-color-1);
 }
 </style>
