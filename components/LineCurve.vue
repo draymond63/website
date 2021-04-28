@@ -149,17 +149,48 @@ export default Vue.extend({
 		},
 		initLine() {
 			this.path = "";
+			this.setBoundaries();
 			this.heroSection();
 			this.aboutSection();
-		}
+		},
+
+		/**
+		 * https://stackoverflow.com/questions/34863788/how-to-check-if-an-element-has-been-loaded-on-a-page-before-running-a-script
+		 * Wait for an element before resolving a promise
+		 * @param {String} querySelector - Selector of element to wait for
+		 * @param {Integer} timeout - Milliseconds to wait before timing out, or 0 for no timeout              
+		 */
+		waitForElement(querySelector: string, timeout=0){
+			const startTime = new Date().getTime();
+			return new Promise<void>((resolve, reject)=>{
+				const timer = setInterval(()=>{
+					const now = new Date().getTime();
+					if(document.querySelector(querySelector)){
+						clearInterval(timer);
+						resolve();
+					} else if(timeout && now - startTime >= timeout){
+						clearInterval(timer);
+						reject();
+					}
+				}, 100);
+			});
+		},
+		// ! All are just timing out
+		waitForElements() {
+			return Promise.allSettled([
+				this.waitForElement('hero', 500),
+				this.waitForElement('about', 500),
+			]);
+		},
 	},
 
 	mounted() {
-		this.setBoundaries();
-		// Draw line
-		this.initLine()
-		// Redraw line on resize
-		window.addEventListener('resize', () => this.initLine());
+		this.waitForElements().then(() => {
+			// Draw line
+			this.initLine()
+			// Redraw line on resize
+			window.addEventListener('resize', () => this.initLine());
+		});
 	}
 })
 </script>
