@@ -1,53 +1,94 @@
 <template>
 	<div>
 		<svg ref="line">
-			<!-- <path d="M115 0V23.5C115 51 137 74 165 73.5H604.5C632 74 655 96 655 123.5V418C654 446 632 468 605 468H54C26 468 4 490 4 518V548"/> -->
-			<path :d="path"/>
-			<!-- "
-				M 200 0 
-				l 0 500
-				a 50,50 0 0,0 50,50
-				l 500 0
-				a 50,50 0 0,1 50,50
-				" -->
+			<path ref="path" :d="path"/>
+			<!-- "M 200 0 l 0 500 a 50,50 0 0,0 50,50 l 500 0 a 50,50 0 0,1 50,50" -->
 		</svg>
 	</div>
 </template>
 
 <script lang="ts">
+interface LineElement {
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+	r_x: number,
+	b_y: number
+}
+enum Direction {
+	LEFT, UP, RIGHT, DOWN
+}
+
 import Vue from 'vue'
 export default Vue.extend({
 	name: "LineCurve",
 	data() {
 		return {
 			radius: 50,
-			path: "M 200 0\n"
+			path: ""
 		}
 	},
 	methods: {
 		setBoundaries() {
 			// Size svg to fit content
 			const svg = this.$refs.line as SVGSVGElement;
-			if (svg.parentElement) {
+			if (svg && svg.parentElement) {
 				const width = svg.parentElement.offsetWidth;
 				const height = svg.parentElement.offsetHeight + 1000;
 				// Set svg attributes
-				const vb = [0, 0, width,height];
+				const vb = [0, 0, width, height];
 				svg.setAttribute("viewBox", vb.join(" ") );
 				svg.setAttribute("width", width.toString() );
 				svg.setAttribute("height", height.toString() );
 			}
 		},
+		// * Section Dimension Extraction
+		getElement(ref: string): LineElement {
+			const sect = document.getElementById(ref);
+			if (sect)
+				return {
+					x: sect.offsetLeft,
+					y: sect.offsetTop,
+					width: sect.offsetWidth,
+					height: sect.offsetHeight,
+					r_x: sect.offsetLeft + sect.offsetWidth,
+					b_y: sect.offsetTop + sect.offsetHeight,
+				};
+			else
+				throw ReferenceError(`LineCurve/getDimensions: ${ref} is not a valid id`);
+		},
+		getEndPoint(): DOMPoint {
+			const el = this.$refs.path as SVGPathElement;
+			if (el.getTotalLength() === 0) throw EvalError('LineCurve/getEndPoint: path length is 0');
+			return el.getPointAtLength(el.getTotalLength());
+		},
+		
 		// * Line Functions
-		addSegment(segment: String) {
+		addSegment(segment: string) {
 			this.path += segment + '\n';
 		},
-		line(length: number, {vert = true}) {
-			if (vert)
-				this.addSegment(`l 0 ${length}`);
-			else
-				this.addSegment(`l ${length} 0`);
+		move(x: number | string, y: number | string) {
+			this.addSegment(`M ${x} ${y}`);
 		},
+	
+		line(length: number | string, dir: Direction) {
+			if (dir === Direction.LEFT || dir === Direction.RIGHT)
+				this.addSegment(`l ${dir === Direction.LEFT?'-':''}${length} 0`);
+			else
+				this.addSegment(`l 0 ${dir === Direction.UP?'-':''}${length}`);
+		},
+		absLine(x: number, y: number) {
+			this.addSegment(`L ${x} ${y}`);
+		},
+		semiAbsLine(coord: number, dir: Direction) {
+			const end = this.getEndPoint();
+			if (dir === Direction.UP || dir === Direction.DOWN)
+				this.absLine(coord, end.y);
+			else
+				this.absLine(end.x, coord);
+		},
+	
 		arc({top = true, right = true}) {
 			const r = this.radius;
 			this.addSegment(`a ${r},${r} 0 0,${right?1:0} ${top === right?'':'-'}${r}, ${r}`);
@@ -64,14 +105,16 @@ export default Vue.extend({
 
 		// * Line Creation
 		heroSection() {
-			this.line(500, {vert: true});
+			const hero = this.getElement('hero');
+			this.move(hero.x, 0);
+			this.absLine(hero.x, hero.b_y);
 			this.arc({top: false, right: false});
-			this.line(500, {vert: false});
-			this.arc({top: true, right: true});
-			this.line(100, {vert: true});
-			this.arc({top: false, right: true});
-			this.line(-500, {vert: false});
-			this.arc({top: true, right: false});
+			this.semiAbsLine(hero.r_x, Direction.RIGHT);
+			// this.arc({top: true, right: true});
+			// this.line(100, Direction.DOWN);
+			// this.arc({top: false, right: true});
+			// this.line(hero.width, Direction.LEFT);
+			// this.arc({top: true, right: false});
 		},
 		initLine() {
 			this.heroSection();
