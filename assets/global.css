@@ -17,3 +17,7 @@ h2 {
 	font-size: 2rem;
 	color: var(--main-color-1);
 }
+
+h3 {
+	color: var(--text-color);
+}

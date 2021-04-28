@@ -45,7 +45,8 @@ export default {
   build: {
     postcss: {
       plugins: {
-        autoprefixer: {},
+        'autoprefixer': {},
+        'postcss-preset-env': {}
         // https://www.npmjs.com/package/postcss-responsive-type
       },
     }

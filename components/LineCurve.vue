@@ -148,11 +148,18 @@ export default Vue.extend({
 			this.semiAbsLineArc(about.b_y, Direction.DOWN, Direction.RIGHT);
 			this.semiAbsLineArc(about.r_x, Direction.RIGHT, Direction.DOWN);
 		},
+		projectSection() {
+			const proj = this.getElement('projects');
+			this.semiAbsLineArc(proj.y + 64, Direction.DOWN, Direction.LEFT);
+			this.semiAbsLineArc((proj.x + proj.r_x)/2, Direction.LEFT, Direction.DOWN);
+			this.semiAbsLine(proj.b_y, Direction.DOWN);
+		},
 		initLine() {
 			this.path = "";
 			this.setBoundaries();
 			this.heroSection();
 			this.aboutSection();
+			this.projectSection();
 		},
 
 		/**

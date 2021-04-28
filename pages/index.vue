@@ -8,6 +8,8 @@
 				<hero/>
 				<div class="spacer"/>
 				<about/>
+				<div style="margin: 2rem 0"/>
+				<projects/>
 			</div>
 		</div>
 	</div>
@@ -16,6 +18,7 @@
 <script lang="ts">
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
+import Projects from '@/components/Projects.vue';
 import LineCurve from '@/components/LineCurve.vue';
 
 import Vue from 'vue'
@@ -23,6 +26,7 @@ export default Vue.extend({
 	components: {
 		Hero,
 		About,
+		Projects,
 		LineCurve
 	},
 	head() {
