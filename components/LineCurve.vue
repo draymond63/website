@@ -113,40 +113,23 @@ export default Vue.extend({
 		},
 	
 		arc(startDir: Direction, endDir: Direction) {
-			const r = this.radius;
 			const diff = Math.abs(startDir - endDir);
-			const negR = diff === 3 || (diff === 1 && (startDir === Direction.UP || endDir === Direction.UP)) ? '-':'';
+			if (diff === 0 || diff === 2) throw EvalError('LineCurve/arc: Directions cannot be parallel');
+			const r = this.radius;
+			const negR = diff === 3 || (startDir === Direction.UP || endDir === Direction.UP) ? '-':'';
 			const sweepFlag = startDir == Direction.RIGHT || (this.isVertical(startDir) && endDir == Direction.LEFT) ? 1:0;
 			this.addSegment(`a ${r},${r} 0 0,${sweepFlag} ${negR}${r}, ${r}`);
 			// End tracking
 			this.endY += r * (startDir === Direction.DOWN || endDir === Direction.DOWN?1:-1);
 			this.endX += r * (startDir === Direction.RIGHT || endDir === Direction.RIGHT?1:-1);
-
-			// if (startDir == Direction.UP) {
-			// 	if (endDir == Direction.LEFT)
-			// 		this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
-			// 	else if (endDir == Direction.RIGHT)
-			// 		this.addSegment(`a ${r},${r} 0 0,0 -${r},${r}`);
-			// } else if (startDir == Direction.DOWN) {
-			// 	if (endDir == Direction.LEFT)
-			// 		this.addSegment(`a ${r},${r} 0 0,1 -${r},${r}`);
-			// 	else if (endDir == Direction.RIGHT)
-			// 		this.addSegment(`a ${r},${r} 0 0,0 ${r},${r}`);
-			// } else if (startDir == Direction.LEFT) {
-			// 	if (endDir == Direction.UP)
-			// 		this.addSegment(`a ${r},${r} 0 0,0 ${r},${r}`);
-			// 	else if (endDir == Direction.DOWN)
-			// 		this.addSegment(`a ${r},${r} 0 0,0 -${r},${r}`);
-			// } else if (startDir == Direction.RIGHT) {
-			// 	if (endDir == Direction.UP)
-			// 		this.addSegment(`a ${r},${r} 0 0,1 -${r},${r}`);
-			// 	else if (endDir == Direction.DOWN)
-			// 		this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
-			// }
 		},
 		lineArc(length: number, dir: Direction, curveDir: Direction) {
 			this.line(length, dir);
-			// this.arc({top: (dir !== Direction.DOWN)});
+			this.arc(dir, curveDir);
+		},
+		semiAbsLineArc(coord: number, dir: Direction, curveDir: Direction) {
+			this.semiAbsLine(coord, dir);
+			this.arc(dir, curveDir);
 		},
 
 		// * Line Creation
@@ -155,12 +138,9 @@ export default Vue.extend({
 			this.move(hero.x, 0);
 			this.absLine(hero.x, hero.b_y);
 			this.arc(Direction.DOWN, Direction.RIGHT);
-			this.semiAbsLine(hero.r_x, Direction.RIGHT);
-			this.arc(Direction.RIGHT, Direction.DOWN);
-			this.line(100, Direction.DOWN);
-			this.arc(Direction.DOWN, Direction.LEFT);
-			this.semiAbsLine(hero.x, Direction.LEFT);
-			this.arc(Direction.LEFT, Direction.DOWN);
+			this.semiAbsLineArc(hero.r_x, Direction.RIGHT, Direction.DOWN);
+			this.lineArc(100, Direction.DOWN, Direction.LEFT);
+			this.semiAbsLineArc(hero.x, Direction.LEFT, Direction.DOWN);
 		},
 		initLine() {
 			this.path = "";
