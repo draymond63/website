@@ -13,6 +13,7 @@
 	--about-offset: 3%;
 }
 
-h1 {
+h2 {
+	font-size: 2rem;
 	color: var(--main-color-1);
 }

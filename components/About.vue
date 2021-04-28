@@ -1,8 +1,9 @@
 <template>
 	<div id="about">
 		<div>
-			<h1>About Me</h1>
+			<h2>About Me</h2>
 			<h3>I like a lot of things :)</h3>
+			<h4>Engineering</h4>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 				sed do eiusmod tempor incididunt ut labore et dolore magna 
@@ -10,14 +11,35 @@
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 				sed do eiusmod tempor incididunt ut labore et dolore magna 
 				aliqua. Ut enim ad minim veniam, quis nostrud
-				<br>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 				sed do eiusmod tempor incididunt ut labore et dolore magna 
 				aliqua. Ut enim ad minim veniam, quis nostrud
 			</p>
+			<br>
+			<h4>Acting</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+				sed piscing elit, sed do eiusmod tempor incididunt ut labore 
+				et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+			</p>
+			<br>
+			<h4>Philosophy</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+				sed do eiusmod tempor incididunt ut labore et dolore magna 
+				aliqua. Ut enim ad minim veniam, quis nostrud 
+			</p>
+			<br>
+			<h4>Frisbee</h4>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+				sed do eiusmod tempor incididunt ut labore et dolore magna 
+				aliqua. Ut enim ad minim veniam, quis nostrud
+			</p>
+			<br>
 		</div>
 
-		<!-- <img src="@/assets/ven.svg" alt="A venn diagram of my interests"> -->
+		<img src="@/assets/Venn.svg" alt="A venn diagram of my interests">
 	</div>
 </template>
 
@@ -30,7 +52,23 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 #about {
-	margin: 5rem;
+	display: flex;
+	margin: 0 5rem;
 	padding: 3rem;
+}
+
+img {
+	width: 30vw;
+}
+
+@media screen and (max-width: 850px) {
+	#about {
+		flex-direction: column;
+		margin: 0 1rem;
+		padding: 1rem;
+	}
+	img {
+		width: 100%;
+	}
 }
 </style>

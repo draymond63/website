@@ -2,7 +2,7 @@
 	<div id="hero">
 			<img src="@/assets/profile.jpg" alt="Profile Photo">
 			<div>
-				<h1>Hi!</h1>
+				<h2>Hi!</h2>
 				<h3>I'm Daniel Raymond.</h3>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -15,8 +15,7 @@
 
 <style lang="postcss" scoped>
 #hero {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20rem, max-content));
+	display: flex;
 	place-items: center;
 	gap: 3rem;
 
@@ -32,9 +31,9 @@ img {
 }
 
 @media screen and (max-width: 850px) {
-	.hero {
+	#hero {
+		flex-direction: column;
 		padding: 1rem;
-		gap: .2rem;
 	}
 	img {
 		width: 100%;

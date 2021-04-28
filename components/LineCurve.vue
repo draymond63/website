@@ -37,7 +37,7 @@ export default Vue.extend({
 			const svg = this.$refs.line as SVGSVGElement;
 			if (svg && svg.parentElement) {
 				const width = svg.parentElement.offsetWidth;
-				const height = svg.parentElement.offsetHeight + 1000;
+				const height = svg.parentElement.offsetHeight;
 				// Set svg attributes
 				const vb = [0, 0, width, height];
 				svg.setAttribute("viewBox", vb.join(" ") );
@@ -137,7 +137,7 @@ export default Vue.extend({
 		heroSection() {
 			const hero = this.getElement('hero');
 			this.move(hero.x, 0);
-			this.absLine(hero.x, hero.b_y);
+			this.absLine(hero.x, hero.b_y - this.radius);
 			this.arc(Direction.DOWN, Direction.RIGHT);
 			this.semiAbsLineArc(hero.r_x, Direction.RIGHT, Direction.DOWN);
 		},
@@ -146,6 +146,7 @@ export default Vue.extend({
 			this.semiAbsLineArc(about.y, Direction.DOWN, Direction.LEFT);
 			this.semiAbsLineArc(about.x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(about.b_y, Direction.DOWN, Direction.RIGHT);
+			this.semiAbsLineArc(about.r_x, Direction.RIGHT, Direction.DOWN);
 		},
 		initLine() {
 			this.path = "";

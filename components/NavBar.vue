@@ -1,5 +1,5 @@
 <template>
-	<div style="width: 100%">
+	<div id="navbar">
 		<button v-if="isMobile" @click="mobileMenu = true">
 			<p>&#9776;</p>
 			<nav v-if="mobileMenu" class="mobile">
@@ -41,6 +41,10 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
+#navbar {
+	width: 100%;
+}
+
 .desktop {
 	display: flex;
 	background: var(--main-color-1);

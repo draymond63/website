@@ -1,11 +1,14 @@
 <template>
-	<div class="parent">
-		<LineCurve class="line"/>
-		<!-- CONTENT -->
-		<div class="content" ref="content">
-			<hero/>
-			<div class="spacer"/>
-			<about/>
+	<div>
+		<nav-bar/>
+		<div class="parent">
+			<LineCurve class="line"/>
+			<!-- CONTENT -->
+			<div class="content" ref="content">
+				<hero/>
+				<div class="spacer"/>
+				<about/>
+			</div>
 		</div>
 	</div>
 </template>
@@ -50,6 +53,6 @@ export default Vue.extend({
 }
 
 .spacer {
-	margin: 4rem 0;
+	margin: 5rem 0;
 }
 </style>

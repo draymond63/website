@@ -43,9 +43,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    postcss: [
-      require('autoprefixer')()
-      // https://www.npmjs.com/package/postcss-responsive-type
-    ]
+    postcss: {
+      plugins: {
+        autoprefixer: {},
+        // https://www.npmjs.com/package/postcss-responsive-type
+      },
+    }
   }
 }
