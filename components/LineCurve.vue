@@ -65,6 +65,9 @@ export default Vue.extend({
 			if (el.getTotalLength() === 0) throw EvalError('LineCurve/getEndPoint: path length is 0');
 			return el.getPointAtLength(el.getTotalLength());
 		},
+		isVertical(dir: Direction): boolean {
+			return (dir === Direction.UP || dir === Direction.DOWN);
+		},
 		
 		// * Line Functions
 		addSegment(segment: string) {
@@ -77,10 +80,10 @@ export default Vue.extend({
 		},
 	
 		line(length: number, dir: Direction) {
-			if (dir === Direction.LEFT || dir === Direction.RIGHT)
-				this.addSegment(`l ${dir === Direction.LEFT?'-':''}${length} 0`);
-			else
+			if (this.isVertical(dir))
 				this.addSegment(`l 0 ${dir === Direction.UP?'-':''}${length}`);
+			else
+				this.addSegment(`l ${dir === Direction.LEFT?'-':''}${length} 0`);
 
 			switch(dir) {
 				case(Direction.LEFT):
@@ -103,30 +106,47 @@ export default Vue.extend({
 			this.endY = y;
 		},
 		semiAbsLine(coord: number, dir: Direction) {
-			if (dir === Direction.UP || dir === Direction.DOWN)
+			if (this.isVertical(dir))
 				this.absLine(this.endX, coord);
 			else
 				this.absLine(coord, this.endY);
 		},
 	
-		arc({top = true, right = true}) {
+		arc(startDir: Direction, endDir: Direction) {
 			const r = this.radius;
-			this.addSegment(`a ${r},${r} 0 0,${right?1:0} ${top === right?'':'-'}${r}, ${r}`);
-			// ? Assume segment line is going down
-			this.endY += r;
-			if (top)
-				this.endX -= r;
-			else
-				this.endX += r;
-			// if (top && right) {
-			// 	this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
-			// } else if (!top && right) {
-			// 	this.addSegment(`a ${r},${r} 0 0,1 -${r},${r}`);
-			// } else if (top && !right) {
-			// 	this.addSegment(`a ${r},${r} 0 0,0 -${r},${r}`);
-			// } else if (!top && !right) {
-			// 	this.addSegment(`a ${r},${r} 0 0,0 ${r},${r}`);
+			const diff = Math.abs(startDir - endDir);
+			const negR = diff === 3 || (diff === 1 && (startDir === Direction.UP || endDir === Direction.UP)) ? '-':'';
+			const sweepFlag = startDir == Direction.RIGHT || (this.isVertical(startDir) && endDir == Direction.LEFT) ? 1:0;
+			this.addSegment(`a ${r},${r} 0 0,${sweepFlag} ${negR}${r}, ${r}`);
+			// End tracking
+			this.endY += r * (startDir === Direction.DOWN || endDir === Direction.DOWN?1:-1);
+			this.endX += r * (startDir === Direction.RIGHT || endDir === Direction.RIGHT?1:-1);
+
+			// if (startDir == Direction.UP) {
+			// 	if (endDir == Direction.LEFT)
+			// 		this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
+			// 	else if (endDir == Direction.RIGHT)
+			// 		this.addSegment(`a ${r},${r} 0 0,0 -${r},${r}`);
+			// } else if (startDir == Direction.DOWN) {
+			// 	if (endDir == Direction.LEFT)
+			// 		this.addSegment(`a ${r},${r} 0 0,1 -${r},${r}`);
+			// 	else if (endDir == Direction.RIGHT)
+			// 		this.addSegment(`a ${r},${r} 0 0,0 ${r},${r}`);
+			// } else if (startDir == Direction.LEFT) {
+			// 	if (endDir == Direction.UP)
+			// 		this.addSegment(`a ${r},${r} 0 0,0 ${r},${r}`);
+			// 	else if (endDir == Direction.DOWN)
+			// 		this.addSegment(`a ${r},${r} 0 0,0 -${r},${r}`);
+			// } else if (startDir == Direction.RIGHT) {
+			// 	if (endDir == Direction.UP)
+			// 		this.addSegment(`a ${r},${r} 0 0,1 -${r},${r}`);
+			// 	else if (endDir == Direction.DOWN)
+			// 		this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
 			// }
+		},
+		lineArc(length: number, dir: Direction, curveDir: Direction) {
+			this.line(length, dir);
+			// this.arc({top: (dir !== Direction.DOWN)});
 		},
 
 		// * Line Creation
@@ -134,13 +154,13 @@ export default Vue.extend({
 			const hero = this.getElement('hero');
 			this.move(hero.x, 0);
 			this.absLine(hero.x, hero.b_y);
-			this.arc({top: false, right: false});
+			this.arc(Direction.DOWN, Direction.RIGHT);
 			this.semiAbsLine(hero.r_x, Direction.RIGHT);
-			this.arc({top: true, right: true});
+			this.arc(Direction.RIGHT, Direction.DOWN);
 			this.line(100, Direction.DOWN);
-			this.arc({top: false, right: true});
+			this.arc(Direction.DOWN, Direction.LEFT);
 			this.semiAbsLine(hero.x, Direction.LEFT);
-			this.arc({top: true, right: false});
+			this.arc(Direction.LEFT, Direction.DOWN);
 		},
 		initLine() {
 			this.path = "";
