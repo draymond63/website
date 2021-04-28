@@ -112,12 +112,9 @@ export default Vue.extend({
 		arc({top = true, right = true}) {
 			const r = this.radius;
 			this.addSegment(`a ${r},${r} 0 0,${right?1:0} ${top === right?'':'-'}${r}, ${r}`);
-			// ! THIS ISNT WORKING 
+			// ? Assume segment line is going down
+			this.endY += r;
 			if (top)
-				this.endY -= r;
-			else
-				this.endY += r;
-			if (right)
 				this.endX -= r;
 			else
 				this.endX += r;
@@ -136,35 +133,27 @@ export default Vue.extend({
 		heroSection() {
 			const hero = this.getElement('hero');
 			this.move(hero.x, 0);
-			console.log(this.endX, this.endY);
 			this.absLine(hero.x, hero.b_y);
-			console.log(this.endX, this.endY);
 			this.arc({top: false, right: false});
-			console.log(this.endX, this.endY);
 			this.semiAbsLine(hero.r_x, Direction.RIGHT);
-			console.log(this.endX, this.endY);
 			this.arc({top: true, right: true});
-			console.log(this.endX, this.endY);
 			this.line(100, Direction.DOWN);
-			console.log(this.endX, this.endY);
-			// this.arc({top: false, right: true});
-			// console.log(this.endX, this.endY);
-			// this.semiAbsLine(hero.x, Direction.LEFT);
-			// console.log(this.endX, this.endY);
-			// this.arc({top: true, right: false});
+			this.arc({top: false, right: true});
+			this.semiAbsLine(hero.x, Direction.LEFT);
+			this.arc({top: true, right: false});
 		},
 		initLine() {
+			this.path = "";
 			this.heroSection();
 		}
 	},
 
 	mounted() {
 		this.setBoundaries();
-		// Resize bounding box
-		// ! Necessary only if dimensions are dependent on width of svg, not on imported content widths
-		window.addEventListener('resize', () => this.setBoundaries());
 		// Draw line
-		this.initLine();
+		this.initLine()
+		// Redraw line on resize
+		window.addEventListener('resize', () => this.initLine());
 	}
 })
 </script>
