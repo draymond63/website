@@ -124,11 +124,12 @@ export default Vue.extend({
 			this.endX += r * (startDir === Direction.RIGHT || endDir === Direction.RIGHT?1:-1);
 		},
 		lineArc(length: number, dir: Direction, curveDir: Direction) {
-			this.line(length, dir);
+			this.line(length - this.radius, dir);
 			this.arc(dir, curveDir);
 		},
 		semiAbsLineArc(coord: number, dir: Direction, curveDir: Direction) {
-			this.semiAbsLine(coord, dir);
+			const sign = dir < 2 ? -1 : 1; // If normal direction is UP or LEFT
+			this.semiAbsLine(coord - this.radius * sign, dir);
 			this.arc(dir, curveDir);
 		},
 
@@ -139,12 +140,17 @@ export default Vue.extend({
 			this.absLine(hero.x, hero.b_y);
 			this.arc(Direction.DOWN, Direction.RIGHT);
 			this.semiAbsLineArc(hero.r_x, Direction.RIGHT, Direction.DOWN);
-			this.lineArc(100, Direction.DOWN, Direction.LEFT);
-			this.semiAbsLineArc(hero.x, Direction.LEFT, Direction.DOWN);
+		},
+		aboutSection() {
+			const about = this.getElement('about');
+			this.semiAbsLineArc(about.y, Direction.DOWN, Direction.LEFT);
+			this.semiAbsLineArc(about.x, Direction.LEFT, Direction.DOWN);
+			this.semiAbsLineArc(about.b_y, Direction.DOWN, Direction.RIGHT);
 		},
 		initLine() {
 			this.path = "";
 			this.heroSection();
+			this.aboutSection();
 		}
 	},
 

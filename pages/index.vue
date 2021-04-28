@@ -4,18 +4,22 @@
 		<!-- CONTENT -->
 		<div class="content" ref="content">
 			<hero/>
+			<div class="spacer"/>
+			<about/>
 		</div>
 	</div>
 </template>
 
 <script lang="ts">
 import Hero from '@/components/Hero.vue';
+import About from '@/components/About.vue';
 import LineCurve from '@/components/LineCurve.vue';
 
 import Vue from 'vue'
 export default Vue.extend({
 	components: {
 		Hero,
+		About,
 		LineCurve
 	},
 	head() {
@@ -43,5 +47,9 @@ export default Vue.extend({
 .content {
 	display: flex;
 	flex-direction: column;	
+}
+
+.spacer {
+	margin: 4rem 0;
 }
 </style>
