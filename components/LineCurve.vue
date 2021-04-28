@@ -26,7 +26,9 @@ export default Vue.extend({
 	data() {
 		return {
 			radius: 50,
-			path: ""
+			path: "",
+			endX: 0,
+			endY: 0,
 		}
 	},
 	methods: {
@@ -68,30 +70,57 @@ export default Vue.extend({
 		addSegment(segment: string) {
 			this.path += segment + '\n';
 		},
-		move(x: number | string, y: number | string) {
+		move(x: number, y: number) {
 			this.addSegment(`M ${x} ${y}`);
+			this.endX += x;
+			this.endY += y;
 		},
 	
-		line(length: number | string, dir: Direction) {
+		line(length: number, dir: Direction) {
 			if (dir === Direction.LEFT || dir === Direction.RIGHT)
 				this.addSegment(`l ${dir === Direction.LEFT?'-':''}${length} 0`);
 			else
 				this.addSegment(`l 0 ${dir === Direction.UP?'-':''}${length}`);
+
+			switch(dir) {
+				case(Direction.LEFT):
+					this.endX -= length;
+					break;
+				case(Direction.RIGHT):
+					this.endX += length;
+					break;
+				case(Direction.UP):
+					this.endY -= length;
+					break;
+				case(Direction.DOWN):
+					this.endY += length;
+					break;
+			}
 		},
 		absLine(x: number, y: number) {
 			this.addSegment(`L ${x} ${y}`);
+			this.endX = x;
+			this.endY = y;
 		},
 		semiAbsLine(coord: number, dir: Direction) {
-			const end = this.getEndPoint();
 			if (dir === Direction.UP || dir === Direction.DOWN)
-				this.absLine(coord, end.y);
+				this.absLine(this.endX, coord);
 			else
-				this.absLine(end.x, coord);
+				this.absLine(coord, this.endY);
 		},
 	
 		arc({top = true, right = true}) {
 			const r = this.radius;
 			this.addSegment(`a ${r},${r} 0 0,${right?1:0} ${top === right?'':'-'}${r}, ${r}`);
+			// ! THIS ISNT WORKING 
+			if (top)
+				this.endY -= r;
+			else
+				this.endY += r;
+			if (right)
+				this.endX -= r;
+			else
+				this.endX += r;
 			// if (top && right) {
 			// 	this.addSegment(`a ${r},${r} 0 0,1 ${r},${r}`);
 			// } else if (!top && right) {
@@ -107,13 +136,21 @@ export default Vue.extend({
 		heroSection() {
 			const hero = this.getElement('hero');
 			this.move(hero.x, 0);
+			console.log(this.endX, this.endY);
 			this.absLine(hero.x, hero.b_y);
+			console.log(this.endX, this.endY);
 			this.arc({top: false, right: false});
+			console.log(this.endX, this.endY);
 			this.semiAbsLine(hero.r_x, Direction.RIGHT);
-			// this.arc({top: true, right: true});
-			// this.line(100, Direction.DOWN);
+			console.log(this.endX, this.endY);
+			this.arc({top: true, right: true});
+			console.log(this.endX, this.endY);
+			this.line(100, Direction.DOWN);
+			console.log(this.endX, this.endY);
 			// this.arc({top: false, right: true});
-			// this.line(hero.width, Direction.LEFT);
+			// console.log(this.endX, this.endY);
+			// this.semiAbsLine(hero.x, Direction.LEFT);
+			// console.log(this.endX, this.endY);
 			// this.arc({top: true, right: false});
 		},
 		initLine() {
