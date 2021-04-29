@@ -1,6 +1,6 @@
 <template>
-	<div id="projects">
-		<h2>Projects</h2>
+	<div id="timeline">
+		<h2>A Timeline</h2>
 		<h3>Ha projects are fun</h3>
 
 		<div class="project-grid">
