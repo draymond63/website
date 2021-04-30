@@ -1,8 +1,8 @@
 <template>
-	<div class="tile">
-		<h3><a :href="link">{{ title }}</a></h3>
+	<nuxt-link class="tile" to="link">
+		<h3>{{ title }}</h3>
 		<p>{{ blurb }}</p>
-	</div>
+	</nuxt-link>
 </template>
 
 <script lang="ts">
@@ -24,12 +24,17 @@ export default Vue.extend({
 	width: 100%;
 	height: 10rem;
 	padding: 1rem;
-	background: grey;
-	box-shadow: 0px 4px 8px 0px #c9aba040;
+	background: #fffaf7;
+	box-shadow: 0px 4px 8px 0px #c9aba075;
+	transition: all .3s ease;
+}
+.tile:hover {
+	box-shadow: 0px 4px 8px 0px #e4a996de;
 }
 
 a, p {
 	color: var(--text-color);
+	text-decoration: none;
 }
 p {
 	font-size: 1rem;

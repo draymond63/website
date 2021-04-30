@@ -3,13 +3,13 @@
 		<h2>A Timeline</h2>
 		<h3>A brief overview of what I've done</h3>
 		<div>
-			<button>Projects</button>
-			<button>Experience</button>
+			<button v-for="tag in tagOptions" :key="tag" @click="() => popPush(tag)">{{ tag }}</button>
 		</div>
 
 		<div v-for="(tiles, year) in info" :key="year" class="project">
+			<h3 class="year">{{ year }}</h3>
 			<div class="grid">
-				<tile v-for="(tile, i) in tiles" :key="i"/>
+				<tile v-for="(tile, i) in tiles" :key="i" v-bind="tile"/>
 			</div>
 		</div>
 
@@ -28,7 +28,17 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			info: data
+			info: data,
+			tagOptions: ['Project', 'Work'],
+			tags: [] as Array<String>
+		}
+	},
+	methods: {
+		popPush(tag: string) {
+			if (this.tags.includes(tag))
+				this.tags.pop(); // ! WRONG
+			else
+				this.tags.push(tag);
 		}
 	}
 })
@@ -41,7 +51,27 @@ export default Vue.extend({
 	--dot-size: 2rem;
 }
 
+.project {
+	display: grid;
+	place-items: center;
+}
+
+.year {
+	text-align: center;
+	width: max-content;
+	
+	padding: 0.5rem;
+	margin-bottom: 0.2rem;
+
+	background: white;
+	border: 4px solid var(--main-color-1);
+	border-radius: 0.3rem;
+}
+
+
 .grid {
+	width: 100%;
+	margin-bottom: 2rem;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	place-items: center;
@@ -57,7 +87,7 @@ export default Vue.extend({
 }
 
 button {
-	background: #ecad5f1a;
+	background: #fffaf7;
 	border: 1px solid #f5dec1;
 	border-radius: 1rem;
 	margin: .5rem;
