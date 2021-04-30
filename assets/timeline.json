@@ -1,4 +1,29 @@
 {
-	"2021": [],
-	"2020": []
+	"2020": [
+		{
+			"title": "2020 TEST",
+	
+			"blurb": "this is text",
+			"type": "Project",
+			"tags": ["Fun!"]
+		}
+	],
+	"2021": [
+		{
+			"title": "TEST",
+	
+			"blurb": "this is text",
+			"link": "youtube.com",
+			"type": "Project",
+			"tags": ["Fun!"]
+		},
+		{
+			"title": "Blah",
+	
+			"blurb": "this is text",
+			"link": "youtube.com",
+			"type": "Project",
+			"tags": ["Fun!"]
+		}
+	]
 }

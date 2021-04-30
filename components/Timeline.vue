@@ -7,13 +7,12 @@
 			<button>Experience</button>
 		</div>
 
-		<div class="grid">
-			<tile/>
-			<div class="dot"></div>
-			<tile/>
-			<tile/>
-			<div class="dot"></div>
+		<div v-for="(tiles, year) in info" :key="year" class="project">
+			<div class="grid">
+				<tile v-for="(tile, i) in tiles" :key="i"/>
+			</div>
 		</div>
+
 	</div>
 </template>
 
@@ -44,7 +43,7 @@ export default Vue.extend({
 
 .grid {
 	display: grid;
-	grid-template-columns: 1fr var(--dot-size) 1fr;
+	grid-template-columns: 1fr 1fr;
 	place-items: center;
 	gap: 1rem 2rem;
 }
@@ -54,12 +53,12 @@ export default Vue.extend({
 	height: var(--dot-size);
 	border-radius: 50%;
 	background: #f9f5f2;
-	border: .3rem solid #fb7f53
+	border: .3rem solid var(--main-color-1);
 }
 
 button {
-	background: #ECAD5F33;
-	border: 1px solid #ECAD5F;
+	background: #ecad5f1a;
+	border: 1px solid #f5dec1;
 	border-radius: 1rem;
 	margin: .5rem;
 	margin-left: 0;

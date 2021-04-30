@@ -18,7 +18,7 @@
 <script lang="ts">
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
-import Timeline from '~/components/Timeline.vue';
+import Timeline from '@/components/Timeline.vue';
 import LineCurve from '@/components/LineCurve.vue';
 
 import Vue from 'vue'
