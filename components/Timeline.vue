@@ -6,11 +6,10 @@
 			<button v-for="type in typeOptions" :key="type" @click="() => popPush(type)">{{ type }}</button>
 		</div>
 
-		<!-- Iterating through maps is weird -->
-		<div v-for="(data, x) of info" :key="x" class="project">
-			<h3 class="year">{{ data[0] }}</h3>
+		<div v-for="(tiles, year) in info" :key="year" class="project">
+			<h3 class="year">{{ year }}</h3>
 			<div class="grid">
-				<tile v-for="(tile, i) in data[1]" :key="i" v-bind="tile"/>
+				<tile v-for="(tile, i) in tiles" :key="i" v-bind="tile"/>
 			</div>
 		</div>
 
@@ -20,12 +19,15 @@
 <script lang="ts">
 import tile from "@/components/TimeLineTile.vue";
 import data from "@/assets/timeline.json";
-type Tile = {
+interface Tile {
 	title?: String,
 	blurb?: String,
 	link?: String,
 	type?: String,
 	tags?: Array<String>
+};
+interface Timeline {
+	[key: string]: Array<Tile>,
 };
 
 import Vue from 'vue'
@@ -36,7 +38,7 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			info: {} as Map<string, Array<Tile>>,
+			info: {} as Timeline,
 			typeOptions: [] as Array<String>,
 			types: [] as Array<String>
 		}
@@ -49,26 +51,24 @@ export default Vue.extend({
 				this.types.push(tag);
 		},
 		jsonToMap(obj: Object) {
-			var map = new Map<string, Array<Tile>>();
 			const entries = Object.entries(obj);
 			// Iterate through entries, adding them to a new map
 			for (var i in entries) {
 				const key = entries[i][0];
 				const value = entries[i][1];
-				map.set(key, value as Array<Tile>);
+				this.info[key] = value as Array<Tile>;
 			}
-			this.info = map; // info must be replaced to work
 		}
 	},
 	beforeMount() {
 		this.jsonToMap(data);
 		// Gather types from data
-		this.info.forEach((list: Array<Tile>, year: string) => 
+		Object.values(this.info).forEach((list: Array<Tile>) => 
 			list.forEach((tile: Tile) => {
 				if (tile.type && !this.typeOptions.includes(tile.type as string))
 					this.typeOptions.push(tile.type as string);
-			}
-		));
+			})
+		);
 	}
 })
 </script>
