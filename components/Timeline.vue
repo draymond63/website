@@ -3,7 +3,7 @@
 		<h2>A Timeline</h2>
 		<h3>A brief overview of what I've done</h3>
 		<div>
-			<button v-for="tag in tagOptions" :key="tag" @click="() => popPush(tag)">{{ tag }}</button>
+			<button v-for="type in typeOptions" :key="type" @click="() => popPush(type)">{{ type }}</button>
 		</div>
 
 		<div v-for="(tiles, year) in info" :key="year" class="project">
@@ -17,8 +17,15 @@
 </template>
 
 <script lang="ts">
-import data from "@/assets/timeline.json";
 import tile from "@/components/TimeLineTile.vue";
+import data from "@/assets/timeline.json";
+type Tile = {
+	title?: String,
+	blurb?: String,
+	link?: String,
+	type?: String,
+	tags?: Array<String>
+};
 
 import Vue from 'vue'
 export default Vue.extend({
@@ -28,18 +35,37 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			info: data,
-			tagOptions: ['Project', 'Work'],
-			tags: [] as Array<String>
+			info: {} as Map<string, Array<Tile>>,
+			typeOptions: [] as Array<String>,
+			types: [] as Array<String>
 		}
 	},
 	methods: {
 		popPush(tag: string) {
-			if (this.tags.includes(tag))
-				this.tags.pop(); // ! WRONG
+			if (this.types.includes(tag))
+				this.types.pop(); // ! WRONG
 			else
-				this.tags.push(tag);
+				this.types.push(tag);
+		},
+		jsonToMap(obj: Object) {
+			var map = new Map<string, Array<Tile>>();
+			for (var i in Object.entries(obj)) {
+				const key = Object.entries(obj)[i][0];
+				const value = Object.entries(obj)[i][1];
+				map.set(key, value as Array<Tile>);
+			}
+			this.info = map; // info must be replaced to work
 		}
+	},
+	beforeMount() {
+		this.jsonToMap(data);
+		// Gather types from data
+		this.info.forEach((list: Array<Tile>, year: string) => 
+			list.forEach((tile: Tile) => {
+				if (tile.type && !this.typeOptions.includes(tile.type as string))
+					this.typeOptions.push(tile.type as string);
+			}
+		));
 	}
 })
 </script>
