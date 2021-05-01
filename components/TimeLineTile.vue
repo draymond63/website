@@ -10,11 +10,26 @@ import Vue from 'vue'
 export default Vue.extend({
 	name: 'Tile',
 	props: {
-		'title': String,
-		'blurb': String,
-		'link': String,
-		'type': String,
-		'tags': Array as () => Array<String>,
+		'title': {
+			type: String,
+			default: ''
+		},
+		'blurb': {
+			type: String,
+			default: ''
+		},
+		'link': {
+			type: String,
+			default: ''
+		},
+		'type': {
+			type: String,
+			default: ''
+		},
+		'tags': {
+			type: Array as () => Array<String>,
+			default: ''
+		},
 	}
 })
 </script>

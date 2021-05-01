@@ -6,10 +6,11 @@
 			<button v-for="type in typeOptions" :key="type" @click="() => popPush(type)">{{ type }}</button>
 		</div>
 
-		<div v-for="(tiles, year) in info" :key="year" class="project">
-			<h3 class="year">{{ year }}</h3>
+		<!-- Iterating through maps is weird -->
+		<div v-for="(data, x) of info" :key="x" class="project">
+			<h3 class="year">{{ data[0] }}</h3>
 			<div class="grid">
-				<tile v-for="(tile, i) in tiles" :key="i" v-bind="tile"/>
+				<tile v-for="(tile, i) in data[1]" :key="i" v-bind="tile"/>
 			</div>
 		</div>
 
@@ -49,9 +50,11 @@ export default Vue.extend({
 		},
 		jsonToMap(obj: Object) {
 			var map = new Map<string, Array<Tile>>();
-			for (var i in Object.entries(obj)) {
-				const key = Object.entries(obj)[i][0];
-				const value = Object.entries(obj)[i][1];
+			const entries = Object.entries(obj);
+			// Iterate through entries, adding them to a new map
+			for (var i in entries) {
+				const key = entries[i][0];
+				const value = entries[i][1];
 				map.set(key, value as Array<Tile>);
 			}
 			this.info = map; // info must be replaced to work
