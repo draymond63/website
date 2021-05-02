@@ -13,6 +13,27 @@
 	--about-offset: 3%;
 }
 
+html {
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+body {
+	margin: 0;
+	background: white;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+a {
+	color: var(--main-color-1);
+}
+
 h2 {
 	font-size: 2rem;
 	color: var(--main-color-1);
@@ -20,4 +41,8 @@ h2 {
 
 h3 {
 	color: var(--text-color);
+}
+
+button {
+	border: 0;
 }

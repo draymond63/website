@@ -13,6 +13,7 @@
 			</div>
 		</div>
 
+		<p>Click here to learn more about <a href="/DER.pdf">my projects</a></p>
 	</div>
 </template>
 
@@ -24,10 +25,10 @@ interface Tile {
 	blurb?: String,
 	link?: String,
 	type?: String,
-	tags?: Array<String>
+	tags?: String[]
 };
 interface Timeline {
-	[key: string]: Array<Tile>,
+	[key: string]: Tile[],
 };
 
 import Vue from 'vue'
@@ -39,8 +40,8 @@ export default Vue.extend({
 	data() {
 		return {
 			info: {} as Timeline,
-			typeOptions: [] as Array<String>,
-			types: [] as Array<String>
+			typeOptions: [] as String[],
+			types: [] as String[]
 		}
 	},
 	methods: {
@@ -56,14 +57,14 @@ export default Vue.extend({
 			for (var i in entries) {
 				const key = entries[i][0];
 				const value = entries[i][1];
-				this.info[key] = value as Array<Tile>;
+				this.info[key] = value as Tile[];
 			}
 		}
 	},
 	beforeMount() {
 		this.jsonToMap(data);
 		// Gather types from data
-		Object.values(this.info).forEach((list: Array<Tile>) => 
+		Object.values(this.info).forEach((list: Tile[]) => 
 			list.forEach((tile: Tile) => {
 				if (tile.type && !this.typeOptions.includes(tile.type as string))
 					this.typeOptions.push(tile.type as string);
@@ -105,14 +106,6 @@ export default Vue.extend({
 	grid-template-columns: 1fr 1fr;
 	place-items: center;
 	gap: 1rem 2rem;
-}
-
-.dot {
-	width: var(--dot-size);
-	height: var(--dot-size);
-	border-radius: 50%;
-	background: #f9f5f2;
-	border: .3rem solid var(--main-color-1);
 }
 
 button {

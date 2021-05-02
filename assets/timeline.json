@@ -1,16 +1,14 @@
 {
 	"2021": [
 		{
-			"title": "TEST",
-			"blurb": "this is text",
-			"link": "youtube.com",
+			"title": "FPGA AI Processor",
+			"blurb": "I designed and implemented a circuit that performance neural network inferences. This project was a dive into Verilog, and AI efficiency.",
 			"type": "Project",
-			"tags": ["Fun!"]
+			"tags": ["Verilog", "AI"]
 		},
 		{
-			"title": "Blah",
-			"blurb": "this is text",
-			"link": "youtube.com",
+			"title": "SpaceX",
+			"blurb": "I'm working at SpaceX this summer!",
 			"type": "Work",
 			"tags": ["Fun!"]
 		}
