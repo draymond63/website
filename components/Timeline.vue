@@ -1,5 +1,5 @@
 <template>
-	<div id="timeline">
+	<div id="projects">
 		<h2>A Timeline</h2>
 		<h3>A brief overview of what I've done</h3>
 		<!-- div the line attaches to -->

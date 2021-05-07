@@ -11,9 +11,9 @@
 
 		<nav v-else class="desktop">
 			<NuxtLink to="/">Daniel Raymond</NuxtLink>
-			<a href="#aboutme">About Me</a>
-			<a href="#projects">Projects</a>
-			<a href="#resume">Resume</a>
+			<a id="about-link" href="#about">About Me</a>
+			<a id="timeline-link" href="#projects">Projects</a>
+			<a id="resume-link" href="#resume">Resume</a>
 		</nav>
 	</div>
 </template>
@@ -46,7 +46,13 @@ export default Vue.extend({
 }
 
 .desktop {
+	/* I DONT LIKE THIS */
+	z-index: 1;
+	position: fixed;
+	width: 100vw;
+
 	display: flex;
+	justify-content: space-around;
 	background: var(--main-color-1);
 }
 
@@ -54,6 +60,7 @@ a {
 	color: var(--background-color-1);
 	padding: 1rem;
 	text-decoration: none;
+	font-size: 1.5em;
 	font-weight: 500;
 }
 

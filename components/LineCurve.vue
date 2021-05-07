@@ -14,7 +14,9 @@ interface LineElement {
 	width: number,
 	height: number,
 	r_x: number,
-	b_y: number
+	b_y: number,
+	c_x: number,
+	c_y: number,
 }
 enum Direction {
 	LEFT, UP, RIGHT, DOWN
@@ -40,9 +42,9 @@ export default Vue.extend({
 				const height = svg.parentElement.offsetHeight;
 				// Set svg attributes
 				const vb = [0, 0, width, height];
-				svg.setAttribute("viewBox", vb.join(" ") );
-				svg.setAttribute("width", width.toString() );
-				svg.setAttribute("height", height.toString() );
+				svg.setAttribute("viewBox", vb.join(" "));
+				svg.setAttribute("width", width.toString());
+				svg.setAttribute("height", height.toString());
 			}
 		},
 		// * Section Dimension Extraction
@@ -56,14 +58,11 @@ export default Vue.extend({
 					height: sect.offsetHeight,
 					r_x: sect.offsetLeft + sect.offsetWidth,
 					b_y: sect.offsetTop + sect.offsetHeight,
+					c_x: sect.offsetLeft + sect.offsetWidth / 2,
+					c_y: sect.offsetTop + sect.offsetHeight / 2,
 				};
 			else
 				throw ReferenceError(`LineCurve/getDimensions: ${ref} is not a valid id`);
-		},
-		getEndPoint(): DOMPoint {
-			const el = this.$refs.path as SVGPathElement;
-			if (el.getTotalLength() === 0) throw EvalError('LineCurve/getEndPoint: path length is 0');
-			return el.getPointAtLength(el.getTotalLength());
 		},
 		isVertical(dir: Direction): boolean {
 			return (dir === Direction.UP || dir === Direction.DOWN);
@@ -132,6 +131,15 @@ export default Vue.extend({
 			this.semiAbsLine(coord - this.radius * sign, dir);
 			this.arc(dir, curveDir);
 		},
+		linkCenter(link: string, def: number) {
+			// Mobile hides links, so a default value is given in case
+			try {
+				const el = this.getElement(link);
+				this.semiAbsLineArc(el.c_x, Direction.RIGHT, Direction.DOWN);
+			} catch {
+				this.semiAbsLineArc(def, Direction.RIGHT, Direction.DOWN);
+			}
+		},
 
 		// * Line Creation
 		heroSection() {
@@ -139,22 +147,22 @@ export default Vue.extend({
 			this.move(hero.x, 0);
 			this.absLine(hero.x, hero.b_y - this.radius);
 			this.arc(Direction.DOWN, Direction.RIGHT);
-			this.semiAbsLineArc(hero.r_x, Direction.RIGHT, Direction.DOWN);
+			this.linkCenter('about-link', hero.r_x);
 		},
 		aboutSection() {
 			const about = this.getElement('about');
 			this.semiAbsLineArc(about.y, Direction.DOWN, Direction.LEFT);
 			this.semiAbsLineArc(about.x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(about.b_y, Direction.DOWN, Direction.RIGHT);
-			this.semiAbsLineArc(about.r_x, Direction.RIGHT, Direction.DOWN);
+			this.linkCenter('timeline-link', about.r_x)
 		},
 		projectSection() {
 			const proj = this.getElement('timeline-content');
 			this.semiAbsLineArc(proj.y, Direction.DOWN, Direction.LEFT);
-			this.semiAbsLineArc((proj.x + proj.r_x)/2, Direction.LEFT, Direction.DOWN);
+			this.semiAbsLineArc(proj.c_x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(proj.b_y, Direction.DOWN, Direction.RIGHT);
-			this.semiAbsLine(proj.r_x, Direction.RIGHT);
-		},
+			this.linkCenter('resume-link', proj.r_x)
+			},
 		initLine() {
 			this.path = "";
 			this.setBoundaries();
