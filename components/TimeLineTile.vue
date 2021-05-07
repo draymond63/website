@@ -43,7 +43,6 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .tile {
 	width: 100%;
-	height: 10rem;
 	padding: 1rem;
 	background: #fffaf7;
 	box-shadow: 0px 4px 8px 0px #c9aba075;
