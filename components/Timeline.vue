@@ -13,10 +13,10 @@
 				>{{ type }}
 			</button>
 			<!-- Tiles -->
-			<div v-for="(tiles, year) in shownInfo" :key="year" class="project">
-				<h3 v-if="tiles.length" class="year">{{ year }}</h3>
+			<div v-for="info in getSortedInfo()" :key="info[0]" class="project">
+				<h3 v-if="info[1].length" class="year">{{ info[0] }}</h3>
 				<div class="grid">
-					<tile v-for="(tile, i) in tiles" :key="i" v-bind="tile"/>
+					<tile v-for="(tile, i) in info[1]" :key="i" v-bind="tile"/>
 				</div>
 			</div>
 			<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
@@ -76,7 +76,9 @@ export default Vue.extend({
 			} else {
 				this.shownInfo = JSON.parse(JSON.stringify(this.info)) as Timeline;
 			}
-			console.log(Object.entries(this.shownInfo))
+		},
+		getSortedInfo(): [string, Tile[]][] {
+			return Object.entries(this.shownInfo).sort((a, b) => b[0].localeCompare(a[0])); 
 		}
 	},
 	beforeMount() {
