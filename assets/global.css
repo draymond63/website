@@ -11,12 +11,15 @@
 
 	--hero-offset: 10.3%;
 	--about-offset: 3%;
+
+	--max-content-width: 1400px;
 }
 
 html {
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
+	font-size: 1.2em; /* Global increase */
 }
 body {
 	margin: 0;

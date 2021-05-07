@@ -19,8 +19,8 @@
 					<tile v-for="(tile, i) in tiles" :key="i" v-bind="tile"/>
 				</div>
 			</div>
+			<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
 		</div>
-		<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
 	</div>
 </template>
 
@@ -76,7 +76,7 @@ export default Vue.extend({
 			} else {
 				this.shownInfo = JSON.parse(JSON.stringify(this.info)) as Timeline;
 			}
-			console.table(this.shownInfo)
+			console.log(Object.entries(this.shownInfo))
 		}
 	},
 	beforeMount() {
@@ -101,7 +101,7 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-#timeline {
+#projects {
 	margin: 0 5rem;
 	padding: 3rem;
 	--dot-size: 2rem;
@@ -145,7 +145,7 @@ button.active {
 }
 
 @media screen and (max-width: 850px) {
-	#timeline {
+	#projects {
 		margin: 0 1rem;
 		padding: 1rem;
 	}

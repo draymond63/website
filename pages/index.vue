@@ -54,6 +54,8 @@ export default Vue.extend({
 .content {
 	display: flex;
 	flex-direction: column;	
+	max-width: var(--max-content-width);
+	margin: auto;
 }
 
 .spacer {

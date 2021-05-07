@@ -34,7 +34,7 @@ export default Vue.extend({
 		},
 		tags: {
 			type: Array as () => String[],
-			default: ''
+			default: () => []
 		},
 	}
 })
@@ -43,6 +43,7 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .tile {
 	width: 100%;
+	min-height: 100%; /* Make adjacent tiles the same height */
 	padding: 1rem;
 	background: #fffaf7;
 	box-shadow: 0px 4px 8px 0px #c9aba075;
@@ -56,6 +57,9 @@ export default Vue.extend({
 	display: flex;
 	justify-content: space-between;
 }
+h3 {
+	font-size: 1.4em;
+}
 h5.type {
 	color: var(--main-color-1);
 	opacity: 0.75;
@@ -68,7 +72,9 @@ h5.type {
 .tag {
 	width: max-content;
 	padding: .2rem .8rem;
-	background: #e4c096de;
+	margin-bottom: .4rem;
+	color: var(--text-color);
+	border: 1px solid var(--main-color-1);
 	border-radius: 1rem;
 }
 .tag:not(:last-child) {
@@ -78,5 +84,11 @@ h5.type {
 a, p {
 	color: var(--text-color);
 	text-decoration: none;
+}
+
+@media screen and (max-width: 850px) {
+	.tile {
+		min-height: none;
+	}
 }
 </style>

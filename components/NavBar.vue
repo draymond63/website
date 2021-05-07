@@ -10,10 +10,12 @@
 		</button>
 
 		<nav v-else class="desktop">
-			<NuxtLink to="/">Daniel Raymond</NuxtLink>
-			<a id="about-link" href="#about">About Me</a>
-			<a id="timeline-link" href="#projects">Projects</a>
-			<a id="resume-link" href="#resume">Resume</a>
+			<div class="links">
+				<NuxtLink to="/">Daniel Raymond</NuxtLink>
+				<a id="about-link" href="#about">About Me</a>
+				<a id="timeline-link" href="#projects">Projects</a>
+				<a id="resume-link" href="#resume">Resume</a>
+			</div>
 		</nav>
 	</div>
 </template>
@@ -30,7 +32,7 @@ export default Vue.extend({
 	},
 	methods: {
 		handleResize() {
-			this.isMobile = screen.width < 550;
+			this.isMobile = window.innerWidth < 650;
 		}
 	},
 	beforeMount() {
@@ -50,10 +52,13 @@ export default Vue.extend({
 	z-index: 1;
 	position: fixed;
 	width: 100vw;
-
+	background: var(--main-color-1);
+}
+.desktop>.links {
 	display: flex;
 	justify-content: space-around;
-	background: var(--main-color-1);
+	max-width: var(--max-content-width);
+	margin: auto;
 }
 
 a {
