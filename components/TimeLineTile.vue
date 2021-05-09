@@ -60,6 +60,7 @@ export default Vue.extend({
 .header {
 	display: flex;
 	justify-content: space-between;
+	flex-wrap: wrap;
 }
 h3 {
 	font-size: 1.4em;

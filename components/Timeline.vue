@@ -135,7 +135,7 @@ export default Vue.extend({
 	margin-bottom: 2rem;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	place-items: start; /* Remove to have tiles fill grid space */
+	/* place-items: start; Remove to have tiles fill grid space */
 	gap: 1rem 2rem;
 }
 

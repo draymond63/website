@@ -1,5 +1,5 @@
 {
-  "name": "nuxt",
+  "name": "nuxtweb",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.1",
     "core-js": "^3.8.3",
-    "nuxt": "^2.14.12",
+    "nuxt": "^2.15.5",
     "postcss-preset-env": "^6.7.0",
     "rucksack-css": "^1.0.2"
   },
