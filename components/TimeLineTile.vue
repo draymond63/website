@@ -43,13 +43,17 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .tile {
 	width: 100%;
-	min-height: 100%; /* Make adjacent tiles the same height */
 	padding: 1rem;
 	background: #fffaf7;
-	box-shadow: 0px 4px 8px 0px #c9aba075;
+
+	--shift-distance: .2rem;
+	margin-top: var(--shift-distance); 
 	transition: all .3s ease;
+	box-shadow: 0px 4px 8px 0px #c9aba075;
 }
 .tile:hover {
+	margin-top: 0rem;
+	margin-bottom: var(--shift-distance);
 	box-shadow: 0px 4px 8px 0px #e4a996de;
 }
 
@@ -84,11 +88,5 @@ h5.type {
 a, p {
 	color: var(--text-color);
 	text-decoration: none;
-}
-
-@media screen and (max-width: 850px) {
-	.tile {
-		min-height: none;
-	}
 }
 </style>

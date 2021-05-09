@@ -32,7 +32,7 @@ export default Vue.extend({
 	},
 	methods: {
 		handleResize() {
-			this.isMobile = window.innerWidth < 650;
+			this.isMobile = window.innerWidth < 850;
 		}
 	},
 	beforeMount() {
@@ -91,6 +91,7 @@ button {
 	position: absolute;
 	top: 1.5rem;
 	right: 1.5rem;
+	z-index: 1;
 
 	background: var(--main-color-1);
 	border-radius: .7rem;

@@ -27,6 +27,12 @@
 			"tags": ["C", "FW"]
 		},
 		{
+			"title": "Passion Finding App",
+			"blurb": "I made this app to help people explore concepts and ideas in a non-linear way. Users can explore a 2D map of interests and see how they see themselves in it. This took lots of data analysis, app design, and development!",
+			"type": "Project",
+			"tags": ["App Dev", "Flutter", "GCP"]
+		},
+		{
 			"title": "AI Acceleration Engineering @ Untether AI",
 			"blurb": "My first tech job ever! I worked in Toronto for both the Hardware and Software teams; I helped build their SoC verification suite and the drivers that transfered data to and from their chip!",
 			"type": "Experience",
@@ -45,7 +51,7 @@
 			"type": "Fun"
 		},
 		{
-			"title": "Shad at UofCalgary",
+			"title": "Shad at UCalgary",
 			"blurb": "In July I went to Calgary and worked with an amazing group, developing a product focused on environmental sustainability. I got to play a lot of Ultimate Frisbee, visit some tourist destinations, and camp! I even got to be the Valedictorian :)",
 			"type": "Fun"
 		},
@@ -60,6 +66,14 @@
 			"blurb": "I spent six months breadboarding, designing, and building a fully programmable four bit computer - it was the most intense hardware project I've built. The final product is a printed circuit board with a 3D-printed case a laser-cut acryllic cover.",
 			"type": "Project",
 			"tags": ["Circuitry", "Schematics"]
+		}
+	],
+	"•••": [
+		{
+			"title": "Spokesperson for Scouts Canada",
+			"blurb": "I loved Scouts growing up - it was a foundational experience for me, teaching me outdoor skills and getting to meet new people. In 2015 I became a Youth Spokesperson (YSP) and was the MC for many events.",
+			"type": "Experience",
+			"tags": ["Public Speaking"]
 		}
 	]
 }

@@ -13,10 +13,14 @@
 				>{{ type }}
 			</button>
 			<!-- Tiles -->
-			<div v-for="info in getSortedInfo()" :key="info[0]" class="project">
-				<h3 v-if="info[1].length" class="year">{{ info[0] }}</h3>
+			<div v-for="info in getSortedInfo()" :key="info[0]" class="timeline">
+				<transition name="fadeHeight">
+					<h3 v-if="hasTiles(info[0])" class="year">{{ info[0] }}</h3>
+				</transition>
 				<div class="grid">
-					<tile v-for="(tile, i) in info[1]" :key="i" v-bind="tile"/>
+					<transition name="fadeHeight" v-for="(tile, i) in info[1]" :key="i">
+						<tile v-if="includeTile(tile.type)" v-bind="tile"/>
+					</transition>
 				</div>
 			</div>
 			<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
@@ -28,11 +32,11 @@
 import tile from "@/components/TimeLineTile.vue";
 import json from "@/assets/timeline.json";
 interface Tile {
-	title?: String,
-	blurb?: String,
-	link?: String,
-	type?: String,
-	tags?: String[]
+	title?: string,
+	blurb?: string,
+	link?: string,
+	type?: string,
+	tags?: string[]
 };
 interface Timeline {
 	[key: string]: Tile[],
@@ -46,10 +50,9 @@ export default Vue.extend({
 	},
 	data() {
 		return {
-			info: {} as Timeline, // Replaced by jsonToMap
-			shownInfo: {} as Timeline,
-			typeOptions: [] as String[],
-			types: [] as String[]
+			info: {} as Timeline, // Replaced by beforeMount
+			typeOptions: [] as string[],
+			types: [] as string[]
 		}
 	},
 	methods: {
@@ -58,27 +61,29 @@ export default Vue.extend({
 				this.types = this.types.filter((val) => val !== tag);
 			else
 				this.types.push(tag);
-			this.updateTimeline();
 		},
-		updateTimeline() {
-			// If there is no filter criteria keep it all, otherwise filter
-			if (this.types.length) {
-				// Copy the data to avoid deleting the original data
-				const copy = JSON.parse(JSON.stringify(this.info)) as Timeline;
-				const entries = Object.entries(copy);
-				// Iterate through each tile and keeps the ones that match the filter criteria
-				entries.forEach((data) => {
-					const [year, list] = data;
-					this.shownInfo[year] = list.filter(
-						(tile) => this.types.includes(tile.type ? tile.type : "")
-					);
+		// Check if a tile should be shown
+		includeTile(type: string): boolean {
+			if (this.types.length == 0)
+				return true;
+			return this.types.includes(type);
+		},
+		// Check if a year has tiles that are being shown
+		hasTiles(year: string): boolean {
+			let result = false
+			if (this.types.length == 0) return true;
+			// Check if there is a tile in the year
+			if (this.info[year]) {
+				this.info[year].forEach((tile) => {
+					if (tile.type && this.includeTile(tile.type))
+						result = true;
 				});
-			} else {
-				this.shownInfo = JSON.parse(JSON.stringify(this.info)) as Timeline;
 			}
+			return result;
 		},
+		// Sort the data
 		getSortedInfo(): [string, Tile[]][] {
-			return Object.entries(this.shownInfo).sort((a, b) => b[0].localeCompare(a[0])); 
+			return Object.entries(this.info).sort((a, b) => b[0].localeCompare(a[0])); 
 		}
 	},
 	beforeMount() {
@@ -97,7 +102,6 @@ export default Vue.extend({
 					this.typeOptions.push(tile.type as string);
 			})
 		);
-		this.updateTimeline();
 	}
 })
 </script>
@@ -109,7 +113,7 @@ export default Vue.extend({
 	--dot-size: 2rem;
 }
 
-.project {
+.timeline {
 	display: grid;
 	place-items: center;
 }
@@ -154,5 +158,22 @@ button.active {
 	.grid {
 		grid-template-columns: 1fr;
 	}
+}
+
+.fadeHeight-enter-active,
+.fadeHeight-leave-active {
+	transition: all 0.5s;
+	max-height: 100vh;
+}
+.fadeHeight-enter,
+.fadeHeight-leave-to {
+	opacity: 0;
+	max-height: 0px;
+	overflow: hidden;
+
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 }
 </style>

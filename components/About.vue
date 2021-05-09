@@ -3,6 +3,7 @@
 		<div>
 			<h2>About Me</h2>
 			<h3>I like a lot of things :)</h3>
+			<img src="@/assets/Venn.svg" alt="A venn diagram of my interests">
 			<h4>Engineering</h4>
 			<p>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -36,10 +37,7 @@
 				sed do eiusmod tempor incididunt ut labore et dolore magna 
 				aliqua. Ut enim ad minim veniam, quis nostrud
 			</p>
-			<br>
 		</div>
-
-		<img src="@/assets/Venn.svg" alt="A venn diagram of my interests">
 	</div>
 </template>
 
@@ -52,18 +50,18 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 #about {
-	display: flex;
 	margin: 0 5rem;
 	padding: 3rem;
 }
 
 img {
 	width: 30vw;
+	float: right;
+	margin-top: 1rem;
 }
 
 @media screen and (max-width: 850px) {
 	#about {
-		flex-direction: column;
 		margin: 0 1rem;
 		padding: 1rem;
 	}
