@@ -154,10 +154,10 @@ export default Vue.extend({
 			this.semiAbsLineArc(about.y, Direction.DOWN, Direction.LEFT);
 			this.semiAbsLineArc(about.x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(about.b_y, Direction.DOWN, Direction.RIGHT);
-			this.linkCenter('timeline-link', about.r_x)
+			this.linkCenter('experience-link', about.r_x)
 		},
-		projectSection() {
-			const proj = this.getElement('timeline-content');
+		timelineSection() {
+			const proj = this.getElement('timeline');
 			this.semiAbsLineArc(proj.y, Direction.DOWN, Direction.LEFT);
 			this.semiAbsLineArc(proj.c_x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(proj.b_y, Direction.DOWN, Direction.RIGHT);
@@ -168,7 +168,7 @@ export default Vue.extend({
 			this.setBoundaries();
 			this.heroSection();
 			this.aboutSection();
-			this.projectSection();
+			this.timelineSection();
 		},
 
 		/**

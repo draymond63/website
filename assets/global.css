@@ -19,6 +19,7 @@ html {
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
 	scroll-behavior: smooth;
+	scroll-padding-top: 4.5em; /* height of sticky header */
 	font-size: 1.2em; /* Global increase */
 }
 body {
@@ -31,10 +32,6 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
-}
-
-a {
-	color: var(--main-color-1);
 }
 
 h2 {

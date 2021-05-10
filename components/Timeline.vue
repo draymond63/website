@@ -1,9 +1,9 @@
 <template>
-	<div id="projects">
+	<div id="experience">
 		<h2>A Timeline</h2>
 		<h3>A brief overview of what I've done</h3>
 		<!-- div the line attaches to -->
-		<div id="timeline-content">
+		<div id="timeline">
 			<!-- Selector buttons -->
 			<button
 				v-for="type in typeOptions"
@@ -13,7 +13,7 @@
 				>{{ type }}
 			</button>
 			<!-- Tiles -->
-			<div v-for="info in getSortedInfo()" :key="info[0]" class="timeline">
+			<div v-for="info in getSortedInfo()" :key="info[0]" class="timeline-content">
 				<transition name="fadeHeight">
 					<h3 v-if="hasTiles(info[0])" class="year">{{ info[0] }}</h3>
 				</transition>
@@ -107,13 +107,13 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-#projects {
+#experience {
 	margin: 0 5rem;
 	padding: 3rem;
 	--dot-size: 2rem;
 }
 
-.timeline {
+.timeline-content {
 	display: grid;
 	place-items: center;
 }

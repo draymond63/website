@@ -4,7 +4,7 @@
 			<p>&#9776;</p>
 			<nav v-if="mobileMenu" class="mobile">
 				<a @click="mobileMenu = false" href="#aboutme">About Me</a>
-				<a @click="mobileMenu = false" href="#projects">Projects</a>
+				<a @click="mobileMenu = false" href="#experience">Experience</a>
 				<a @click="mobileMenu = false" href="#resume">Resume</a>
 			</nav>
 		</button>
@@ -13,7 +13,7 @@
 			<div class="links">
 				<NuxtLink to="/">Daniel Raymond</NuxtLink>
 				<a id="about-link" href="#about">About Me</a>
-				<a id="timeline-link" href="#projects">Projects</a>
+				<a id="experience-link" href="#experience">Experience</a>
 				<a id="resume-link" href="#resume">Resume</a>
 			</div>
 		</nav>
