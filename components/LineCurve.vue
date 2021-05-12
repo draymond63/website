@@ -162,7 +162,8 @@ export default Vue.extend({
 			this.semiAbsLineArc(proj.c_x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(proj.b_y, Direction.DOWN, Direction.RIGHT);
 			this.linkCenter('resume-link', proj.r_x)
-			},
+			this.line(2000, Direction.DOWN);
+		},
 		initLine() {
 			this.path = "";
 			this.setBoundaries();

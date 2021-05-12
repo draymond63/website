@@ -4,12 +4,13 @@
 		<div class="parent">
 			<LineCurve class="line"/>
 			<!-- CONTENT -->
-			<div class="content" ref="content">
+			<div class="content">
 				<hero/>
 				<div class="spacer"/>
 				<about/>
 				<div style="margin: 2rem 0"/>
 				<timeline/>
+				<Footer/>
 			</div>
 		</div>
 	</div>
@@ -19,6 +20,7 @@
 import Hero from '@/components/Hero.vue';
 import About from '@/components/About.vue';
 import Timeline from '@/components/Timeline.vue';
+import Footer from '@/components/Footer.vue';
 import LineCurve from '@/components/LineCurve.vue';
 
 import Vue from 'vue'
@@ -27,6 +29,7 @@ export default Vue.extend({
 		Hero,
 		About,
 		Timeline,
+		Footer,
 		LineCurve
 	},
 	head() {
