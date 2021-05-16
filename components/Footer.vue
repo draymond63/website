@@ -4,7 +4,7 @@
 		<h5>Message me!</h5>
 		<div class="socials">
 			<a href="https://www.linkedin.com/in/draymond63/"><img src="@/assets/socials/linkedin.svg" alt="LinkedIn"></a>
-			<!-- <a href=""><img src="@/assets/socials/email.svg" alt="Email"></a> -->
+			<a href="mailto:dan@raymond.ch"><img src="@/assets/socials/email.svg" alt="Email"></a>
 		</div>
 	</div>
 </template>
@@ -19,10 +19,8 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .footer {
 	width: 100%;
-	padding: 2rem;
-
+	padding: 1rem;
 	background: var(--main-color-1);
-	color: white;
 
 	display: flex;
 	flex-direction: column;
@@ -32,5 +30,16 @@ export default Vue.extend({
 .socials {
 	padding: .5rem;
 	display: flex;
+	justify-content: space-between;
+}
+h3, h5 {
+	color: white;
+}
+/* Social link images */
+img {
+	height: 2.5rem;
+}
+.socials>:not(:last-child) {
+	margin-right: 1rem;
 }
 </style>
