@@ -126,7 +126,7 @@ export default Vue.extend({
 	margin-bottom: 0.2rem;
 
 	background: white;
-	border: 4px solid var(--main-color-1);
+	border: 4px solid var(--main-color);
 	border-radius: 0.3rem;
 }
 

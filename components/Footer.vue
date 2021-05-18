@@ -20,7 +20,7 @@ export default Vue.extend({
 .footer {
 	width: 100%;
 	padding: 1rem;
-	background: var(--main-color-1);
+	background: var(--main-color);
 
 	display: flex;
 	flex-direction: column;

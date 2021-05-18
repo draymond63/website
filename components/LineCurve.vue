@@ -215,7 +215,7 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 path {
-	stroke: var(--main-color-1);
+	stroke: var(--main-color);
 	stroke-width: 8px;
 	fill: none;
 }

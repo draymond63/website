@@ -66,7 +66,7 @@ h3 {
 	font-size: 1.4em;
 }
 h5.type {
-	color: var(--main-color-1);
+	color: var(--main-color);
 	opacity: 0.75;
 }
 
@@ -79,7 +79,7 @@ h5.type {
 	padding: .2rem .8rem;
 	margin-bottom: .4rem;
 	color: var(--text-color);
-	border: 1px solid var(--main-color-1);
+	border: 1px solid var(--main-color);
 	border-radius: 1rem;
 }
 .tag:not(:last-child) {

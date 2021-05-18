@@ -1,12 +1,12 @@
 :root {
 	/* COLOR */
 	--text-color: hsl(0, 0%, 39%);
-	--main-color-1: hsl(16, 95%, 65%);
-	--background-color-1: hsl(26, 37%, 96%);
+	--main-color: hsl(16, 95%, 65%);
+	--background-color: hsl(26, 37%, 96%);
 
 	/* POSITIONING */
 	--line-width: .5rem;
-	--line-border: var(--line-width) solid var(--main-color-1);
+	--line-border: var(--line-width) solid var(--main-color);
 	--line-radius: 5em;
 
 	--hero-offset: 10.3%;
@@ -24,7 +24,7 @@ html {
 }
 body {
 	margin: 0;
-	background: white;
+	background: var(--background-color);
 }
 *,
 *::before,
@@ -36,7 +36,7 @@ body {
 
 h2 {
 	font-size: 2rem;
-	color: var(--main-color-1);
+	color: var(--main-color);
 }
 
 h3 {

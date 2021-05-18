@@ -52,7 +52,7 @@ export default Vue.extend({
 	z-index: 1;
 	position: fixed;
 	width: 100vw;
-	background: var(--main-color-1);
+	background: var(--main-color);
 }
 .desktop>.links {
 	display: flex;
@@ -62,7 +62,7 @@ export default Vue.extend({
 }
 
 a {
-	color: var(--background-color-1);
+	color: var(--background-color);
 	padding: 1rem;
 	text-decoration: none;
 	font-size: 1.5em;
@@ -75,7 +75,7 @@ a {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: var(--background-color-1);
+	background: var(--background-color);
 
 	display: flex;
 	flex-direction: column;
@@ -84,7 +84,7 @@ a {
 	color: var(--text-color);
 }
 .mobile>a:not(:last-child) {
-	border-bottom: 1px solid var(--main-color-1);
+	border-bottom: 1px solid var(--main-color);
 }
 
 button {
@@ -93,12 +93,12 @@ button {
 	right: 1.5rem;
 	z-index: 1;
 
-	background: var(--main-color-1);
+	background: var(--main-color);
 	border-radius: .7rem;
 	padding: .4rem;
 
 	font-size: 2em;
-	color: var(--background-color-1);
+	color: var(--background-color);
 	font-weight: bold;
 }
 button>p {
