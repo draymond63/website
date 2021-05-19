@@ -52,6 +52,11 @@ button {
 	border: 0;
 }
 
+b {
+	font-weight: 600;
+	color: var(--main-color);
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .3s ease;

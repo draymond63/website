@@ -5,9 +5,10 @@
 				<h2>Hi!</h2>
 				<h3>I'm Daniel Raymond.</h3>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-					sed do eiusmod tempor incididunt ut labore et dolore magna 
-					aliqua. Ut enim ad minim veniam, quis nostrud
+					Thanks for stopping by! I'm a systems design engineering student
+					at the University of Waterloo in Canada. I do a lot of different things,
+					from electrical to aerospace and software to philosophy so please, 
+					take a look around!
 				</p>
 			</div>
 		</div>
