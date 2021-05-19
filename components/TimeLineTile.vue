@@ -73,6 +73,7 @@ h5.type {
 .tags {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 .tag {
 	width: max-content;

@@ -110,7 +110,6 @@ export default Vue.extend({
 #experience {
 	margin: 0 5rem;
 	padding: 3rem;
-	--dot-size: 2rem;
 }
 
 .timeline-content {
@@ -151,7 +150,7 @@ button.active {
 }
 
 @media screen and (max-width: 850px) {
-	#projects {
+	#experience {
 		margin: 0 1rem;
 		padding: 1rem;
 	}

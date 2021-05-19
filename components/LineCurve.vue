@@ -205,9 +205,11 @@ export default Vue.extend({
 	mounted() {
 		this.waitForElements().then(() => {
 			// Draw line
-			this.initLine()
+			this.initLine();
 			// Redraw line on resize
 			window.addEventListener('resize', () => this.initLine());
+			// Custom resize listener that I can dynamically fire
+			// this.$root.$on('resize', () => this.initLine());
 		});
 	}
 })

@@ -1,15 +1,6 @@
 <template>
 	<div id="navbar">
-		<button v-if="isMobile" @click="mobileMenu = true">
-			<p>&#9776;</p>
-			<nav v-if="mobileMenu" class="mobile">
-				<a @click="mobileMenu = false" href="#aboutme">About Me</a>
-				<a @click="mobileMenu = false" href="#experience">Experience</a>
-				<a target="_blank" href="/resume.pdf">Resume</a>
-			</nav>
-		</button>
-
-		<nav v-else class="desktop">
+		<nav v-if="!isMobile" class="desktop">
 			<div class="links">
 				<NuxtLink to="/">Daniel Raymond</NuxtLink>
 				<a id="about-link" href="#about">About Me</a>
@@ -17,6 +8,16 @@
 				<a target="_blank" href="/resume.pdf">Resume</a>
 			</div>
 		</nav>
+
+		<button v-else @click="mobileMenu = true">&#9776;</button>
+		<transition name="fade">
+			<nav v-if="isMobile && mobileMenu" class="mobile-menu">
+				<p @click="mobileMenu = false" class="close-button">&#x2715;</p>
+				<a @click="mobileMenu = false" href="#about">About Me</a>
+				<a @click="mobileMenu = false" href="#experience">Experience</a>
+				<a target="_blank" href="/resume.pdf">Resume</a>
+			</nav>
+		</transition>
 	</div>
 </template>
 
@@ -65,25 +66,35 @@ a {
 	color: var(--background-color);
 	padding: 1rem;
 	text-decoration: none;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	font-weight: 500;
 }
 
-.mobile {
+.mobile-menu {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
+	padding: 20vh 2rem 0 2rem;
+	z-index: 2;
 	background: var(--background-color);
+
+	text-align: center;
+	font-size: 2em;
 
 	display: flex;
 	flex-direction: column;
 }
-.mobile>a {
+.mobile-menu>.close-button {
+	text-align: right;
+	font-size: 1.5em;
 	color: var(--text-color);
 }
-.mobile>a:not(:last-child) {
+.mobile-menu>a {
+	color: var(--text-color);
+}
+.mobile-menu>a:not(:last-child) {
 	border-bottom: 1px solid var(--main-color);
 }
 
@@ -101,7 +112,7 @@ button {
 	color: var(--background-color);
 	font-weight: bold;
 }
-button>p {
+button {
 	line-height: 1em;
 }
 </style>
