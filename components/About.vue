@@ -23,7 +23,7 @@
 			My brothers are (admittedly) a very large influence. As a result, I have
 			begun to appreciate Philosophy, particularily because it helps me realize
 			why I have the assumptions I do. I have currently taken three Philosophy
-			courses and hope to finish my degree with a minor in it.
+			courses and hope to finish my degree with a Philosophy minor.
 		</p>
 		<h4>Sports</h4>
 		<p>

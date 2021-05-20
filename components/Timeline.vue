@@ -1,4 +1,6 @@
 <template>
+<!-- TEMPORARY FIX -->
+<client-only>
 	<div id="experience">
 		<h2>A Timeline</h2>
 		<h3>A brief overview of what I've done</h3>
@@ -26,6 +28,7 @@
 			<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
 		</div>
 	</div>
+</client-only>
 </template>
 
 <script lang="ts">
