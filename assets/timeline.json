@@ -2,27 +2,32 @@
 	"2021": [
 		{
 			"title": "Avionics Intern @ SpaceX",
-			"blurb": "I'm working at SpaceX this summer! I am on the Starship Avionics team, developing signal processing systems to gather accurate data. Hopefully this will help get Starship to the Moon and Mars!",
+			"blurb": "I'm worked at SpaceX this summer! I was a sensor development intern for Starship Avionics, developing precise data pipelines, demodulation algorithms, and data fitting methods.",
 			"type": "Experience",
-			"tags": ["C", "DSP"]
+			"tags": ["C", "FPGA", "DSP"]
+		},
+		{
+			"title": "Summer in Los Angeles!",
+			"blurb": "My SpaceX internship was in person, so I lived in LA for the summer! I surfed, rock climbed, bungee jumped, and got to make incredible friends that I will cherish forever.",
+			"type": "Fun"
 		},
 		{
 			"title": "CUTC Technology Lead",
-			"blurb": "As a part of the Canadian Undergraduate Technology Conference, my team provides the infrastructure to allow the conference to function. We are currently focusing on registration, the website, and the blog.",
+			"blurb": "As a part of the Canadian Undergraduate Technology Conference I lead the technology team, which provides the infrastructure to allow the conference to function. We primarily focused on registration, the website, and the blog.",
 			"type": "Experience",
 			"tags": ["Web", "Vue", "PHP"]
 		},
 		{
 			"title": "FPGA AI Processor",
-			"blurb": "I designed and implemented a circuit that performance neural network inferences. This project was a dive into Verilog and AI efficiency.",
+			"blurb": "I designed and implemented a verilog design that performed neural network inferences. It runs on a FPGA simulation and can run any binarized neural network. This project was a dive into Verilog and AI optimization.",
 			"type": "Project",
-			"tags": ["Verilog", "AI"]
+			"tags": ["FPGA", "AI"]
 		}
 	],
 	"2020": [
 		{
 			"title": "Firmware Security @ AMD",
-			"blurb": "I developed communication systems inside their new APUs while maintaining security and efficiency. Although is was completely remote, I'm still very thankful because I got to work with incredibly smart people.",
+			"blurb": "I developed communication systems inside new APUs while maintaining security and efficiency. Although is was completely remote, I'm still very thankful because I got to work with incredibly smart people.",
 			"type": "Experience",
 			"tags": ["C", "FW"]
 		},
@@ -37,6 +42,12 @@
 			"blurb": "My first tech job ever! I worked in Toronto for both the Hardware and Software teams; I helped build their SoC verification suite and the drivers that transfered data to and from their chip!",
 			"type": "Experience",
 			"tags": ["C", "Python"]
+		},
+		{
+			"title": "Vibeify: An AI DJ",
+			"blurb": "",
+			"type": "Project",
+			"tags": ["Web", "React", "AI"]
 		}
 	],
 	"2019": [
@@ -48,12 +59,18 @@
 		{
 			"title": "Camp Counselour",
 			"blurb": "I worked at Camp Couchiching after being a camper there for 10 years. I got to spend lots of time with some really amazing kids.",
-			"type": "Fun"
+			"type": "Experience"
 		},
 		{
 			"title": "Shad at UCalgary",
 			"blurb": "In July I went to Calgary and worked with an amazing group, developing a product focused on environmental sustainability. I got to play a lot of Ultimate Frisbee, visit some tourist destinations, and camp! I even got to be the Valedictorian :)",
 			"type": "Fun"
+		},
+		{
+			"title": "Four bit Computer",
+			"blurb": "I spent six months breadboarding, designing, and building a fully programmable four bit computer - it was the most intense hardware project I've built. The final product is a printed circuit board with a 3D-printed case a laser-cut acryllic cover.",
+			"type": "Project",
+			"tags": ["Electrical", "PCB"]
 		},
 		{
 			"title": "Student Theatre Festival",
@@ -62,10 +79,10 @@
 			"tags": ["Acting", "Directing"]
 		},
 		{
-			"title": "Four bit Computer",
-			"blurb": "I spent six months breadboarding, designing, and building a fully programmable four bit computer - it was the most intense hardware project I've built. The final product is a printed circuit board with a 3D-printed case a laser-cut acryllic cover.",
+			"title": "Flexible PCB Snake Game",
+			"blurb": "I designed & soldered a custom SMT PCB with an LED matrix and a solar panel. As an added challenge, the entire game was programmed in Assembly (600+ lines)",
 			"type": "Project",
-			"tags": ["Circuitry", "Schematics"]
+			"tags": ["Electrical", "PCB"]
 		}
 	]
 }

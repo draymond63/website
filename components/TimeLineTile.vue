@@ -1,14 +1,16 @@
 <template>
-	<component class="tile" :is="link? 'nuxt-link' : 'div'" :to="link">
-		<div class="header">
-			<h3>{{ title }}</h3>
-			<h5 class="type">{{ type }}</h5>
-		</div>
-		<div class="tags">
-			<h6 v-for="tag in tags" class="tag" :key="tag">{{ tag }}</h6>
-		</div>
-		<p>{{ blurb }}</p>
-	</component>
+	<div class="tile-wrapper">
+		<component class="tile" :is="link? 'nuxt-link' : 'div'" :to="link">
+			<div class="header">
+				<h3>{{ title }}</h3>
+				<h5 class="type">{{ type }}</h5>
+			</div>
+			<div class="tags">
+				<h6 v-for="tag in tags" class="tag" :key="tag">{{ tag }}</h6>
+			</div>
+			<p>{{ blurb }}</p>
+		</component>
+	</div>
 </template>
 
 <script lang="ts">
@@ -41,17 +43,19 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
+.tile-wrapper {
+	--shift-distance: .2rem;
+}
 .tile {
 	width: 100%;
 	padding: 1rem;
 	background: #fffaf7;
 
-	--shift-distance: .2rem;
-	margin-top: var(--shift-distance); 
+	margin-top: var(--shift-distance);
 	transition: all .3s ease;
 	box-shadow: 0px 4px 8px 0px #c9aba075;
 }
-.tile:hover {
+.tile-wrapper:hover > .tile {
 	margin-top: 0rem;
 	margin-bottom: var(--shift-distance);
 	box-shadow: 0px 4px 8px 0px #e4a996de;
