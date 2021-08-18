@@ -271,21 +271,21 @@ export default {
 </script>
 
 <style scoped>
-    .computer {
-      position: relative;
-      height: min-content;
-    }
-    .c-led {
-      position: absolute;
-      bottom: 8%;
-      width: 1.3vmin;
-      height: 1.3vmin;
-      border-radius: 50%;
-    }
-    .g-0 {background-color: green;}
-    .g-1 {background-color: greenyellow;}
-    .r-0 {background-color: maroon;}
-    .r-1 {background-color: red;}
-    .y-0 {background-color: darkgoldenrod;}
-    .y-1 {background-color: yellow;}
+.computer {
+  position: relative;
+  height: min-content;
+}
+.c-led {
+  position: absolute;
+  bottom: 8%;
+  width: 1.3vmin;
+  height: 1.3vmin;
+  border-radius: 50%;
+}
+.g-0 {background-color: green}
+.g-1 {background-color: greenyellow}
+.r-0 {background-color: maroon}
+.r-1 {background-color: red}
+.y-0 {background-color: darkgoldenrod}
+.y-1 {background-color: yellow}
 </style>
