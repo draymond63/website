@@ -17,9 +17,15 @@ to make my own 2D render engine that took in the coordinates of Cannon physics
 objects. It worked, but not being able to scroll made things difficult for CSS,
 and I once again chose horrible colours. 
 
-### The current one
+### The third one
 This was built in 5 days in May of 2020 with Vue. The original design was from a
-lovely friend of mine name Jayden (jaydenhsiao.me) and was so much easier to implement
+lovely friend of mine name Jayden (jaydenh.com) and was so much easier to implement
 when compared to the previous iterations. Although, its ease was probably due to 
 the fact that I finally understood the languages as opposed to hacking my way through
 problems. 
+
+### This one!
+This was built in May of 2021 with Nuxt (Next + Vue)! The current website builds off
+the lessons from the previous iteration and uses Next to optimize the user experience.
+As well, I made the entire design! I'm very proud of how far I've come in the design
+world. Again, this is mostly thanks to Jayden :)
