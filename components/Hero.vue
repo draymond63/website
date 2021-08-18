@@ -1,17 +1,17 @@
 <template>
 	<div id="hero">
-			<img src="@/assets/profile.jpg" alt="Profile Photo">
-			<div>
-				<h2>Hi!</h2>
-				<h3>I'm Daniel Raymond.</h3>
-				<p>
-					Thanks for stopping by! I'm a systems design engineering student
-					at the University of Waterloo in Canada. I do a lot of different things,
-					from electrical to aerospace and software to philosophy so please, 
-					take a look around!
-				</p>
-			</div>
+		<img src="@/assets/profile.jpg" alt="Profile Photo">
+		<div>
+			<h2>Hi!</h2>
+			<h3>I'm Daniel Raymond.</h3>
+			<p>
+				Thanks for stopping by! I'm a systems design engineering student
+				at the University of Waterloo in Canada. I do a lot of different things,
+				from electrical to aerospace and software to philosophy so please, 
+				take a look around!
+			</p>
 		</div>
+	</div>
 </template>
 
 <style lang="postcss" scoped>
@@ -21,7 +21,7 @@
 	gap: 3rem;
 
 	width: 80%;
-	max-width: 100rem;
+	min-height: 90vh;
 	padding: 5rem;
 	margin-left: var(--hero-offset);
 }
