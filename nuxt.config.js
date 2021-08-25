@@ -26,6 +26,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {
+      src: './plugins/gtag.js',
+      mode: 'client'
+    }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,10 +54,5 @@ export default {
         // https://www.npmjs.com/package/postcss-responsive-type
       },
     }
-  },
-
-  // Google Analytics
-  googleAnalytics: {
-    id: 'UA-148416481-2'
   }
 }
