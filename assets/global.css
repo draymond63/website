@@ -1,0 +1,68 @@
+:root {
+	/* COLOR */
+	--text-color: hsl(0, 0%, 39%);
+	--main-color: hsl(16, 95%, 65%);
+	--background-color: hsl(26, 37%, 96%);
+
+	/* POSITIONING */
+	--line-width: .5rem;
+	--line-border: var(--line-width) solid var(--main-color);
+	--line-radius: 5em;
+
+	--hero-offset: 10.3%;
+	--about-offset: 3%;
+
+	--max-content-width: 2000px;
+}
+
+html {
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scroll-padding-top: 4.5em; /* height of sticky header */
+	font-size: 1.2em; /* Global increase */
+}
+@media screen and (max-width: 850px) {
+	html {
+		font-size: .9em;
+	}
+}
+body {
+	margin: 0;
+	background: var(--background-color);
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+	font-size: 2rem;
+	color: var(--main-color);
+}
+
+h3 {
+	color: var(--text-color);
+}
+
+button {
+	border: 0;
+}
+
+b {
+	font-weight: 600;
+	color: var(--main-color);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s ease;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
