@@ -1,6 +1,6 @@
 <template>
 	<div id="navbar">
-		<nav v-if="!isMobile" class="desktop">
+		<nav class="desktop">
 			<div class="links">
 				<NuxtLink to="/">Daniel Raymond</NuxtLink>
 				<a id="about-link" href="#about">About Me</a>
@@ -9,15 +9,17 @@
 			</div>
 		</nav>
 
-		<button v-else @click="mobileMenu = true">&#9776;</button>
-		<transition name="fade">
-			<nav v-if="isMobile && mobileMenu" class="mobile-menu">
-				<p @click="mobileMenu = false" class="close-button">&#x2715;</p>
-				<a @click="mobileMenu = false" href="#about">About Me</a>
-				<a @click="mobileMenu = false" href="#experience">Experience</a>
-				<a target="_blank" href="/resume.pdf">Resume</a>
-			</nav>
-		</transition>
+		<span class="mobile">
+			<button @click="mobileMenu = true">&#9776;</button>
+			<transition name="fade">
+				<nav v-if="isMobile && mobileMenu" class="mobile-menu">
+					<p @click="mobileMenu = false" class="close-button">&#x2715;</p>
+					<a @click="mobileMenu = false" href="#about">About Me</a>
+					<a @click="mobileMenu = false" href="#experience">Experience</a>
+					<a target="_blank" href="/resume.pdf">Resume</a>
+				</nav>
+			</transition>
+		</span>
 	</div>
 </template>
 
@@ -30,15 +32,6 @@ export default Vue.extend({
 			isMobile: false,
 			mobileMenu: false
 		}
-	},
-	methods: {
-		handleResize() {
-			this.isMobile = window.innerWidth < 850;
-		}
-	},
-	beforeMount() {
-		window.addEventListener('resize', () => this.handleResize());
-		this.handleResize();
 	}
 })
 </script>
@@ -114,5 +107,17 @@ button {
 }
 button {
 	line-height: 1em;
+}
+
+.mobile {
+	display: none;
+}
+@media screen and (max-width: 850px) {
+	.desktop {
+		display: none;
+	}
+	.mobile {
+		display: block;
+	}
 }
 </style>

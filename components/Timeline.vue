@@ -88,8 +88,8 @@ export default Vue.extend({
 		getSortedInfo(): [string, Tile[]][] {
 			return Object.entries(this.info).sort((a, b) => b[0].localeCompare(a[0])); 
 		},
-		sendDERevent: function(): void {
-			// this.$ga.event({
+		sendDERevent(): void {
+			// this.$gtag.event({
 			// 	eventCategory: 'category',
 			// 	eventAction: 'action',
 			// 	eventLabel: 'label',

@@ -45,7 +45,7 @@
 		},
 		{
 			"title": "Vibeify: An AI DJ",
-			"blurb": "",
+			"blurb": "At QHacks2020 we built a website that tracks the 'vibe' of a room (using motion data) and plays music accordingly.",
 			"type": "Project",
 			"tags": ["Web", "React", "AI"]
 		}

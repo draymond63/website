@@ -133,10 +133,10 @@ export default Vue.extend({
 		},
 		linkCenter(link: string, def: number) {
 			// Mobile hides links, so a default value is given in case
-			try {
+			if (window.innerWidth > 850) {
 				const el = this.getElement(link);
 				this.semiAbsLineArc(el.c_x, Direction.RIGHT, Direction.DOWN);
-			} catch {
+			} else {
 				this.semiAbsLineArc(def, Direction.RIGHT, Direction.DOWN);
 			}
 		},
@@ -161,7 +161,7 @@ export default Vue.extend({
 			this.semiAbsLineArc(proj.y, Direction.DOWN, Direction.LEFT);
 			this.semiAbsLineArc(proj.c_x, Direction.LEFT, Direction.DOWN);
 			this.semiAbsLineArc(proj.b_y, Direction.DOWN, Direction.RIGHT);
-			this.linkCenter('resume-link', proj.r_x)
+			this.semiAbsLineArc(proj.r_x, Direction.RIGHT, Direction.DOWN);
 			this.line(2000, Direction.DOWN);
 		},
 		initLine() {
@@ -198,6 +198,7 @@ export default Vue.extend({
 			return Promise.allSettled([
 				this.waitForElement('hero', 500),
 				this.waitForElement('about', 500),
+				this.waitForElement('timeline', 500),
 			]);
 		},
 	},
