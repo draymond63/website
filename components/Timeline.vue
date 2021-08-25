@@ -25,7 +25,7 @@
 					</transition>
 				</div>
 			</div>
-			<p>Click here to learn more about <a href="/DER.pdf">my projects</a>!</p>
+			<p>Click here to learn more about <a href="/DER.pdf" @click="sendDERevent">my projects</a>!</p>
 		</div>
 	</div>
 </client-only>
@@ -87,6 +87,14 @@ export default Vue.extend({
 		// Sort the data
 		getSortedInfo(): [string, Tile[]][] {
 			return Object.entries(this.info).sort((a, b) => b[0].localeCompare(a[0])); 
+		},
+		sendDERevent: function(): void {
+			// this.$ga.event({
+			// 	eventCategory: 'category',
+			// 	eventAction: 'action',
+			// 	eventLabel: 'label',
+			// 	eventValue: 123
+			// })
 		}
 	},
 	beforeMount() {

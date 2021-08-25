@@ -50,5 +50,10 @@ export default {
         // https://www.npmjs.com/package/postcss-responsive-type
       },
     }
+  },
+
+  // Google Analytics
+  googleAnalytics: {
+    id: 'UA-148416481-2'
   }
 }
