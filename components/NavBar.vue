@@ -12,7 +12,7 @@
 		<span class="mobile">
 			<button @click="mobileMenu = true">&#9776;</button>
 			<transition name="fade">
-				<nav v-if="isMobile && mobileMenu" class="mobile-menu">
+				<nav v-if="mobileMenu" class="mobile-menu">
 					<p @click="mobileMenu = false" class="close-button">&#x2715;</p>
 					<a @click="mobileMenu = false" href="#about">About Me</a>
 					<a @click="mobileMenu = false" href="#experience">Experience</a>
@@ -28,8 +28,7 @@ import Vue from 'vue'
 export default Vue.extend({
 	name: 'NavBar',
 	data() {
-		return{
-			isMobile: false,
+		return {
 			mobileMenu: false
 		}
 	}
