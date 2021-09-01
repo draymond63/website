@@ -70,7 +70,8 @@
 			"title": "Four bit Computer",
 			"blurb": "I spent six months breadboarding, designing, and building a fully programmable four bit computer - it was the most intense hardware project I've built. The final product is a printed circuit board with a 3D-printed case a laser-cut acryllic cover.",
 			"type": "Project",
-			"tags": ["Electrical", "PCB"]
+			"tags": ["Electrical", "PCB"],
+			"link": "/chump"
 		},
 		{
 			"title": "Student Theatre Festival",

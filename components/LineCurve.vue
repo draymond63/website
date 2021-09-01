@@ -2,7 +2,6 @@
 	<div>
 		<svg ref="line">
 			<path ref="path" :d="path"/>
-			<!-- "M 200 0 l 0 500 a 50,50 0 0,0 50,50 l 500 0 a 50,50 0 0,1 50,50" -->
 		</svg>
 	</div>
 </template>
@@ -171,49 +170,14 @@ export default Vue.extend({
 			this.aboutSection();
 			this.timelineSection();
 		},
-
-		/**
-		 * https://stackoverflow.com/questions/34863788/how-to-check-if-an-element-has-been-loaded-on-a-page-before-running-a-script
-		 * Wait for an element before resolving a promise
-		 * @param {String} querySelector - Selector of element to wait for
-		 * @param {Integer} timeout - Milliseconds to wait before timing out, or 0 for no timeout              
-		 */
-		waitForElement(querySelector: string, timeout=0){
-			const startTime = new Date().getTime();
-			return new Promise<void>((resolve, reject)=>{
-				const timer = setInterval(()=>{
-					const now = new Date().getTime();
-					if(document.querySelector(querySelector)){
-						clearInterval(timer);
-						resolve();
-					} else if(timeout && now - startTime >= timeout){
-						clearInterval(timer);
-						reject();
-					}
-				}, 100);
-			});
-		},
-		// ! All are just timing out
-		waitForElements() {
-			return Promise.allSettled([
-				this.waitForElement('hero', 500),
-				this.waitForElement('about', 500),
-				this.waitForElement('timeline', 500),
-			]);
-		},
 	},
-
 	mounted() {
-		this.waitForElements().then(() => {
-			// Draw line
-			this.initLine();
-			// Redraw line on resize
-			window.addEventListener('resize', () => this.initLine());
-			// Custom resize listener that I can dynamically fire
-			// this.$root.$on('resize', () => this.initLine());
-		});
+		// Wait until render
+		setTimeout(this.initLine, 0);
+		// Redraw line on resize
+		window.addEventListener('resize', () => this.initLine());
 	}
-})
+});
 </script>
 
 <style lang="postcss" scoped>
