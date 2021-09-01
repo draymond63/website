@@ -13,6 +13,7 @@
 import Vue from 'vue'
 import ChumpComputer from '~/components/ChumpComputer.vue'
 import ChumpProgrammer from '~/components/ChumpProgrammer.vue'
+type computerType = InstanceType<typeof ChumpComputer>;
 
 export default Vue.extend({
 	name: 'chumpPage',
@@ -22,13 +23,12 @@ export default Vue.extend({
 	},
 	methods: {
     compile(prog: String) {
-			console.log(this.$refs.CHUMP);
-			console.log(prog);
-			
-      // this.$refs.CHUMP.compile(prog);
+			const chump = this.$refs.CHUMP as computerType;			
+      chump.compile(prog);
     },
     changeSpeed(speed: Number) {
-      // this.$refs.CHUMP.changeSpeed(speed);
+			const chump = this.$refs.CHUMP as computerType;			
+      chump.changeSpeed(speed);
     }
   }
 })
