@@ -18,7 +18,8 @@
   },
   "devDependencies": {
     "@nuxt/types": "^2.13.2",
-    "@nuxt/typescript-build": "^2.0.4"
+    "@nuxt/typescript-build": "^2.0.4",
+    "@nuxtjs/google-analytics": "^2.4.0"
   },
   "browserslist": [
     ">5%",
