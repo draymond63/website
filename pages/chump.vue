@@ -5,7 +5,7 @@
 			<!-- First Column -->
 			<div>
 				<span id="header">
-					<h1>CHUMP</h1>
+					<h1>4-bit Computer</h1>
 					<h2>Computers can often be a black box.</h2>
 				</span>
 				<h3>The Why</h3>
@@ -21,11 +21,11 @@
 					basic tasks, a computer needs 5 things:
 					<ul>
 						<i>
-							<li>a <a>program</a> to run</li>
-							<li>a <a>counter</a> to keep track of the program line</li>
-							<li>a method of <a>decoding</a> the current the operation</li>
-							<li>a chip to carry out the <a>logic</a> operation</li>
-							<li> <a>memory</a> to store and read data</li>
+							<li>a <b>program</b> to run</li>
+							<li>a <b>counter</b> to keep track of the program line</li>
+							<li>a method of <b>decoding</b> the current the operation</li>
+							<li>a chip to carry out the <b>logic</b> operation</li>
+							<li> <b>memory</b> to store and read data</li>
 						</i>
 					</ul>
 				</p>
@@ -35,7 +35,7 @@
 					I've made a little simulation of my project for you to play with right here 
 					on this page!<br>
 					<br>
-					If you've programmed in <a>Assembly</a>, this is like my own personal version.<br>
+					If you've programmed in <b>Assembly</b>, this is like my own personal version.<br>
 					If not, this will be a new thing to learn :).<br>
 					<br>
 					With these simple concepts the computer can perform these operations:
@@ -55,7 +55,7 @@
 					if-zero conditional, the constant is treated as the line number to jump to.
 					<br><br>
 					The program currently running reads address 2 from memory and adds 1 to the value
-					(shown in the <a>accumulator</a>). It then stores that value back and restarts 
+					(shown in the <b>accumulator</b>). It then stores that value back and restarts 
 					the program by jumping to the first line (0).<br>
 					As you can see the accumulator is incrementing by one, showing the output of the 
 					program!
@@ -63,7 +63,7 @@
 				<h3>My Project</h3>
 				<p>
 					For this project I spend 2 months build a breadboard prototype and 3 months
-					designing and manufacturing a custom <a>PCB</a> and 3D printed case.<br>
+					designing and manufacturing a custom <b>PCB</b> and 3D printed case.<br>
 					If you'd like a technical, in-depth report of this project click 
 					<a href="DER.pdf#page=33" @click="$emit('ga-event', 'CHUMP', 'Viewed')">here!</a>
 				</p>

@@ -11,31 +11,29 @@
       <h4>Programmer</h4>
     </span>
     <div class="placement">
-      <div>
-        <div style="margin: 10%;">
-          <b>Load</b>
-          <p>Load value into reg</p>
-          <b>Add</b>
-          <p>Add constant to reg</p>
-          <b>Subtract</b>
-          <p>Subtract constant from reg</p>
-          <b>And</b>
-          <p>Bitwise AND with constant</p>
-          <b>StoreTo</b>
-          <p>Store reg in address given</p>
-          <b>Read</b>
-          <p>Read RAM from address given</p>
-          <b>GoTo</b>
-          <p>Jump PC to constant</p>
-          <b>IfZero</b>
-          <p>Jump PC to constant if reg is 0</p><br>
-        </div>
-        <div style="height: 8vh">
+      <div style="margin: 0 10%">
+        <b>Load</b>
+        <p>Load value into reg</p>
+        <b>Add</b>
+        <p>Add constant to reg</p>
+        <b>Subtract</b>
+        <p>Subtract constant from reg</p>
+        <b>And</b>
+        <p>Bitwise AND with constant</p>
+        <b>StoreTo</b>
+        <p>Store reg in address given</p>
+        <b>Read</b>
+        <p>Read RAM from address given</p>
+        <b>GoTo</b>
+        <p>Jump PC to constant</p>
+        <b>IfZero</b>
+        <p>Jump PC to constant if reg is 0</p><br>
+        <span>
           <i v-if="this.err == 1">Error: opcode at line  {{ this.err_line }} is uncompilable</i>
           <i v-else-if="this.err == 2">Error: operand at line {{ this.err_line }} is not binary</i>
           <i v-else-if="this.err == 3">Error: missing operand at line {{ this.err_line }}</i>
           <i v-else-if="this.err == 4">Error: operand exceeds 4-bit max at line {{ this.err_line }}</i>
-        </div>
+        </span>
       </div>
 
       <textarea
@@ -44,9 +42,9 @@
       spellcheck="false"
       ref="input"
       >read 0010;
-      add   0001;
-      str   0010;
-      jmp   0000;
+add   0001;
+str   0010;
+jmp   0000;
       </textarea>
 
     </div>
@@ -56,7 +54,6 @@
 <script>
 export default {
   name: 'ChumpProgrammer',
-
   data() {
     return {
       program: [],
@@ -194,9 +191,9 @@ export default {
 
 <style scoped>
   .programmer {
-    background: black;
+    background: white;
     border: 1px solid #B5B5B5;
-
+    font-size: 0.8rem;
     justify-content: center;
   }
   .placement {
@@ -204,11 +201,11 @@ export default {
     grid-template-columns: repeat(2, 1fr);
   }
   .prog-input {
-    background: #404040;
-    border: 1px solid #FFFFFF;
-    color: #FFFFFF;
+    background: lightgrey;
+    color: var(--text-color);
 
     margin: 10%;
+    margin-top: 0;
     resize: none;
   }
 
@@ -226,7 +223,7 @@ export default {
     margin-left: 10%;
     margin-top: 1%;
     height: 1em;
-    background: #1A1A1A;
+    background: lightgrey;
     outline: 1px solid #B5B5B5;
 
     opacity: 0.7;
@@ -241,7 +238,7 @@ export default {
     appearance: none;
     width: 1em;
     height: 1em;
-    background: #F19E44;
+    background: var(--main-color);
     border-radius: 20%;
     cursor: pointer;
   }
