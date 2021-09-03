@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<p>Hello!</p>
+		<nav-bar/>
+		<div style="height: 5rem" />
 		<chump-computer ref="CHUMP"/>
 		<chump-programmer
 			v-on:update-code="compile"
@@ -11,6 +12,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import NavBar from '~/components/NavBar.vue'
 import ChumpComputer from '~/components/ChumpComputer.vue'
 import ChumpProgrammer from '~/components/ChumpProgrammer.vue'
 type computerType = InstanceType<typeof ChumpComputer>;
@@ -18,6 +20,7 @@ type computerType = InstanceType<typeof ChumpComputer>;
 export default Vue.extend({
 	name: 'chumpPage',
 	components: {
+		NavBar,
 		ChumpComputer,
 		ChumpProgrammer
 	},
