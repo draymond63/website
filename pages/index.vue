@@ -16,25 +16,6 @@
 	</div>
 </template>
 
-<script lang="ts">
-import Hero from '@/components/Hero.vue';
-import About from '@/components/About.vue';
-import Timeline from '@/components/Timeline.vue';
-import Footer from '@/components/Footer.vue';
-import LineCurve from '@/components/LineCurve.vue';
-
-import Vue from 'vue'
-export default Vue.extend({
-	components: {
-		Hero,
-		About,
-		Timeline,
-		Footer,
-		LineCurve
-	}
-})
-</script>
-
 <style lang="postcss" scoped>
 .parent {
 	position: relative;
