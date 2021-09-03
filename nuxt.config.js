@@ -38,7 +38,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -54,5 +55,9 @@ export default {
         // https://www.npmjs.com/package/postcss-responsive-type
       },
     }
+  },
+
+  googleAnalytics: {
+    id: 'UA-148416481-2'
   }
 }
