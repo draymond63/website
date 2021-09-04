@@ -2,10 +2,18 @@
 	<div>
 		<nav-bar/>
 		<div class="cp-main">
-			<!-- First Column -->
+			<!-- Computer sim -->
+			<div class="sim">
+				<ChumpComputer ref="CHUMP"/>
+				<ChumpProgrammer 
+					v-on:update-code="compile"
+					v-on:speed-change="changeSpeed"
+				/>
+			</div>
+			<!-- Info -->
 			<div>
 				<span id="header">
-					<h1>4-bit Computer</h1>
+					<h1>PCB Computer</h1>
 					<h2>Computers can often be a black box.</h2>
 				</span>
 				<h3>The Why</h3>
@@ -69,15 +77,6 @@
 				</p>
 				<br>
 			</div>
-
-			<!-- Second Column -->
-			<div>
-				<ChumpComputer ref="CHUMP"/>
-				<ChumpProgrammer 
-					v-on:update-code="compile"
-					v-on:speed-change="changeSpeed"
-				/>
-			</div>
 		</div>
 	</div>
 </template>
@@ -104,9 +103,10 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 .cp-main {
   padding: 5%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-column-gap: 1vw;
+}
+.sim {
+	float: right;
+	width: 45%;
 }
 ul {
   margin-top: 0.3em;
@@ -117,8 +117,11 @@ h3 {
 
 @media screen and (max-width: 850px) {
 	.cp-main {
-		grid-template-columns: 100% !important;
-  	grid-template-rows: repeat(auto-fit, 1fr);
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	.sim {
+		width: 100%;
 	}
 }
 </style>
