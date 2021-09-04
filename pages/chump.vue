@@ -27,16 +27,16 @@
 					This project attempts to strip down a computer to what it was originally: a device
 					capable of executing a program in order to fulfill a given purpose. For the most
 					basic tasks, a computer needs 5 things:
-					<ul>
-						<i>
-							<li>a <b>program</b> to run</li>
-							<li>a <b>counter</b> to keep track of the program line</li>
-							<li>a method of <b>decoding</b> the current the operation</li>
-							<li>a chip to carry out the <b>logic</b> operation</li>
-							<li> <b>memory</b> to store and read data</li>
-						</i>
-					</ul>
 				</p>
+				<ul>
+					<i>
+						<li>a <b>program</b> to run</li>
+						<li>a <b>counter</b> to keep track of the program line</li>
+						<li>a method of <b>decoding</b> the current the operation</li>
+						<li>a chip to carry out the <b>logic</b> operation</li>
+						<li> <b>memory</b> to store and read data</li>
+					</i>
+				</ul>
 
 				<h3>Let's use this Sim!</h3>
 				<p>
@@ -83,17 +83,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ChumpComputer from '~/components/ChumpComputer.vue'
-type computerType = InstanceType<typeof ChumpComputer>;
 
 export default Vue.extend({
 	methods: {
-    compile(prog: String) {
-			const chump = this.$refs.CHUMP as computerType;			
+    compile(prog: string) {
+			const chump = this.$refs.CHUMP as any;
       chump.compile(prog);
     },
-    changeSpeed(speed: Number) {
-			const chump = this.$refs.CHUMP as computerType;			
+    changeSpeed(speed: number) {
+			const chump = this.$refs.CHUMP as any;
       chump.changeSpeed(speed);
     }
   }
@@ -102,7 +100,8 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 .cp-main {
-  padding: 5%;
+  padding: 2rem;
+	padding-top: 4rem;
 }
 .sim {
 	float: right;

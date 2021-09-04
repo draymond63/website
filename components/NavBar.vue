@@ -3,8 +3,8 @@
 		<nav class="desktop">
 			<div class="links">
 				<NuxtLink to="/">Daniel Raymond</NuxtLink>
-				<a id="about-link" href="#about">About Me</a>
-				<a id="experience-link" href="#experience">Experience</a>
+				<a id="about-link" href="/#about">About Me</a>
+				<a id="experience-link" href="/#experience">Experience</a>
 				<a target="_blank" href="/resume.pdf">Resume</a>
 			</div>
 		</nav>
@@ -14,8 +14,8 @@
 			<transition name="fade">
 				<nav v-if="mobileMenu" class="mobile-menu">
 					<p @click="mobileMenu = false" class="close-button">&#x2715;</p>
-					<a @click="mobileMenu = false" href="#about">About Me</a>
-					<a @click="mobileMenu = false" href="#experience">Experience</a>
+					<a @click="mobileMenu = false" href="/#about">About Me</a>
+					<a @click="mobileMenu = false" href="/#experience">Experience</a>
 					<a target="_blank" href="/resume.pdf">Resume</a>
 				</nav>
 			</transition>
