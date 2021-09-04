@@ -1,15 +1,17 @@
 <template>
 	<div class="tile-wrapper">
-		<component class="tile" :is="link? 'nuxt-link' : 'div'" :to="link">
-			<div class="header">
-				<h3>{{ title }}</h3>
-				<h5 class="type">{{ type }}</h5>
-			</div>
-			<div class="tags">
-				<h6 v-for="tag in tags" class="tag" :key="tag">{{ tag }}</h6>
-			</div>
-			<p>{{ blurb }}</p>
-		</component>
+		<div class="tile">
+			<component :is="link? 'nuxt-link' : 'span'" :to="link">
+				<div class="header">
+					<h3 :class="{'underline': link}">{{ title }}</h3>
+					<h5 class="type">{{ type }}</h5>
+				</div>
+				<div class="tags">
+					<h6 v-for="tag in tags" class="tag" :key="tag">{{ tag }}</h6>
+				</div>
+				<p>{{ blurb }}</p>
+			</component>
+		</div>
 	</div>
 </template>
 
@@ -89,6 +91,11 @@ h5.type {
 }
 .tag:not(:last-child) {
 	margin-right: 1rem;
+}
+
+.underline {
+	text-decoration: underline;
+	text-decoration-color: var(--text-color);
 }
 
 a, p {
