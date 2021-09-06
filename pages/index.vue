@@ -16,19 +16,6 @@
 	</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-	middleware({ route, redirect, }) {
-		console.log(route.hash);
-		if (route.hash.length >= 2 && route.hash.substr(0, 2) == '#/') {
-			const realPath = route.hash.substr(2)
-			redirect(`/${realPath}`)
-		}
-	}
-})
-</script>
-
 <style lang="postcss" scoped>
 .parent {
 	position: relative;
