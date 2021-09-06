@@ -93,12 +93,12 @@ export default {
             this.executeLine()
           else if (this.clk) // Set default state of program line to all on
             this.pl = 0xFF
-          
+
+          // Update LEDs to match
+          this.updateLEDs()
           // Increment the PC
           this.pc %= 256
           this.pc++
-          // Update LEDs to match
-          this.updateLEDs()
 
           if (this.nextCycleOp) {
             this.nextCycleOp()
@@ -252,7 +252,7 @@ export default {
     },
     goto(c) {
       this.nextCycleOp = () => {
-        this.pc = c - 1
+        this.pc = c
         this.pc %= 256
         this.nextCycleOp = null;
       }
@@ -260,7 +260,7 @@ export default {
     ifZ(c) {
       if (this.acc == 0) {
         this.nextCycleOp = () => {
-          this.pc = c - 1
+          this.pc = c
           this.pc %= 256
           this.nextCycleOp = null;
         }

@@ -26,7 +26,8 @@ jmp 0000;
     <transition name="fade">
       <div class="modal-wrapper" v-if="show_info">
         <div class="modal">
-          <div class="info">
+          <b>Write commands and adjust the clock speed here!</b>
+          <div class="commands">
             <b>Load</b>
             <p>Load value into reg</p>
             <b>Add</b>
@@ -44,7 +45,7 @@ jmp 0000;
             <b>IfZero</b>
             <p>Jump PC to constant if reg is 0</p><br>
           </div>
-          <button class="okay-button" @click="show_info = false">Okay</button>
+          <button class="okay-button" @click="dismissInfoModal">Okay</button>
         </div>
       </div>
     </transition>
@@ -101,12 +102,14 @@ export default {
       code = this.parseCode(code) // Parse code into line by line instructions
 
       // Convert each string into array of functions
+      const prevErr = this.err
       for (let l in code) {
         if (code[l] != [])
           this.err = this.compileLine(l, code[l])
 
         if (this.err) {
-          this.show_err = true
+          if (prevErr != this.err)
+            this.show_err = true
           return false // Send message to freeze program
         }
       }
@@ -199,6 +202,11 @@ export default {
       // Pass the constant if everything is fine
       this.program[index].push( raw )
       return 0
+    },
+
+    dismissInfoModal() {
+      this.show_info = false
+      this.$gtag.event('CHUMP Programmer Used')
     }
 
   }
@@ -249,7 +257,7 @@ export default {
   border: 1px solid grey;
   border-radius: 1rem;
 }
-.modal>.info {
+.modal>.commands {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: fit-content;
