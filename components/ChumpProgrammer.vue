@@ -1,53 +1,65 @@
 <template>
   <div class="programmer">
-    <span class="speed-header">
-      <h4>Speed Control</h4>
-      <input 
-        type="range" 
-        min="0" max="500" 
-        value="174"
-        class="slider"
-        @click="updateSpeed">
-      <h4>Programmer</h4>
-    </span>
-    <div class="placement">
-      <div style="margin: 0 10%">
-        <b>Load</b>
-        <p>Load value into reg</p>
-        <b>Add</b>
-        <p>Add constant to reg</p>
-        <b>Subtract</b>
-        <p>Subtract constant from reg</p>
-        <b>And</b>
-        <p>Bitwise AND with constant</p>
-        <b>StoreTo</b>
-        <p>Store reg in address given</p>
-        <b>Read</b>
-        <p>Read RAM from address given</p>
-        <b>GoTo</b>
-        <p>Jump PC to constant</p>
-        <b>IfZero</b>
-        <p>Jump PC to constant if reg is 0</p><br>
-        <span>
-          <i v-if="this.err == 1">Error: opcode at line  {{ this.err_line }} is uncompilable</i>
-          <i v-else-if="this.err == 2">Error: operand at line {{ this.err_line }} is not binary</i>
-          <i v-else-if="this.err == 3">Error: missing operand at line {{ this.err_line }}</i>
-          <i v-else-if="this.err == 4">Error: operand exceeds 4-bit max at line {{ this.err_line }}</i>
-        </span>
+    <h4>Speed Control</h4>
+    <input 
+      type="range" 
+      min="0" max="500" 
+      value="174"
+      class="slider"
+      @click="updateSpeed">
+    <h4>
+      Programmer
+      <b class="info-icon material-icons" @click="show_info = true">info</b>
+      <b class="error-icon material-icons" v-if="err" @click="show_err = true">error_outline</b>
+    </h4>
+    <textarea
+    @input="$emit('update-code', compile())"
+    class="prog-input" 
+    spellcheck="false"
+    ref="input"
+    >read 0010;
+add 0001;
+str 0010;
+jmp 0000;
+</textarea>
+
+    <transition name="fade">
+      <div class="modal-wrapper" v-if="show_info">
+        <div class="modal">
+          <b>Write commands and adjust the clock speed here!</b>
+          <div class="commands">
+            <b>Load</b>
+            <p>Load value into reg</p>
+            <b>Add</b>
+            <p>Add constant to reg</p>
+            <b>Subtract</b>
+            <p>Subtract constant from reg</p>
+            <b>And</b>
+            <p>Bitwise AND with constant</p>
+            <b>StoreTo</b>
+            <p>Store reg in address given</p>
+            <b>Read</b>
+            <p>Read RAM from address given</p>
+            <b>GoTo</b>
+            <p>Jump PC to constant</p>
+            <b>IfZero</b>
+            <p>Jump PC to constant if reg is 0</p><br>
+          </div>
+          <button class="okay-button" @click="dismissInfoModal">Okay</button>
+        </div>
       </div>
-
-      <textarea
-      @input="$emit('update-code', compile())"
-      class="prog-input" 
-      spellcheck="false"
-      ref="input"
-      >read 0010;
-add   0001;
-str   0010;
-jmp   0000;
-      </textarea>
-
-    </div>
+    </transition>
+    <transition name="fade">
+      <div class="modal-wrapper" v-if="show_err">
+        <div class="modal">
+          <i v-if="err == 1">Error: opcode at line  {{ err_line }} is uncompilable</i>
+          <i v-else-if="err == 2">Error: operand at line {{ err_line }} is not binary</i>
+          <i v-else-if="err == 3">Error: missing operand at line {{ err_line }}</i>
+          <i v-else-if="err == 4">Error: operand exceeds 4-bit max at line {{ err_line }}</i>
+          <button class="okay-button" @click="show_err = false">Okay</button>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -58,7 +70,9 @@ export default {
     return {
       program: [],
       err: 0,
-      err_line: 0
+      err_line: 0,
+      show_err: false,
+      show_info: true,
     }
   },
   // Change the default text of the textarea
@@ -88,13 +102,18 @@ export default {
       code = this.parseCode(code) // Parse code into line by line instructions
 
       // Convert each string into array of functions
+      const prevErr = this.err
       for (let l in code) {
         if (code[l] != [])
           this.err = this.compileLine(l, code[l])
 
-        if (this.err)
+        if (this.err) {
+          if (prevErr != this.err)
+            this.show_err = true
           return false // Send message to freeze program
+        }
       }
+      this.show_err = false
       return this.program
     },
     // Make each line a string of an op and a const
@@ -183,6 +202,11 @@ export default {
       // Pass the constant if everything is fine
       this.program[index].push( raw )
       return 0
+    },
+
+    dismissInfoModal() {
+      this.show_info = false
+      this.$gtag.event('CHUMP Programmer Used')
     }
 
   }
@@ -190,62 +214,95 @@ export default {
 </script>
 
 <style scoped>
-  .programmer {
-    background: white;
-    border: 1px solid #B5B5B5;
-    font-size: 0.8rem;
-    justify-content: center;
-  }
-  .placement {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .prog-input {
-    background: lightgrey;
-    color: var(--text-color);
+.programmer {
+  position: relative;
+  background: white;
+  border: 1px solid #B5B5B5;
+  font-size: 0.8rem;
+  text-align: center;
+}
+.prog-input {
+  background: lightgrey;
+  color: var(--text-color);
 
-    margin: 10%;
-    margin-top: 0;
-    resize: none;
-  }
+  box-sizing: border-box;
+  width: 80%;
+  height: 10rem;
 
-  /* SLIDER */
-  .speed-header {
-    text-align: center;
-  }
-  h4 {
-    margin: 0;
-    margin-top: 0.5em;
-  }
-  .slider {
-    -webkit-appearance: none;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 1%;
-    height: 1em;
-    background: lightgrey;
-    outline: 1px solid #B5B5B5;
+  margin: 0;
+  padding: 10%;
+  padding-top: 0;
+  resize: none;
+}
 
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-  .slider:hover {
-    opacity: 1;
-  }
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 1em;
-    height: 1em;
-    background: var(--main-color);
-    border-radius: 20%;
-    cursor: pointer;
-  }
+/* Modal */
+.modal-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 
-  /* Errors */
-  i {
-    color: rgb(160, 0, 0);
-    font-size: 0.9em;
-  }
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(5px);
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+
+  background: #ececec;
+  border: 1px solid grey;
+  border-radius: 1rem;
+}
+.modal>.commands {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: fit-content;
+  text-align: left;
+}
+.modal>.okay-button {
+  width: max-content;
+  padding: .25rem .5rem;
+  border-radius: .5rem;
+  background: white;
+}
+
+/* SLIDER */
+h4 {
+  margin: 0;
+  margin-top: 0.5em;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  margin-top: 0;
+  height: 1em;
+  background: lightgrey;
+  outline: 1px solid #B5B5B5;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  background: var(--main-color);
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+/* Icons */
+.error-icon {
+  color: #cf0000;
+}
+.info-icon {
+  color: grey;
+}
+/* Errors */
+i {
+  color: #a00000;
+  font-size: 0.9em;
+}
 </style>
