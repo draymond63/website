@@ -47,6 +47,7 @@
 					If not, this will be a new thing to learn :).<br>
 					<br>
 					With these simple concepts the computer can perform these operations:
+				</p>
 					<ul>
 						<i>
 							<li>Load</li>
@@ -56,6 +57,7 @@
 							<li>Conditional & non-conditional jumping</li>
 						</i>
 					</ul>
+				<p>
 					Each operation is made up of an operation and a constant. The constant will be 
 					used in conjuction with the result from the previous operation, shown by the 
 					LEDs from the output of the ALU (Arithmetic and logic unit). For memory 
