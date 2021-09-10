@@ -9,8 +9,10 @@
 				<div class="spacer"/>
 				<about/>
 				<div style="margin: 2rem 0"/>
+				<highlights/>
+				<div style="margin: 2rem 0"/>
 				<timeline/>
-				<Footer/>
+				<footer/>
 			</div>
 		</div>
 	</div>

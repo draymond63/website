@@ -14,7 +14,8 @@
     "nuxt": "^2.15.5",
     "postcss-preset-env": "^6.7.0",
     "rucksack-css": "^1.0.2",
-    "vue-gtag": "^1.16.1"
+    "vue-gtag": "^1.16.1",
+    "vue-slick-carousel": "^1.0.6"
   },
   "devDependencies": {
     "@nuxt/types": "^2.13.2",

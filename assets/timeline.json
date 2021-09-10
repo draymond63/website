@@ -35,7 +35,9 @@
 			"title": "Passion Finding App",
 			"blurb": "I made this app to help people explore concepts and ideas in a non-linear way. Users can explore a 2D map of interests and see how they see themselves in it. This took lots of data analysis, app design, and development!",
 			"type": "Project",
-			"tags": ["App Dev", "Flutter", "GCP"]
+			"tags": ["App Dev", "Flutter", "GCP"],
+			"link": "/passionfruit",
+			"image": "@/assets/chumpRender.svg"
 		},
 		{
 			"title": "AI Acceleration Engineering @ Untether AI",
@@ -71,7 +73,8 @@
 			"blurb": "I spent six months breadboarding, designing, and building a fully programmable four bit computer - it was the most intense hardware project I've built. The final product is a printed circuit board with a 3D-printed case a laser-cut acryllic cover.",
 			"type": "Project",
 			"tags": ["Electrical", "PCB"],
-			"link": "/chump"
+			"link": "/chump",
+			"image": "@/assets/chumpRender.svg" 
 		},
 		{
 			"title": "Student Theatre Festival",

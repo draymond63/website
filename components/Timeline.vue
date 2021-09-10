@@ -38,6 +38,7 @@ interface Tile {
 	title?: string,
 	blurb?: string,
 	link?: string,
+	image?: string,
 	type?: string,
 	tags?: string[]
 };
