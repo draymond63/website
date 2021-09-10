@@ -5,8 +5,8 @@
 		<img src="@/assets/Venn.svg" alt="A venn diagram of my interests">
 		<h4>Engineering</h4>
 		<p>
-			I am currently working at <b>SpaceX</b> as a Starship Avionics Intern and
-			as mentioned I am studying engineering at UWaterloo.
+			I am an engineering student at the University of Waterloo, and mymost recent
+			internship was at <b>SpaceX</b> as a Starship Avionics Intern.
 			In the future I hope to work either in the Aerospace industry (like SpaceX)
 			or in the humanitary tech sector (like Zipline or Demine Robotics).
 		</p>
