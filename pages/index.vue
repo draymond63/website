@@ -24,6 +24,12 @@ export default Vue.extend({
 		const hash = this.$route.hash;
 		if (hash.length >= 2 && hash.substr(0, 2) == '#/') {
 			const realPath = hash.substr(2)
+			// Keep track of how often this occurs
+			this.$gtag.event('Legacy Support', {
+        'event_category': 'Old Route',
+        'event_label': hash
+      })
+			// Redirect url
 			this.$router.replace((`/${realPath}`))
 		}
 	}

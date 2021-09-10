@@ -206,7 +206,10 @@ export default {
 
     dismissInfoModal() {
       this.show_info = false
-      // this.$gtag.event('CHUMP Programmer Used')
+			this.$gtag.event('Interaction', {
+        'event_category': 'Chump',
+        'event_label': 'Programmer Used'
+      })
     }
 
   }
