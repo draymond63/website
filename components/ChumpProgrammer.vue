@@ -206,7 +206,7 @@ export default {
 
     dismissInfoModal() {
       this.show_info = false
-      this.$gtag.event('CHUMP Programmer Used')
+      // this.$gtag.event('CHUMP Programmer Used')
     }
 
   }
