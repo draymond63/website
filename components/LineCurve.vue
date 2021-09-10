@@ -174,6 +174,7 @@ export default Vue.extend({
 	mounted() {
 		// Wait until render
 		setTimeout(this.initLine, 0);
+		setTimeout(this.initLine, 3000);
 		// Redraw line on resize
 		window.addEventListener('resize', () => this.initLine());
 	}
