@@ -38,10 +38,6 @@ export default {
     {
       src: './plugins/gtag.js',
       mode: 'client'
-    },
-    {
-      src: './plugins/init.js',
-      mode: 'client'
     }
   ],
 

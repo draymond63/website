@@ -16,6 +16,20 @@
 	</div>
 </template>
 
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
+	// Support for old hash web history links that are in old resumes
+	mounted() {
+		const hash = this.$route.hash;
+		if (hash.length >= 2 && hash.substr(0, 2) == '#/') {
+			const realPath = hash.substr(2)
+			this.$router.replace((`/${realPath}`))
+		}
+	}
+})
+</script>
+
 <style lang="postcss" scoped>
 .parent {
 	position: relative;
