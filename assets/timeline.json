@@ -2,7 +2,7 @@
 	"2021": [
 		{
 			"title": "Avionics Intern @ SpaceX",
-			"blurb": "I'm worked at SpaceX this summer! I was a sensor development intern for Starship Avionics, developing precise data pipelines, demodulation algorithms, and data fitting methods.",
+			"blurb": "I worked at SpaceX this summer! I was a sensor development intern for Starship Avionics, developing precise data pipelines, demodulation algorithms, and data fitting methods.",
 			"type": "Experience",
 			"tags": ["C", "FPGA", "DSP"]
 		},
