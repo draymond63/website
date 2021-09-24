@@ -37,7 +37,8 @@
 			"type": "Project",
 			"tags": ["App Dev", "Flutter", "GCP"],
 			"link": "/passionfruit",
-			"image": "@/assets/chumpRender.svg"
+			"image": "@/assets/chumpRender.svg",
+			"category": "Data Science"
 		},
 		{
 			"title": "AI Acceleration Engineering @ Untether AI",
@@ -74,7 +75,8 @@
 			"type": "Project",
 			"tags": ["Electrical", "PCB"],
 			"link": "/chump",
-			"image": "@/assets/chumpRender.svg" 
+			"image": "@/assets/chumpRender.svg",
+			"category": "Electrical"
 		},
 		{
 			"title": "Student Theatre Festival",

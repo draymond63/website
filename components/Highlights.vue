@@ -1,36 +1,35 @@
 <template>
-  <div id="highlights">
-    <VueSlickCarousel :dots="true">
-      <div v-for="tile, i in tiles" :key="i">{{ tile }}</div>
-    </VueSlickCarousel>
-  </div>
+	<div id="highlights">
+		<h2>Highlights</h2>
+  	<div class="grid" :style="{'--columns': Object.keys(tiles).length}">
+			<h3 v-for="title in Object.keys(tiles)" :key="title + '_title'">{{ title }}</h3>
+			<div v-for="sections, category in tiles" :key=category class="column">
+				<highlight-bubble v-for="tile, i in sections" :key=i v-bind="tile"/>
+			</div>
+  	</div>
+	</div>
 </template>
- 
-<script lang="ts">
-import VueSlickCarousel from 'vue-slick-carousel'
-import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-// optional style for arrows & dots
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 
+<script lang="ts">
 import json from "@/assets/timeline.json";
+
+import { Dictionary } from "vue-gtag";
 interface Tile {
 	title?: string,
 	blurb?: string,
 	link?: string,
 	image?: string,
 	type?: string,
-	tags?: string[]
+	tags?: string[],
+	category: string
 };
 
 import Vue from 'vue'
 export default Vue.extend({
 	name: 'Highlights',
-	components: {
-		VueSlickCarousel
-	},
 	data() {
 		return {
-			tiles: [] as Tile[]
+			tiles: {} as Dictionary<Tile[]>,
 		}
 	},
 	beforeMount() {
@@ -38,12 +37,16 @@ export default Vue.extend({
 		const entries = Object.entries(json);
 		// Iterate through entries, adding them to a new map
 		for (var i in entries) {
-			const info = entries[i][1] as Tile[];
+			const info = entries[i][1];
 
 			for (var x in info) {
-				const tile = info[x];
-				if (tile.image && tile.link)
-					this.tiles.push(tile);
+				const tile = info[x] as Tile;
+				if (tile.image && tile.link && tile.category) {
+					if (tile.category in this.tiles)
+						this.tiles[tile.category].push(tile);
+					else
+						this.tiles[tile.category] = [tile];
+				}
 			}
 		}
 	}
@@ -53,7 +56,17 @@ export default Vue.extend({
 <style lang="postcss" scoped>
 #highlights {
 	padding: 1rem;
-	/* display: grid; */
-	/* place-items: center; */
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(var(--columns), 1fr);
+	place-items: center;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 </style>
