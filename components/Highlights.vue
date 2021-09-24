@@ -1,12 +1,14 @@
 <template>
 	<div id="highlights">
 		<h2>Highlights</h2>
-  	<div class="grid" :style="{'--columns': Object.keys(tiles).length}">
-			<h3 v-for="title in Object.keys(tiles)" :key="title + '_title'">{{ title }}</h3>
-			<div v-for="sections, category in tiles" :key=category class="column">
-				<highlight-bubble v-for="tile, i in sections" :key=i v-bind="tile"/>
+		<client-only>
+			<div class="grid" :style="{'--columns': Object.keys(tiles).length}">
+				<h3 v-for="title in Object.keys(tiles)" :key="title + '_title'">{{ title }}</h3>
+				<div v-for="sections, category in tiles" :key=category class="column">
+					<highlight-bubble v-for="tile, i in sections" :key=i v-bind="tile"/>
+				</div>
 			</div>
-  	</div>
+		</client-only>
 	</div>
 </template>
 

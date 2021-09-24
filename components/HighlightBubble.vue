@@ -1,7 +1,7 @@
 <template>
-	<div class="container" ref="container">
-		<div class="bubble" :style="{'left': x + 'px', 'top': y + 'px'}">
-			<img :src="image" :alt="title">
+	<div class="container" @click="$router.push(link)">
+		<div class="bubble">
+			<img :src="getImage(image)" :alt="title">
 		</div>
 	</div>
 </template>
@@ -11,27 +11,15 @@ import Vue from 'vue'
 export default Vue.extend({
 	name: 'Bubble',
 	props: {
-		title: {
-			type: String,
-			default: ''
-		},
+		title: String,
+		link: String,
+		image: String,
+		category: String,
 		blurb: {
 			type: String,
 			default: ''
 		},
-		link: {
-			type: String,
-			default: ''
-		},
 		type: {
-			type: String,
-			default: ''
-		},
-		image: {
-			type: String,
-			default: ''
-		},
-		category: {
 			type: String,
 			default: ''
 		},
@@ -40,53 +28,25 @@ export default Vue.extend({
 			default: () => []
 		},
 	},
-
-	data() {
-		return {
-			x: 0,
-			y: 0,
-			v_x: 0,
-			v_y: 0,
-		}
-	},
 	methods: {
-		updateVelocity() {
-			this.v_x += 0.1 * (Math.random() - 0.5);
-			this.v_y += 0.1 * (Math.random() - 0.5);
-			setTimeout(this.updateVelocity, 1000);
-		},
-		updatePosition() {
-			this.x += this.v_x;
-			this.y += this.v_y;
-			const container = this.$refs.container as HTMLElement;
-
-			if (this.x < 0 || this.x > container.clientWidth) {
-				this.v_x *= -1;
-				this.x += 2 * this.v_x;
+		getImage(image: string) {
+			try {
+				return require("@/assets/" + image);
+			} catch (e) {
+				// throw Error(`pic does not exist: ${image}`);
 			}
-			if (this.y < 0 || this.y > container.clientHeight) {
-				this.v_y *= -1;
-				this.y += 2 * this.v_y;
-			}
-			setTimeout(this.updatePosition, 50);
 		}
-	},
-	mounted() {
-		this.v_x = Math.random() - 0.5;
-		this.v_y = Math.random() - 0.5;
-
-		this.updatePosition();
-		this.updateVelocity();
 	}
 })
 </script>
 
 <style lang="postcss" scoped>
 .container {
-	--bubble-size: 5rem;
+	--container-size: 6rem;
+	--bubble-size: calc(var(--container-size) / 1.5);
 	position: relative;
-	width: calc(var(--bubble-size) * 2);
-	height: calc(var(--bubble-size) * 2);
+	width: calc(var(--container-size));
+	height: calc(var(--container-size));
 }
 
 .bubble {
@@ -98,10 +58,42 @@ export default Vue.extend({
 	background: white;
 	border-radius: 50rem;
 	border: 5px solid var(--main-color);
-	transition: all .5s ease;
+
+	--anim-max: calc(100% - var(--bubble-size));
+	animation:
+			upDown 4.9s ease-in-out infinite alternate,
+			leftRight 5s ease-in-out infinite alternate;
 }
 
-/* .bubble:hover {
+.bubble > img {
+	min-width: 110%;
+	min-height: 110%;
+}
+
+.container:hover {
 	--bubble-size: 100%;
-} */
+	cursor: pointer;
+}
+.container:hover > .bubble {
+	border-radius: 1rem;
+	animation-play-state: paused;
+}
+
+@keyframes upDown {
+	0% {
+		top: 0;
+	}
+	100% {
+		top: var(--anim-max);
+	}
+}
+
+@keyframes leftRight {
+	0% {
+		left: 0;
+	}
+	100% {
+		left: var(--anim-max);
+	}
+}
 </style>
