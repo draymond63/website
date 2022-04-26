@@ -5,9 +5,9 @@
 		<img src="@/assets/Venn.svg" alt="A venn diagram of my interests">
 		<h4>Engineering</h4>
 		<p>
-			I am an engineering student at the University of Waterloo, and my most recent
-			internship was at <b>SpaceX</b> as a Starship Avionics Intern.
-			In the future I hope to work either in the Aerospace industry (like SpaceX)
+			I am an engineering student at the University of Waterloo, and I've interned
+			at many companies, including SpaceX, AMD, Untether AI, and Applied Brain Research.
+			In the future I hope to work in either the Aerospace industry (like SpaceX)
 			or in the humanitary tech sector (like Zipline or Demine Robotics).
 		</p>
 		<h4>Acting</h4>
@@ -27,10 +27,9 @@
 		</p>
 		<h4>Sports</h4>
 		<p>
-			Frisbee is my sport of choice - I was on the varsity team pre-covid and
-			have been playing casually ever since. Recently, I've been enjoying beach
-			volleyball (in LA!) and spikeball as well. Reach out if you ever want to 
-			play :)
+			Frisbee is my sport of choice - I play on the varsity team for UW and
+			also casually with friends. Recently, I've been enjoying volleyball
+			and spikeball as well. Reach out if you ever want to play :)
 		</p>
 	</div>
 </template>
