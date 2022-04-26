@@ -1,8 +1,22 @@
 {
+	"2022 ": [
+		{
+			"title": "Deep Learning Dev @ ABR",
+			"blurb": "A machine learning and data science coop! Although I've done quite a few personal projects in this area, being able to learn from experts and play with bleeding-edge models was an incredible experience.",
+			"type": "Experience",
+			"tags": ["AI", "Python"]
+		},
+		{
+			"title": "PM @ UW Blueprint",
+			"blurb": "For four months I was the project lead, leading a team of 6 devs to create a course platform for an Alberta-based NPO. This summer, I will be the product manager, leading the designers and product vision.",
+			"type": "Experience",
+			"tags": ["PM", "Web"]
+		}
+	],
 	"2021": [
 		{
 			"title": "Avionics Intern @ SpaceX",
-			"blurb": "I worked at SpaceX this summer! I was a sensor development intern for Starship Avionics, developing precise data pipelines, demodulation algorithms, and data fitting methods.",
+			"blurb": "I got the chance to work at SpaceX! I was a sensor development intern for Starship Avionics, developing precise data pipelines, demodulation algorithms, and data fitting methods.",
 			"type": "Experience",
 			"tags": ["C", "FPGA", "DSP"]
 		},
