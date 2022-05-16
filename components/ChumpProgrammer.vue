@@ -224,6 +224,9 @@ export default {
   font-size: 0.8rem;
   text-align: center;
 }
+.programmer>h4>b {
+  cursor: pointer;
+}
 .prog-input {
   background: lightgrey;
   color: var(--text-color);
