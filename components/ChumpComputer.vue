@@ -2,35 +2,35 @@
   <div class="computer">
     <img id="chumpRender" src="../assets/chumpRender.svg">
     <!-- LEDs -->
-    <div v-show="this.showLEDs" id="r" style="left: 5%;"  class="c-led r-0"></div>
+    <div id="r" style="left: 5%;"  class="c-led r-0"></div>
 
-    <div v-show="this.showLEDs" id="g" style="left: 10%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 13%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 16%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 19%;" class="c-led g-0"></div>
+    <div id="g" style="left: 10%;" class="c-led g-0"></div>
+    <div id="g" style="left: 13%;" class="c-led g-0"></div>
+    <div id="g" style="left: 16%;" class="c-led g-0"></div>
+    <div id="g" style="left: 19%;" class="c-led g-0"></div>
 
-    <div v-show="this.showLEDs" id="y" style="left: 23%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 26%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 29%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 32%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 35%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 38%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 41%;" class="c-led y-0"></div>
-    <div v-show="this.showLEDs" id="y" style="left: 44%;" class="c-led y-0"></div>
+    <div id="y" style="left: 23%;" class="c-led y-0"></div>
+    <div id="y" style="left: 26%;" class="c-led y-0"></div>
+    <div id="y" style="left: 29%;" class="c-led y-0"></div>
+    <div id="y" style="left: 32%;" class="c-led y-0"></div>
+    <div id="y" style="left: 35%;" class="c-led y-0"></div>
+    <div id="y" style="left: 38%;" class="c-led y-0"></div>
+    <div id="y" style="left: 41%;" class="c-led y-0"></div>
+    <div id="y" style="left: 44%;" class="c-led y-0"></div>
     
-    <div v-show="this.showLEDs" id="r" style="left: 50%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 53%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 56%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 59%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 62%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 65%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 68%;" class="c-led r-0"></div>
-    <div v-show="this.showLEDs" id="r" style="left: 71%;" class="c-led r-0"></div>
+    <div id="r" style="left: 50%;" class="c-led r-0"></div>
+    <div id="r" style="left: 53%;" class="c-led r-0"></div>
+    <div id="r" style="left: 56%;" class="c-led r-0"></div>
+    <div id="r" style="left: 59%;" class="c-led r-0"></div>
+    <div id="r" style="left: 62%;" class="c-led r-0"></div>
+    <div id="r" style="left: 65%;" class="c-led r-0"></div>
+    <div id="r" style="left: 68%;" class="c-led r-0"></div>
+    <div id="r" style="left: 71%;" class="c-led r-0"></div>
 
-    <div v-show="this.showLEDs" id="g" style="left: 82%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 85%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 88%;" class="c-led g-0"></div>
-    <div v-show="this.showLEDs" id="g" style="left: 91%;" class="c-led g-0"></div>
+    <div id="g" style="left: 82%;" class="c-led g-0"></div>
+    <div id="g" style="left: 85%;" class="c-led g-0"></div>
+    <div id="g" style="left: 88%;" class="c-led g-0"></div>
+    <div id="g" style="left: 91%;" class="c-led g-0"></div>
   </div>
 </template>
 
@@ -50,18 +50,12 @@ export default {
 
       run: true,    // Runs only if the code was compiled successfully
       nextCycleOp: null, // Stuff to do after the LEDs update
-      showLEDs: false,
       interval: null
     }
   },
   // INIT
   mounted() {
-    // Only show leds once svg has loaded in
-    const svg = document.getElementById("chumpRender")
-    svg.onload = () => { // Arrow function maintains correct 'this'
-      this.showLEDs = true
-      this.interval = setInterval(this.update.bind(this), 25000/50) // Update every n milliseconds (50 == default speed)
-    }
+    this.interval = setInterval(this.update.bind(this), 25000/50) // Update every n milliseconds (50 == default speed)
 
     this.LEDs = Array.from(document.getElementsByClassName("c-led"))
     // Split LEDs into relevant sections
