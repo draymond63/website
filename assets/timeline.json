@@ -1,6 +1,11 @@
 {
 	"2022 ": [
 		{
+			"title": "Study Exchange in Madrid",
+			"blurb": "After spending a year learning Spanish, I finally got the chance to live in Spain! I met people from all over the world and got to study in an amazing environment.",
+			"type": "Fun"
+		},
+		{
 			"title": "Deep Learning Dev @ ABR",
 			"blurb": "A machine learning and data science coop! Although I've done quite a few personal projects in this area, being able to learn from experts and play with bleeding-edge models was an incredible experience.",
 			"type": "Experience",
@@ -8,7 +13,7 @@
 		},
 		{
 			"title": "PM @ UW Blueprint",
-			"blurb": "For four months I was the project lead, leading a team of 6 devs to create a course platform for an Alberta-based NPO. This summer, I will be the product manager, leading the designers and product vision.",
+			"blurb": "I was the project lead for half of this ten month project, leading a team of 6 devs to create a course platform for an Alberta-based NPO. I was then the PM for the other half, leading the designers and handoff.",
 			"type": "Experience",
 			"tags": ["PM", "Web"]
 		}
