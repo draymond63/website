@@ -1,5 +1,24 @@
 {
-	"2022 ": [
+	"2023": [
+		{
+			"title": "Avionics Intern @ SpaceX",
+			"blurb": "I'm working at SpaceX again for the summer. I'm returning to the same team in Los Angeles and I'm super excited to be back!",
+			"type": "Experience",
+			"tags": ["DSP"]
+		},
+		{
+			"title": "Embedded Dev @ Smartex.ai",
+			"blurb": "I worked on the amazing embedded software team, helping to modernize and digitize the textile industry. There I developed the world's first system to accurately track production of fabric in metres using cameras.",
+			"type": "Experience",
+			"tags": ["FW", "Python"]
+		},
+		{
+			"title": "Living in Portugal!",
+			"blurb": "My internship at Smartex was in Porto, so I got to skip out on Canadian winter! I loved the city, the language, and hanging out with the people I met there. Smartex is an incredible company with amazing people.",
+			"type": "Fun"
+		}
+	],
+	"2022": [
 		{
 			"title": "Study Exchange in Madrid",
 			"blurb": "After spending a year learning Spanish, I finally got the chance to live in Spain! I met people from all over the world and got to study in an amazing environment.",
@@ -13,7 +32,7 @@
 		},
 		{
 			"title": "PM @ UW Blueprint",
-			"blurb": "I was the project lead for half of this ten month project, leading a team of 6 devs to create a course platform for an Alberta-based NPO. I was then the PM for the other half, leading the designers and handoff.",
+			"blurb": "I was the technical lead for half of this ten month project, leading a team of 6 devs to create a course platform for an Alberta-based NPO. I was then the PM for the other half, leading the designers and handoff.",
 			"type": "Experience",
 			"tags": ["PM", "Web"]
 		}
